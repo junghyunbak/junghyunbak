@@ -16,7 +16,10 @@
   <img src ="https://img.shields.io/badge/Express-000000?&style=for-the-badge&logo=Express&logoColor=white"/>
 </p>
 
-<h2>Contacts</h2>
+<h2>Contacts & Channels</h2>
 <a href="mailto:jeong5728@gmail.com">
   <img src="https://img.shields.io/badge/gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=000000"/>
+</a>
+<a href="https://junghyunbak.github.io/" target="_blank">
+  <img src="https://img.shields.io/badge/blog-181717?style=for-the-badge&logo=github"/>
 </a>
