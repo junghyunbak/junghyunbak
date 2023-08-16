@@ -23,10 +23,10 @@ I`m currently studying full-stack web
 
 ### 💁‍♂️Contacts & Channels
 <a href="mailto:jeong5728@gmail.com">
-  <img src="https://img.shields.io/badge/gmail-EA4335?style=flat-square&logo=gmail&logoColor=000000"/>
+  <img src="https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=gmail&logoColor=000000"/>
 </a>
 <a href="https://junghyunbak.github.io/" target="_blank">
-  <img src="https://img.shields.io/badge/blog-181717?style=flat-square&logo=github"/>
+  <img src="https://img.shields.io/badge/Blog-181717?style=flat-square&logo=github"/>
 </a>
 
 </br></br>
