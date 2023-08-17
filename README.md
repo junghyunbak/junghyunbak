@@ -4,7 +4,7 @@ I`m currently studying full-stack web
 
 ### 📖Education
 
-- (2022.07 ~ 2022.12) Naver Boostcamp 7th Web · Full-stack
+- (2022.07 ~ 2022.12) Naver Connect Foundation <Boostcamp Web · Mobile 7th>
 - (2017.03 ~ 2022.08) KNU(Kongju National University) Computer Science Engineering
 
 ### 🗣Language
