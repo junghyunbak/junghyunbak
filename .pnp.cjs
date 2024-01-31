@@ -26,6 +26,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/react", "npm:18.2.48"],\
@@ -2910,6 +2911,25 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@npmcli/fs", "npm:3.1.0"],\
           ["semver", "npm:7.5.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/openapi-types", [\
+      ["npm:19.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@octokit-openapi-types-npm-19.1.0-bd98fe458b-10c0.zip/node_modules/@octokit/openapi-types/",\
+        "packageDependencies": [\
+          ["@octokit/openapi-types", "npm:19.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/types", [\
+      ["npm:12.4.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@octokit-types-npm-12.4.0-52c6e4e06b-10c0.zip/node_modules/@octokit/types/",\
+        "packageDependencies": [\
+          ["@octokit/types", "npm:12.4.0"],\
+          ["@octokit/openapi-types", "npm:19.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6107,6 +6127,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["lightpavilion-blog", "workspace:."],\
+          ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/react", "npm:18.2.48"],\

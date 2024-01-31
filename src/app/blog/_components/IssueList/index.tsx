@@ -1,0 +1,16 @@
+import { type IssueListResponse } from "@/app/blog/_types/issue";
+import { IssueListItem } from "./IssueListItem";
+
+interface IssueListProps {
+  issues: IssueListResponse["data"];
+}
+
+export function IssueList({ issues }: IssueListProps) {
+  return (
+    <ul>
+      {issues.map((issue) => {
+        return <IssueListItem key={issue.id} issue={issue} />;
+      })}
+    </ul>
+  );
+}
