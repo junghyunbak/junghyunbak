@@ -1,4 +1,5 @@
-import { LabelListResponse } from "@/app/blog/_types/label";
+import { LabelListResponse } from "@/types/label";
+import Link from "next/link";
 
 interface LabelListItem {
   label: LabelListResponse["data"][number];
@@ -7,7 +8,9 @@ interface LabelListItem {
 export function LabelListItem({ label }: LabelListItem) {
   return (
     <li className="border border-primary rounded-sm p-[0.3125rem] cursor-pointer mt-11">
-      <p className="text-sm leading-4 text-primary">{`#${label.name}`}</p>
+      <Link href={`/blog/${label.name}`}>
+        <p className="text-sm leading-4 text-primary">{`#${label.name}`}</p>
+      </Link>
     </li>
   );
 }

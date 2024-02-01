@@ -1,5 +1,5 @@
 import { LabelListItem } from "./LabelListItem";
-import { type LabelListResponse } from "../../_types/label";
+import { type LabelListResponse } from "@/types/label";
 
 interface LabelListProps {
   labels: LabelListResponse["data"];

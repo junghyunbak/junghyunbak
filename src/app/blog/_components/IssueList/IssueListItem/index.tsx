@@ -1,4 +1,4 @@
-import { type IssueListResponse } from "@/app/blog/_types/issue";
+import { type IssueListResponse } from "@/types/issue";
 
 interface IssueListItemProps {
   issue: IssueListResponse["data"][number];
