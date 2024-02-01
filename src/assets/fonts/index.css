@@ -32,3 +32,8 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Segoe UI Emoji";
+  src: url("./segoeuiemj.ttf") format("truetype");
+}

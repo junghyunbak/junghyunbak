@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  font-family: "MaruBuri";
+  font-family: "MaruBuri", "Segoe UI Emoji";
   box-sizing: border-box;
   padding: 0;
   margin: 0;
