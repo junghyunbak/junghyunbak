@@ -1,3 +1,5 @@
+import markdown from "@/docs/about.md";
+
 export default function Home() {
-  return <main></main>;
+  return <main>{markdown}</main>;
 }
