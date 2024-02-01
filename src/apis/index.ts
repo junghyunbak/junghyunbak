@@ -7,14 +7,12 @@ import type {
   LabelListResponse,
 } from "@/types/label";
 import { githubApiUtils } from "@/utils";
-
-const OWNER = "junghyunbak";
-const REPO = "junghyunbak";
+import { REPO_NAME, REPO_OWNER } from "@/constants";
 
 export const getIssues = async (
   options?: IssueListRequestParameters
-): Promise<IssueListResponse["data"]> => {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/issues`;
+): Promise<{ pageCount: number; items: IssueListResponse["data"] }> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
   const _options: Record<string, string> = {};
 
@@ -26,22 +24,27 @@ export const getIssues = async (
     _options[key] = value.toString();
   });
 
-  const queryString = new URLSearchParams(_options);
+  const queryString = new URLSearchParams({ ..._options });
 
-  const data = await fetch(`${url}?${queryString}`, {
+  const response = await fetch(`${url}?${queryString}`, {
     cache: "no-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
-  })
-    .then((res) => res.json())
-    .then((data) => data as IssueListResponse["data"]);
+  });
 
-  return data;
+  const data = await response.json();
+
+  const pageCount = githubApiUtils.getPageCount(
+    githubApiUtils.parseLink(response.headers.get("link")),
+    data.length
+  );
+
+  return { pageCount, items: data as IssueListResponse["data"] };
 };
 
 export const getLabels = async (
   options?: LabelListRequestParameters
 ): Promise<LabelListResponse["data"]> => {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/labels`;
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
 
   const _options: Record<string, string> = {};
 
