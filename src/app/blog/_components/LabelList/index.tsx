@@ -16,7 +16,7 @@ export function LabelList({ labels, currentLabel }: LabelListProps) {
           <li key={label.id}>
             <Link
               className={[
-                "border border-primary rounded-sm p-[0.3125rem] text-sm leading-4",
+                "block border border-primary rounded-sm p-[0.3125rem] text-sm leading-4",
                 isActive ? "bg-primary text-white" : "text-primary",
               ].join(" ")}
               href={isActive ? `/blog` : `/blog?label=${label.name}`}
