@@ -1,0 +1,80 @@
+:root {
+  --color-g800: #2f2f2f;
+  --color-primaryb: #70f4c0;
+}
+
+.markdown h1 {
+  font-size: 2rem;
+}
+.markdown h2 {
+  font-size: 1.5rem;
+}
+.markdown h3 {
+  font-size: 1.17rem;
+}
+.markdown h4 {
+  font-size: 1rem;
+}
+.markdown h5 {
+  font-size: 0.83rem;
+}
+.markdown h6 {
+  font-size: 0.67rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  border-bottom: 1px solid var(--color-g800);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: 600;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
+.markdown p,
+.markdown hr,
+.markdown pre,
+.markdown ul,
+.markdown ol,
+.markdown dl {
+  margin-bottom: 1rem;
+}
+
+.markdown a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.markdown code:not(pre *) {
+  font-family: "MaruBuri", "Segoe UI Emoji";
+
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    var(--color-primaryb) 40%
+  );
+}
+
+.markdown ol,
+.markdown ul,
+.markdown dl {
+  padding-left: 40px;
+}
+
+.markdown li {
+  list-style-type: disc;
+  list-style-position: outside;
+  list-style-image: none;
+}
