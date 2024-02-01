@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="min-h-full">
           <Header />
 
-          {children}
+          <div className="max-md:p-3">{children}</div>
         </div>
 
         <Footer />
