@@ -11,9 +11,13 @@ export default async function Blog({
 }: {
   searchParams: { page?: string; label?: string };
 }) {
+  const currentPage = Number(searchParams.page) || 1;
+
   const { items: issues, pageCount } = await getIssues({
+    page: currentPage,
     per_page: ISSUE_PER_PAGE,
     creator: REPO_OWNER,
+    labels: searchParams.label,
   });
   const labels = await getLabels();
 
@@ -23,7 +27,7 @@ export default async function Blog({
       <IssueList issues={issues} />
       <IssueListPaginate
         pageCount={pageCount}
-        currentPage={searchParams.page}
+        currentPage={currentPage}
         currentLabel={searchParams.label}
       />
     </div>

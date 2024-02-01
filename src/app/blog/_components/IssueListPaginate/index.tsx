@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface PaginateProps {
   pageCount: number;
-  currentPage?: string;
+  currentPage: number;
   currentLabel?: string;
 }
 
@@ -23,7 +23,7 @@ export function IssueListPaginate({
         .map((_, i) => {
           const page = i + 1;
 
-          const isActive = (Number(currentPage) || 1) === page;
+          const isActive = currentPage === page;
 
           return (
             <li key={i}>
