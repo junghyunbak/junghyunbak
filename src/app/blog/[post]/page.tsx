@@ -1,5 +1,6 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getIssueItem } from "@/apis";
+import Link from "next/link";
 
 export default async function Post({ params }: { params: { post: string } }) {
   const issue = await getIssueItem(params.post);
@@ -24,7 +25,12 @@ export default async function Post({ params }: { params: { post: string } }) {
 
             return (
               <li key={id}>
-                <p className="font-semibold text-g700">{`#${name}`}</p>
+                <Link
+                  href={`/blog?label=${name}`}
+                  className="font-semibold text-g700"
+                >
+                  {`#${name}`}
+                </Link>
               </li>
             );
           })}
