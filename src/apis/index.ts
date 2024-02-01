@@ -1,6 +1,7 @@
 import type {
   IssueListRequestParameters,
   IssueListResponse,
+  IssueItemResponse,
 } from "@/types/issue";
 import type {
   LabelListRequestParameters,
@@ -9,6 +10,9 @@ import type {
 import { githubApiUtils } from "@/utils";
 import { REPO_NAME, REPO_OWNER } from "@/constants";
 
+/**
+ * TODO: issue 복수형 말고 list 접미어로 메서드명 변경하기
+ */
 export const getIssues = async (
   options?: IssueListRequestParameters
 ): Promise<{ pageCount: number; items: IssueListResponse["data"] }> => {
@@ -73,9 +77,7 @@ export const getLabels = async (
     });
 
     labels.push(
-      ...Array.from(
-        (await response.json()) as unknown as LabelListResponse["data"]
-      )
+      ...Array.from((await response.json()) as LabelListResponse["data"])
     );
 
     pageLinks = githubApiUtils.parseLink(response.headers.get("link"));
@@ -84,4 +86,19 @@ export const getLabels = async (
   } while (pageLinks && !githubApiUtils.isLastPage(pageLinks));
 
   return labels;
+};
+
+export const getIssueItem = async (
+  issueNumber: string
+): Promise<IssueItemResponse["data"]> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
+
+  const response = await fetch(url, {
+    cache: "no-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
+
+  const data = (await response.json()) as IssueItemResponse["data"];
+
+  return data;
 };

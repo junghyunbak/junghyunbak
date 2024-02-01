@@ -7,3 +7,6 @@ export type IssueListRequestParameters = Omit<
 
 export type IssueListResponse =
   Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
+
+export type IssueItemResponse =
+  Endpoints["GET /repos/{owner}/{repo}/issues/{issue_number}"]["response"];
