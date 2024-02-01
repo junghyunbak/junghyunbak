@@ -7,10 +7,11 @@ interface LabelListItem {
 
 export function LabelListItem({ label }: LabelListItem) {
   return (
-    <li className="border border-primary rounded-sm p-[0.3125rem] cursor-pointer mt-11">
-      <Link href={`/blog/${label.name}`}>
-        <p className="text-sm leading-4 text-primary">{`#${label.name}`}</p>
-      </Link>
-    </li>
+    <Link
+      className="border border-primary rounded-sm p-[0.3125rem] text-sm leading-4 text-primary"
+      href={`/blog/${label.name}`}
+    >
+      {`#${label.name}`}
+    </Link>
   );
 }
