@@ -4,6 +4,10 @@ import { getIssueItem } from "@/apis";
 export default async function Post({ params }: { params: { post: string } }) {
   const issue = await getIssueItem(params.post);
 
+  if (!issue) {
+    return <div>존재하지 않는 페이지입니다.</div>;
+  }
+
   return (
     <div>
       <div className="flex flex-col items-center mt-16 mb-7 [&>*]:pb-3.5 border-b border-dashed border-gray-800">

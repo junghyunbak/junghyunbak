@@ -90,7 +90,7 @@ export const getLabels = async (
 
 export const getIssueItem = async (
   issueNumber: string
-): Promise<IssueItemResponse["data"]> => {
+): Promise<IssueItemResponse["data"] | null> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
 
   const response = await fetch(url, {
@@ -98,7 +98,11 @@ export const getIssueItem = async (
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
   });
 
-  const data = (await response.json()) as IssueItemResponse["data"];
+  if (response.status >= 400) {
+    return null;
+  }
 
-  return data;
+  const data = await response.json();
+
+  return data as IssueItemResponse["data"];
 };
