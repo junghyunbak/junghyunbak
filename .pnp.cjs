@@ -29,12 +29,14 @@ const RAW_RUNTIME_STATE =
           ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
+          ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
+          ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
@@ -3289,6 +3291,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/parse-link-header", [\
+      ["npm:2.0.3", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-parse-link-header-npm-2.0.3-ced17fee2f-10c0.zip/node_modules/@types/parse-link-header/",\
+        "packageDependencies": [\
+          ["@types/parse-link-header", "npm:2.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/prop-types", [\
       ["npm:15.7.11", {\
         "packageLocation": "../../.yarn/berry/cache/@types-prop-types-npm-15.7.11-a0a5a0025c-10c0.zip/node_modules/@types/prop-types/",\
@@ -6130,12 +6141,14 @@ const RAW_RUNTIME_STATE =
           ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
+          ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
+          ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
@@ -6788,6 +6801,16 @@ const RAW_RUNTIME_STATE =
           ["error-ex", "npm:1.3.2"],\
           ["json-parse-even-better-errors", "npm:2.3.1"],\
           ["lines-and-columns", "npm:1.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["parse-link-header", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/parse-link-header-npm-2.0.0-c29aea08c6-10c0.zip/node_modules/parse-link-header/",\
+        "packageDependencies": [\
+          ["parse-link-header", "npm:2.0.0"],\
+          ["xtend", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8198,6 +8221,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/wrappy-npm-1.0.2-916de4d4b3-10c0.zip/node_modules/wrappy/",\
         "packageDependencies": [\
           ["wrappy", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["xtend", [\
+      ["npm:4.0.2", {\
+        "packageLocation": "../../.yarn/berry/cache/xtend-npm-4.0.2-7f2375736e-10c0.zip/node_modules/xtend/",\
+        "packageDependencies": [\
+          ["xtend", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\

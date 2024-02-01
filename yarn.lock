@@ -1929,6 +1929,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/parse-link-header@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@types/parse-link-header@npm:2.0.3"
+  checksum: 10c0/6ba964a60db4f5b8ea1388548e4492afa01bbee37e4b28465e858e4e3c056071427cc04e63f54f70c1504b8c754af46008b58acaf43b19d1bbca931d79670b81
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
@@ -4270,12 +4277,14 @@ __metadata:
     "@octokit/types": "npm:^12.4.0"
     "@svgr/webpack": "npm:^8.1.0"
     "@types/node": "npm:^20"
+    "@types/parse-link-header": "npm:^2.0.3"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     autoprefixer: "npm:^10.4.17"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.1.0"
     next: "npm:14.1.0"
+    parse-link-header: "npm:^2.0.0"
     postcss: "npm:^8.4.33"
     react: "npm:^18"
     react-dom: "npm:^18"
@@ -4878,6 +4887,15 @@ __metadata:
     json-parse-even-better-errors: "npm:^2.3.0"
     lines-and-columns: "npm:^1.1.6"
   checksum: 10c0/77947f2253005be7a12d858aedbafa09c9ae39eb4863adf330f7b416ca4f4a08132e453e08de2db46459256fb66afaac5ee758b44fe6541b7cdaf9d252e59585
+  languageName: node
+  linkType: hard
+
+"parse-link-header@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "parse-link-header@npm:2.0.0"
+  dependencies:
+    xtend: "npm:~4.0.1"
+  checksum: 10c0/7771922c4faeda9a00261cad3be5f25d4c2f940e21300c8f5ddf3b012d1a7bd82625cd08b926ff826905b9cb1e03056f222b550a4ba7d9e19404ad51fe52f68d
   languageName: node
   linkType: hard
 
@@ -6112,6 +6130,13 @@ __metadata:
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
   checksum: 10c0/56fece1a4018c6a6c8e28fbc88c87e0fbf4ea8fd64fc6c63b18f4acc4bd13e0ad2515189786dd2c30d3eec9663d70f4ecf699330002f8ccb547e4a18231fc9f0
+  languageName: node
+  linkType: hard
+
+"xtend@npm:~4.0.1":
+  version: 4.0.2
+  resolution: "xtend@npm:4.0.2"
+  checksum: 10c0/366ae4783eec6100f8a02dff02ac907bf29f9a00b82ac0264b4d8b832ead18306797e283cf19de776538babfdcb2101375ec5646b59f08c52128ac4ab812ed0e
   languageName: node
   linkType: hard
 
