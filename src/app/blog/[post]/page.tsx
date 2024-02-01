@@ -6,8 +6,25 @@ export default async function Post({ params }: { params: { post: string } }) {
 
   return (
     <div>
-      <div>
-        <p className="text-2xl text-center">{issue.title}</p>
+      <div className="flex flex-col items-center mt-16 mb-7 [&>*]:pb-3.5 border-b border-dashed border-gray-800">
+        <p className="text-2xl font-semibold text-center">{issue.title}</p>
+
+        <p className="text-g600">
+          {new Date(issue.created_at).toLocaleString()}
+        </p>
+
+        <ul className="flex flex-wrap gap-2.5">
+          {issue.labels.map((label, i) => {
+            const id = typeof label === "string" ? i : label.id;
+            const name = typeof label === "string" ? label : label.name;
+
+            return (
+              <li key={id}>
+                <p className="font-semibold text-g700">{`#${name}`}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
       <MarkdownContent content={issue.body || ""} />
