@@ -3,6 +3,10 @@
   --color-primaryb: #70f4c0;
 }
 
+.markdown {
+  overflow: hidden;
+}
+
 .markdown h1 {
   font-size: 2rem;
 }
@@ -49,7 +53,7 @@
 .markdown ul,
 .markdown ol,
 .markdown dl {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .markdown a {
