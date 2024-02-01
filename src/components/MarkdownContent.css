@@ -82,3 +82,11 @@
   list-style-position: outside;
   list-style-image: none;
 }
+
+.markdown img {
+  margin: 0 auto;
+}
+
+.markdown summary {
+  cursor: pointer;
+}
