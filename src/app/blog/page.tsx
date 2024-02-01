@@ -19,11 +19,11 @@ export default async function Blog({
 
   return (
     <div>
-      <LabelList labels={labels} />
+      <LabelList labels={labels} currentLabel={searchParams.label} />
       <IssueList issues={issues} />
       <IssueListPaginate
         pageCount={pageCount}
-        currentPage={Number(searchParams.page) || 1}
+        currentPage={searchParams.page}
         currentLabel={searchParams.label}
       />
     </div>

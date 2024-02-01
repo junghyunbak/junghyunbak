@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface PaginateProps {
   pageCount: number;
-  currentPage: number;
+  currentPage?: string;
   currentLabel?: string;
 }
 
@@ -16,26 +16,27 @@ export function IssueListPaginate({
   currentPage,
   currentLabel,
 }: PaginateProps) {
-  if (!currentPage || !pageCount) {
-    return null;
-  }
-
   return (
     <ul className="flex flex-wrap justify-center my-6 gap-x-1">
       {Array(pageCount)
         .fill(null)
         .map((_, i) => {
-          const nextPage = i + 1;
+          const page = i + 1;
+
+          const isActive = (Number(currentPage) || 1) === page;
 
           return (
             <li key={i}>
               <Link
-                href={`/blog?page=${nextPage}${
+                href={`/blog?page=${page}${
                   currentLabel ? `&label=${currentLabel}` : ""
                 }`}
-                className="flex items-center justify-center w-6 border rounded-sm aspect-square border-primary"
+                className={[
+                  "flex items-center justify-center w-6 border text-sm rounded-sm aspect-square border-primary",
+                  isActive ? "bg-primary text-white" : "text-primary",
+                ].join(" ")}
               >
-                <p className="text-sm text-primary">{nextPage}</p>
+                {page}
               </Link>
             </li>
           );
