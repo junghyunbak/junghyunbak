@@ -1,6 +1,22 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { getIssueItem } from "@/apis";
+import { getAllIssues, getIssueItem } from "@/apis";
+import { REPO_OWNER } from "@/constants";
 import Link from "next/link";
+
+export async function generateStaticParams() {
+  const issues = await getAllIssues({
+    /**
+     * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+     */
+    creator: REPO_OWNER,
+    /**
+     * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+     */
+    assignee: "none",
+  });
+
+  return issues.map((issue) => ({ slug: issue.number.toString() }));
+}
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const issue = await getIssueItem(params.slug);
