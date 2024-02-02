@@ -1,10 +1,8 @@
 import { getIssues, getLabels } from "@/apis";
 import { IssueList } from "./_components/IssueList";
 import { LabelList } from "./_components/LabelList";
-import { REPO_OWNER } from "@/constants";
+import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { IssueListPaginate } from "./_components/IssueListPaginate";
-
-const ISSUE_PER_PAGE = 2;
 
 export default async function Blog({
   searchParams,
@@ -16,8 +14,15 @@ export default async function Blog({
   const { items: issues, pageCount } = await getIssues({
     page: currentPage,
     per_page: ISSUE_PER_PAGE,
-    creator: REPO_OWNER,
     labels: searchParams.label,
+    /**
+     * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+     */
+    creator: REPO_OWNER,
+    /**
+     * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+     */
+    assignee: "none",
   });
   const labels = await getLabels();
 

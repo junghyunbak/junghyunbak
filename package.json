@@ -14,7 +14,6 @@
     "next": "14.1.0",
     "parse-link-header": "^2.0.0",
     "postcss": "^8.4.33",
-    "raw-loader": "^4.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",

@@ -1,10 +1,12 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import markdown from "@/docs/about.md";
+import { getIssueItem } from "@/apis";
 
-export default function Home() {
+export default async function Home() {
+  const issue = await getIssueItem("18");
+
   return (
     <main className="mt-6">
-      <MarkdownContent content={markdown} />
+      <MarkdownContent content={issue?.body || ""} />
     </main>
   );
 }
