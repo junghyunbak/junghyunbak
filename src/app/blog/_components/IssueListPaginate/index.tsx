@@ -28,9 +28,7 @@ export function IssueListPaginate({
           return (
             <li key={i}>
               <Link
-                href={`/blog?page=${page}${
-                  currentLabel ? `&label=${currentLabel}` : ""
-                }`}
+                href={`/blog/${currentLabel || "all"}/${page}`}
                 className={[
                   "flex items-center justify-center w-6 border text-sm rounded-sm aspect-square border-primary",
                   isActive ? "bg-primary text-white" : "text-primary",

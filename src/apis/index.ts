@@ -10,7 +10,9 @@ import type {
 import { githubApiUtils } from "@/utils";
 import { REPO_NAME, REPO_OWNER } from "@/constants";
 
-export const getAllIssues = async (options: IssueListRequestParameters): Promise<IssueListResponse['data']> => {
+export const getAllIssues = async (
+  options: IssueListRequestParameters
+): Promise<IssueListResponse["data"]> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
   const _options: Record<string, string> = {};
@@ -49,7 +51,7 @@ export const getAllIssues = async (options: IssueListRequestParameters): Promise
   } while (pageLinks && !githubApiUtils.isLastPage(pageLinks));
 
   return issues;
-}
+};
 
 /**
  * TODO: issue 복수형 말고 list 접미어로 메서드명 변경하기
@@ -86,7 +88,7 @@ export const getIssues = async (
   return { pageCount, items: data as IssueListResponse["data"] };
 };
 
-export const getLabels = async (
+export const getAllLabels = async (
   options?: LabelListRequestParameters
 ): Promise<LabelListResponse["data"]> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;

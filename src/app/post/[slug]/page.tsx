@@ -36,13 +36,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
         <ul className="flex flex-wrap gap-2.5">
           {issue.labels.map((label, i) => {
-            const id = typeof label === "string" ? i : label.id;
-            const name = typeof label === "string" ? label : label.name;
+            const id = typeof label === "string" ? i : label.id || i;
+            const name = typeof label === "string" ? label : label.name || "";
 
             return (
               <li key={id}>
                 <Link
-                  href={`/blog?label=${name}`}
+                  href={`/blog/${encodeURI(name)}`}
                   className="font-semibold text-g700"
                 >
                   {`#${name}`}
