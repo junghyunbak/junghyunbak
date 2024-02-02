@@ -2,8 +2,8 @@ import { MarkdownContent } from "@/components/MarkdownContent";
 import { getIssueItem } from "@/apis";
 import Link from "next/link";
 
-export default async function Post({ params }: { params: { post: string } }) {
-  const issue = await getIssueItem(params.post);
+export default async function Post({ params }: { params: { slug: string } }) {
+  const issue = await getIssueItem(params.slug);
 
   if (!issue) {
     return <div>존재하지 않는 페이지입니다.</div>;

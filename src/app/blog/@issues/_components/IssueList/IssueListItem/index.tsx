@@ -14,7 +14,7 @@ export function IssueListItem({ issue }: IssueListItemProps) {
 
       <Link
         className="block text-xl font-semibold"
-        href={`/blog/${issue.number}`}
+        href={`/post/${issue.number}`}
       >
         {issue.title}
       </Link>
