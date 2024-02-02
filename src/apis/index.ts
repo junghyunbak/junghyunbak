@@ -37,7 +37,7 @@ export const getAllIssues = async (
     });
 
     const response = await fetch(`${url}?${queryString}`, {
-      cache: "no-cache",
+      cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     });
 
@@ -74,7 +74,7 @@ export const getIssues = async (
   const queryString = new URLSearchParams({ ..._options });
 
   const response = await fetch(`${url}?${queryString}`, {
-    cache: "no-cache",
+    cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
   });
 
@@ -115,7 +115,7 @@ export const getAllLabels = async (
     });
 
     const response = await fetch(`${url}?${queryString}`, {
-      cache: "no-cache",
+      cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     });
 
