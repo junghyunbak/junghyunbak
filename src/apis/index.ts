@@ -94,8 +94,11 @@ export const getIssueItem = async (
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
 
   const response = await fetch(url, {
-    cache: "no-cache",
+    cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: {
+      tags: [issueNumber],
+    },
   });
 
   if (response.status >= 400) {
