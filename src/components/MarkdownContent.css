@@ -27,8 +27,7 @@
 }
 
 .markdown h1,
-.markdown h2,
-.markdown h3 {
+.markdown h2 {
   border-bottom: 1px solid var(--color-g800);
 }
 
@@ -53,7 +52,8 @@
 .markdown ul,
 .markdown ol,
 .markdown dl,
-.markdown table {
+.markdown table,
+.markdown summary {
   margin-bottom: 1.5rem;
 }
 
