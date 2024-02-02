@@ -15,7 +15,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
         <p className="text-g600">
-          {new Date(issue.created_at).toLocaleString()}
+          {new Date(issue.created_at).toLocaleString("ko-KR")}
         </p>
 
         <ul className="flex flex-wrap gap-2.5">
