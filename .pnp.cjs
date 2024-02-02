@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
+          ["@types/lodash", "npm:4.14.202"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
@@ -36,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
+          ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
@@ -3329,6 +3331,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/@types-json5-npm-0.0.29-f63a7916bd-10c0.zip/node_modules/@types/json5/",\
         "packageDependencies": [\
           ["@types/json5", "npm:0.0.29"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/lodash", [\
+      ["npm:4.14.202", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-lodash-npm-4.14.202-76de3e302b-10c0.zip/node_modules/@types/lodash/",\
+        "packageDependencies": [\
+          ["@types/lodash", "npm:4.14.202"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6637,6 +6648,7 @@ const RAW_RUNTIME_STATE =
           ["lightpavilion-blog", "workspace:."],\
           ["@octokit/types", "npm:12.4.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
+          ["@types/lodash", "npm:4.14.202"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
@@ -6645,6 +6657,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
+          ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
@@ -6691,6 +6704,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["locate-path", "npm:6.0.0"],\
           ["p-locate", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lodash", [\
+      ["npm:4.17.21", {\
+        "packageLocation": "../../.yarn/berry/cache/lodash-npm-4.17.21-6382451519-10c0.zip/node_modules/lodash/",\
+        "packageDependencies": [\
+          ["lodash", "npm:4.17.21"]\
         ],\
         "linkType": "HARD"\
       }]\
