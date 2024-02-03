@@ -2,7 +2,7 @@ import { LabelList } from "../_components/LabelList";
 import { IssueList } from "../_components/IssueList";
 import { IssueListPaginate } from "../_components/IssueListPaginate";
 import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
-import { getAllLabels, getIssues } from "@/apis";
+import { apiService } from "@/apis";
 
 /**
  * 라벨만 존재하는 경우를 빼놓음
@@ -44,8 +44,8 @@ export default async function Blog({
     : undefined;
 
   const [labels, { pageCount, items: issues }] = await Promise.all([
-    getAllLabels(),
-    getIssues({
+    apiService.getAllLabel(),
+    apiService.getIssues({
       page: currentPage,
       per_page: ISSUE_PER_PAGE,
       labels: currentLabel,

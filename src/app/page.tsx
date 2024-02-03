@@ -1,9 +1,9 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { getIssueItem } from "@/apis";
 import { ISSUE_ABOUT_NUMBER } from "@/constants";
+import { apiService } from "@/apis";
 
 export default async function Home() {
-  const issue = await getIssueItem(ISSUE_ABOUT_NUMBER.toString());
+  const issue = await apiService.getAnIssue(ISSUE_ABOUT_NUMBER.toString());
 
   return (
     <main className="mt-6">

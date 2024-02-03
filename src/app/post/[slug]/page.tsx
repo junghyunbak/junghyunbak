@@ -1,10 +1,10 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { getAllIssues, getIssueItem } from "@/apis";
+import { apiService } from "@/apis";
 import { REPO_OWNER } from "@/constants";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  const issues = await getAllIssues({
+  const issues = await apiService.getAllIssue({
     /**
      * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
      */
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const issue = await getIssueItem(params.slug);
+  const issue = await apiService.getAnIssue(params.slug);
 
   if (!issue) {
     return <div>존재하지 않는 페이지입니다.</div>;
