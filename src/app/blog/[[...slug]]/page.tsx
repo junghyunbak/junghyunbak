@@ -15,12 +15,12 @@ export async function generateStaticParams() {
   /**
    * 라벨 없이 조회
    */
-  const { pageCount: nonLabelPageCount } = await apiService.getIssues({
+  const pageCount = await apiService.getIssuesPageCount({
     per_page: ISSUE_PER_PAGE,
   });
 
   slugs.push(
-    ...Array(nonLabelPageCount)
+    ...Array(pageCount)
       .fill(null)
       .map((_, i) => ({ slug: [(i + 1).toString()] }))
   );
@@ -31,13 +31,13 @@ export async function generateStaticParams() {
   const labels = await apiService.getAllLabel();
 
   for (const label of labels) {
-    const { pageCount: labelPageCount } = await apiService.getIssues({
+    const pageCount = await apiService.getIssuesPageCount({
       per_page: ISSUE_PER_PAGE,
       labels: label.name,
     });
 
     slugs.push(
-      ...Array(labelPageCount)
+      ...Array(pageCount)
         .fill(null)
         .map((_, i) => ({ slug: [(i + 1).toString(), label.name] }))
     );
@@ -59,9 +59,22 @@ export default async function Blog({
     ? decodeURI(slug[1])
     : undefined;
 
-  const [labels, { pageCount, items: issues }] = await Promise.all([
+  const [labels, issues, issuesPageCount] = await Promise.all([
     apiService.getAllLabel(),
     apiService.getIssues({
+      page: currentPage,
+      per_page: ISSUE_PER_PAGE,
+      labels: currentLabel,
+      /**
+       * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+       */
+      creator: REPO_OWNER,
+      /**
+       * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+       */
+      assignee: "none",
+    }),
+    apiService.getIssuesPageCount({
       page: currentPage,
       per_page: ISSUE_PER_PAGE,
       labels: currentLabel,
@@ -81,7 +94,7 @@ export default async function Blog({
       <LabelList labels={labels} currentLabel={currentLabel} />
       <IssueList issues={issues} />
       <IssueListPaginate
-        pageCount={pageCount}
+        pageCount={issuesPageCount}
         currentPage={currentPage}
         currentLabel={currentLabel}
       />

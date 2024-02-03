@@ -7,150 +7,275 @@ import type {
   LabelListRequestParameters,
   LabelListResponse,
 } from "@/types/label";
-import { githubApiUtils } from "@/utils";
 import { REPO_NAME, REPO_OWNER } from "@/constants";
+import parseLink from "parse-link-header";
 
-export const apiService = {
-  getAllIssue: async (
-    options: IssueListRequestParameters
-  ): Promise<IssueListResponse["data"]> => {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
+/**
+ * 유틸 함수
+ */
+declare namespace parseLinkHeader {
+  interface Link {
+    page: string;
+    per_page: string;
+  }
 
-    const _options: Record<string, string> = {};
+  interface Links {
+    first?: Link;
+    prev?: Link;
+    next?: Link;
+    last?: Link;
+  }
+}
 
-    Object.entries({ ...options }).map(([key, value]) => {
-      if (!value) {
-        return;
-      }
+const isLastPage = (pageLinks: parseLinkHeader.Links): boolean => {
+  return Object.keys(pageLinks).length === 2 &&
+    pageLinks.first &&
+    pageLinks.prev
+    ? true
+    : false;
+};
 
-      _options[key] = value.toString();
-    });
+const getPageCount = (pageLinks: parseLinkHeader.Links | null): number => {
+  /**
+   * `pageLinks`가 null인 경우는 다음과 같다.
+   *
+   * 1. 조건에 맞는 데이터가 존재하지 않을 때
+   * 2. 조건에 맞는 데이터의 수가 `per_page`보다 작을 때
+   *
+   * 항상 페이지 수 0을 반환하게 되면, 2의 경우에서 데이터가 존재하지만 가져오지 못하게 되므로, 페이지 수 1을 반환한다.
+   */
+  if (!pageLinks) {
+    return 1;
+  }
 
-    const issues: IssueListResponse["data"] = [];
+  /**
+   * 마지막 페이지일 경우 first와 prev 두 가지 링크가 존재한다.
+   *
+   * 총 페이지 수는 prev에 1을 더한 값이 된다.
+   */
+  if (isLastPage(pageLinks) && pageLinks.prev) {
+    return parseInt(pageLinks.prev.page, 10) + 1;
+  }
 
-    let page = 1;
-    let pageLinks = null;
+  /**
+   * pageLinks에 last 링크가 존재한다면,
+   *
+   * 마지막 페이지가 아닌 처음 혹은 중간 페이지가 될 것이고,
+   *
+   * 총 페이지 수는 last 링크의 값이 된다.
+   */
+  if (pageLinks.last) {
+    return parseInt(pageLinks.last.page, 10);
+  }
 
-    /**
-     * do while문 지울 수 있음.
-     */
-    do {
-      const queryString = new URLSearchParams({
-        ..._options,
-        page: page.toString(),
-      });
+  /**
+   * 페이지가 처음 혹은 마지막에 모두 해당되지 않는 경우는
+   *
+   * 아무런 데이터가 없다고 해석할 수 있으므로 0을 반환한다.
+   */
+  return 0;
+};
 
-      const response = await fetch(`${url}?${queryString}`, {
-        cache: "force-cache",
-        headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
-      });
+/**
+ * api 메서드
+ *
+ * TODO LIST
+ *
+ * - [ ] requestParameters 타입 이름 변경
+ * - [v] 이슈, 라벨 페이지 개수 가져오는 메서드 구현
+ */
+const getIssues = async (
+  options?: IssueListRequestParameters
+): Promise<IssueListResponse["data"]> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
-      issues.push(
-        ...Array.from((await response.json()) as IssueListResponse["data"])
-      );
+  const _options: Record<string, string> = {};
 
-      pageLinks = githubApiUtils.parseLink(response.headers.get("link"));
-
-      page += 1;
-    } while (pageLinks && !githubApiUtils.isLastPage(pageLinks));
-
-    return issues;
-  },
-
-  getAnIssue: async (
-    issueNumber: string
-  ): Promise<IssueItemResponse["data"] | null> => {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
-
-    const response = await fetch(url, {
-      cache: "force-cache",
-      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
-      next: {
-        tags: [issueNumber],
-      },
-    });
-
-    if (response.status >= 400) {
-      return null;
+  Object.entries({ ...options }).map(([key, value]) => {
+    if (!value) {
+      return;
     }
 
-    const data = await response.json();
+    _options[key] = value.toString();
+  });
 
-    return data as IssueItemResponse["data"];
-  },
+  const queryString = new URLSearchParams({ ..._options });
 
-  getIssues: async (
-    options?: IssueListRequestParameters
-  ): Promise<{ pageCount: number; items: IssueListResponse["data"] }> => {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
+  const response = await fetch(`${url}?${queryString}`, {
+    cache: "force-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
 
-    const _options: Record<string, string> = {};
+  const data = await response.json();
 
-    Object.entries({ ...options }).map(([key, value]) => {
-      if (!value) {
-        return;
-      }
+  return data as IssueListResponse["data"];
+};
 
-      _options[key] = value.toString();
+const getIssuesPageCount = async (
+  options?: IssueListRequestParameters
+): Promise<number> => {
+  const _options: Record<string, string> = {};
+
+  Object.entries({ ...options }).map(([key, value]) => {
+    if (!value) {
+      return;
+    }
+
+    _options[key] = value.toString();
+  });
+
+  const queryString = new URLSearchParams({ ..._options });
+
+  const response = await fetch(
+    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?${queryString}`,
+    {
+      cache: "force-cache",
+      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    }
+  );
+
+  const pageCount = getPageCount(parseLink(response.headers.get("link")));
+
+  return pageCount;
+};
+
+const getAllIssue = async (
+  options: IssueListRequestParameters
+): Promise<IssueListResponse["data"]> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
+
+  const _options: Record<string, string> = {};
+
+  Object.entries({ ...options }).map(([key, value]) => {
+    if (!value) {
+      return;
+    }
+
+    _options[key] = value.toString();
+  });
+
+  const issues: IssueListResponse["data"] = [];
+
+  const pageCount = await getIssuesPageCount(options);
+
+  for (let i = 0; i < pageCount; i++) {
+    const page = i + 1;
+
+    const queryString = new URLSearchParams({
+      ..._options,
+      page: page.toString(),
     });
-
-    const queryString = new URLSearchParams({ ..._options });
 
     const response = await fetch(`${url}?${queryString}`, {
       cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     });
 
-    const data = await response.json();
-
-    const pageCount = githubApiUtils.getPageCount(
-      githubApiUtils.parseLink(response.headers.get("link")),
-      data.length
+    issues.push(
+      ...Array.from((await response.json()) as IssueListResponse["data"])
     );
+  }
 
-    return { pageCount, items: data as IssueListResponse["data"] };
-  },
+  return issues;
+};
 
-  getAllLabel: async (
-    options?: LabelListRequestParameters
-  ): Promise<LabelListResponse["data"]> => {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
+const getAnIssue = async (
+  issueNumber: string
+): Promise<IssueItemResponse["data"] | null> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
 
-    const _options: Record<string, string> = {};
+  const response = await fetch(url, {
+    cache: "force-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: {
+      tags: [issueNumber],
+    },
+  });
 
-    Object.entries({ ...options }).map(([key, value]) => {
-      if (!value) {
-        return;
-      }
+  if (response.status >= 400) {
+    return null;
+  }
 
-      _options[key] = value.toString();
+  const data = await response.json();
+
+  return data as IssueItemResponse["data"];
+};
+
+const getLabelsPageCount = async (
+  options?: LabelListRequestParameters
+): Promise<number> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
+
+  const _options: Record<string, string> = {};
+
+  Object.entries({ ...options }).map(([key, value]) => {
+    if (!value) {
+      return;
+    }
+
+    _options[key] = value.toString();
+  });
+
+  const queryString = new URLSearchParams({
+    ..._options,
+  });
+
+  const response = await fetch(`${url}?${queryString}`, {
+    cache: "force-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
+
+  const pageCount = getPageCount(parseLink(response.headers.get("link")));
+
+  return pageCount;
+};
+
+const getAllLabel = async (
+  options?: LabelListRequestParameters
+): Promise<LabelListResponse["data"]> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
+
+  const _options: Record<string, string> = {};
+
+  Object.entries({ ...options }).map(([key, value]) => {
+    if (!value) {
+      return;
+    }
+
+    _options[key] = value.toString();
+  });
+
+  const labels: LabelListResponse["data"] = [];
+
+  const pageCount = await getLabelsPageCount(options);
+
+  for (let i = 0; i < pageCount; i++) {
+    const page = i + 1;
+
+    const queryString = new URLSearchParams({
+      ..._options,
+      page: page.toString(),
     });
 
-    const labels: LabelListResponse["data"] = [];
+    const response = await fetch(`${url}?${queryString}`, {
+      cache: "force-cache",
+      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    });
 
-    let page = 1;
-    let pageLinks = null;
+    labels.push(
+      ...Array.from((await response.json()) as LabelListResponse["data"])
+    );
+  }
 
-    do {
-      const queryString = new URLSearchParams({
-        ..._options,
-        page: page.toString(),
-      });
+  return labels;
+};
 
-      const response = await fetch(`${url}?${queryString}`, {
-        cache: "force-cache",
-        headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
-      });
+export const apiService = {
+  getIssues,
+  getIssuesPageCount,
+  getAllIssue,
+  getAnIssue,
 
-      labels.push(
-        ...Array.from((await response.json()) as LabelListResponse["data"])
-      );
-
-      pageLinks = githubApiUtils.parseLink(response.headers.get("link"));
-
-      page += 1;
-    } while (pageLinks && !githubApiUtils.isLastPage(pageLinks));
-
-    return labels;
-  },
+  getLabelsPageCount,
+  getAllLabel,
 };
