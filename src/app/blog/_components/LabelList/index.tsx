@@ -1,8 +1,8 @@
-import { type LabelListResponse } from "@/types/label";
+import { type LabelsResponse } from "@/types/githubApi";
 import Link from "next/link";
 
 interface LabelListProps {
-  labels: LabelListResponse["data"];
+  labels: LabelsResponse["data"];
   currentLabel?: string;
 }
 

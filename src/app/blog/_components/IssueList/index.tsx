@@ -1,8 +1,8 @@
-import { type IssueListResponse } from "@/types/issue";
+import { type IssuesResponse } from "@/types/githubApi";
 import { IssueListItem } from "./IssueListItem";
 
 interface IssueListProps {
-  issues: IssueListResponse["data"];
+  issues: IssuesResponse["data"];
 }
 
 export function IssueList({ issues }: IssueListProps) {

@@ -1,12 +1,10 @@
 import type {
-  IssueListRequestParameters,
-  IssueListResponse,
-  IssueItemResponse,
-} from "@/types/issue";
-import type {
-  LabelListRequestParameters,
-  LabelListResponse,
-} from "@/types/label";
+  IssuesRequestParameters,
+  IssuesResponse,
+  AnIssueResponse,
+  LabelsRequestParameters,
+  LabelsResponse,
+} from "@/types/githubApi";
 import { REPO_NAME, REPO_OWNER } from "@/constants";
 import parseLink from "parse-link-header";
 
@@ -78,15 +76,10 @@ const getPageCount = (pageLinks: parseLinkHeader.Links | null): number => {
 
 /**
  * api 메서드
- *
- * TODO LIST
- *
- * - [ ] requestParameters 타입 이름 변경
- * - [v] 이슈, 라벨 페이지 개수 가져오는 메서드 구현
  */
 const getIssues = async (
-  options?: IssueListRequestParameters
-): Promise<IssueListResponse["data"]> => {
+  options?: IssuesRequestParameters
+): Promise<IssuesResponse["data"]> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
   const _options: Record<string, string> = {};
@@ -108,11 +101,11 @@ const getIssues = async (
 
   const data = await response.json();
 
-  return data as IssueListResponse["data"];
+  return data as IssuesResponse["data"];
 };
 
 const getIssuesPageCount = async (
-  options?: IssueListRequestParameters
+  options?: IssuesRequestParameters
 ): Promise<number> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
@@ -139,8 +132,8 @@ const getIssuesPageCount = async (
 };
 
 const getAllIssue = async (
-  options: IssueListRequestParameters
-): Promise<IssueListResponse["data"]> => {
+  options: IssuesRequestParameters
+): Promise<IssuesResponse["data"]> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
   const _options: Record<string, string> = {};
@@ -153,7 +146,7 @@ const getAllIssue = async (
     _options[key] = value.toString();
   });
 
-  const issues: IssueListResponse["data"] = [];
+  const issues: IssuesResponse["data"] = [];
 
   const pageCount = await getIssuesPageCount(options);
 
@@ -171,7 +164,7 @@ const getAllIssue = async (
     });
 
     issues.push(
-      ...Array.from((await response.json()) as IssueListResponse["data"])
+      ...Array.from((await response.json()) as IssuesResponse["data"])
     );
   }
 
@@ -180,7 +173,7 @@ const getAllIssue = async (
 
 const getAnIssue = async (
   issueNumber: string
-): Promise<IssueItemResponse["data"] | null> => {
+): Promise<AnIssueResponse["data"] | null> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
 
   const response = await fetch(url, {
@@ -197,11 +190,11 @@ const getAnIssue = async (
 
   const data = await response.json();
 
-  return data as IssueItemResponse["data"];
+  return data as AnIssueResponse["data"];
 };
 
 const getLabelsPageCount = async (
-  options?: LabelListRequestParameters
+  options?: LabelsRequestParameters
 ): Promise<number> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
 
@@ -230,8 +223,8 @@ const getLabelsPageCount = async (
 };
 
 const getAllLabel = async (
-  options?: LabelListRequestParameters
-): Promise<LabelListResponse["data"]> => {
+  options?: LabelsRequestParameters
+): Promise<LabelsResponse["data"]> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
 
   const _options: Record<string, string> = {};
@@ -244,7 +237,7 @@ const getAllLabel = async (
     _options[key] = value.toString();
   });
 
-  const labels: LabelListResponse["data"] = [];
+  const labels: LabelsResponse["data"] = [];
 
   const pageCount = await getLabelsPageCount(options);
 
@@ -262,7 +255,7 @@ const getAllLabel = async (
     });
 
     labels.push(
-      ...Array.from((await response.json()) as LabelListResponse["data"])
+      ...Array.from((await response.json()) as LabelsResponse["data"])
     );
   }
 
