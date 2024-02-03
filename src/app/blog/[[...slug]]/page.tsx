@@ -3,6 +3,7 @@ import { IssueList } from "../_components/IssueList";
 import { IssueListPaginate } from "../_components/IssueListPaginate";
 import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { apiService } from "@/apis";
+import { type IssuesRequestParameters } from "@/types/githubApi";
 
 /**
  * /blog                - 태그 없이 조회, 1페이지
@@ -52,41 +53,28 @@ export default async function Blog({
   params: { slug?: string[] };
 }) {
   const currentPage: number = Number(slug[0]) || 1;
-  /**
-   * null vs undefined
-   */
   const currentLabel: string | undefined = slug[1]
     ? decodeURI(slug[1])
     : undefined;
 
+  const issuesRequestOptions: IssuesRequestParameters = {
+    page: currentPage,
+    per_page: ISSUE_PER_PAGE,
+    labels: currentLabel,
+    /**
+     * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+     */
+    creator: REPO_OWNER,
+    /**
+     * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+     */
+    assignee: "none",
+  };
+
   const [labels, issues, issuesPageCount] = await Promise.all([
     apiService.getAllLabel(),
-    apiService.getIssues({
-      page: currentPage,
-      per_page: ISSUE_PER_PAGE,
-      labels: currentLabel,
-      /**
-       * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
-       */
-      creator: REPO_OWNER,
-      /**
-       * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
-       */
-      assignee: "none",
-    }),
-    apiService.getIssuesPageCount({
-      page: currentPage,
-      per_page: ISSUE_PER_PAGE,
-      labels: currentLabel,
-      /**
-       * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
-       */
-      creator: REPO_OWNER,
-      /**
-       * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
-       */
-      assignee: "none",
-    }),
+    apiService.getIssues(issuesRequestOptions),
+    apiService.getIssuesPageCount(issuesRequestOptions),
   ]);
 
   return (
