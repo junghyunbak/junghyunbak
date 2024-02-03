@@ -114,6 +114,8 @@ const getIssues = async (
 const getIssuesPageCount = async (
   options?: IssueListRequestParameters
 ): Promise<number> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
+
   const _options: Record<string, string> = {};
 
   Object.entries({ ...options }).map(([key, value]) => {
@@ -126,13 +128,10 @@ const getIssuesPageCount = async (
 
   const queryString = new URLSearchParams({ ..._options });
 
-  const response = await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?${queryString}`,
-    {
-      cache: "force-cache",
-      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
-    }
-  );
+  const response = await fetch(`${url}?${queryString}`, {
+    cache: "force-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
 
   const pageCount = getPageCount(parseLink(response.headers.get("link")));
 
