@@ -5,30 +5,46 @@ import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { apiService } from "@/apis";
 
 /**
- * 라벨만 존재하는 경우를 빼놓음
+ * /blog                - 태그 없이 조회, 1페이지
+ * /blog/{page}         - 태그 없이 조회, {page}페이지
+ * /blog/{page}/{label} - {label}태그로 조회, {page}페이지
  */
-/*
 export async function generateStaticParams() {
-  const slugs: { slug: (string | undefined)[] }[] = [{ slug: [] }];
+  const slugs: { slug: string[] }[] = [{ slug: [] }];
 
-  const labels = await getAllLabels();
+  /**
+   * 라벨 없이 조회
+   */
+  const { pageCount: nonLabelPageCount } = await apiService.getIssues({
+    per_page: ISSUE_PER_PAGE,
+  });
 
-  for (const label of [null, ...labels]) {
-    const { pageCount } = await getIssues({
+  slugs.push(
+    ...Array(nonLabelPageCount)
+      .fill(null)
+      .map((_, i) => ({ slug: [(i + 1).toString()] }))
+  );
+
+  /**
+   * 라벨로 조회
+   */
+  const labels = await apiService.getAllLabel();
+
+  for (const label of labels) {
+    const { pageCount: labelPageCount } = await apiService.getIssues({
       per_page: ISSUE_PER_PAGE,
-      labels: label?.name,
+      labels: label.name,
     });
 
     slugs.push(
-      ...Array(pageCount)
+      ...Array(labelPageCount)
         .fill(null)
-        .map((_, i) => ({ slug: [label?.name || "all", `${i + 1}`] }))
+        .map((_, i) => ({ slug: [(i + 1).toString(), label.name] }))
     );
   }
 
   return slugs;
 }
-*/
 
 export default async function Blog({
   params: { slug = [] },
