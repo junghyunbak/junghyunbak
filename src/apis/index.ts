@@ -74,24 +74,31 @@ const getPageCount = (pageLinks: parseLinkHeader.Links | null): number => {
   return 0;
 };
 
+const objectValueFilterAndToString = (
+  obj: Record<string, unknown> = {}
+): Record<string, string> => {
+  const newObj: Record<string, string> = {};
+
+  Object.entries(obj).map(([key, value]) => {
+    if (!value) {
+      return;
+    }
+
+    newObj[key] = value.toString();
+  });
+
+  return newObj;
+};
+
 /**
  * api 메서드
  */
 const getIssues = async (
   options?: IssuesRequestParameters
 ): Promise<IssuesResponse["data"]> => {
+  const _options = objectValueFilterAndToString(options);
+
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
-
-  const _options: Record<string, string> = {};
-
-  Object.entries({ ...options }).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    _options[key] = value.toString();
-  });
-
   const queryString = new URLSearchParams({ ..._options });
 
   const response = await fetch(`${url}?${queryString}`, {
@@ -107,18 +114,9 @@ const getIssues = async (
 const getIssuesPageCount = async (
   options?: IssuesRequestParameters
 ): Promise<number> => {
+  const _options = objectValueFilterAndToString(options);
+
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
-
-  const _options: Record<string, string> = {};
-
-  Object.entries({ ...options }).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    _options[key] = value.toString();
-  });
-
   const queryString = new URLSearchParams({ ..._options });
 
   const response = await fetch(`${url}?${queryString}`, {
@@ -134,21 +132,13 @@ const getIssuesPageCount = async (
 const getAllIssue = async (
   options: IssuesRequestParameters
 ): Promise<IssuesResponse["data"]> => {
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
-
-  const _options: Record<string, string> = {};
-
-  Object.entries({ ...options }).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    _options[key] = value.toString();
-  });
-
   const issues: IssuesResponse["data"] = [];
 
   const pageCount = await getIssuesPageCount(options);
+
+  const _options = objectValueFilterAndToString(options);
+
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
 
   for (let i = 0; i < pageCount; i++) {
     const page = i + 1;
@@ -196,18 +186,9 @@ const getAnIssue = async (
 const getLabelsPageCount = async (
   options?: LabelsRequestParameters
 ): Promise<number> => {
+  const _options = objectValueFilterAndToString(options);
+
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
-
-  const _options: Record<string, string> = {};
-
-  Object.entries({ ...options }).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    _options[key] = value.toString();
-  });
-
   const queryString = new URLSearchParams({
     ..._options,
   });
@@ -225,21 +206,13 @@ const getLabelsPageCount = async (
 const getAllLabel = async (
   options?: LabelsRequestParameters
 ): Promise<LabelsResponse["data"]> => {
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
-
-  const _options: Record<string, string> = {};
-
-  Object.entries({ ...options }).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    _options[key] = value.toString();
-  });
-
   const labels: LabelsResponse["data"] = [];
 
   const pageCount = await getLabelsPageCount(options);
+
+  const _options = objectValueFilterAndToString(options);
+
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/labels`;
 
   for (let i = 0; i < pageCount; i++) {
     const page = i + 1;
