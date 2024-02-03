@@ -19,7 +19,7 @@ export function LabelList({ labels, currentLabel }: LabelListProps) {
                 "block border border-primary rounded-sm p-[0.3125rem] text-sm leading-4",
                 isActive ? "bg-primary text-white" : "text-primary",
               ].join(" ")}
-              href={isActive ? `/blog` : `/blog/${encodeURI(label.name)}`}
+              href={isActive ? `/blog` : `/blog/1/${label.name}`}
             >
               {`#${label.name}`}
             </Link>

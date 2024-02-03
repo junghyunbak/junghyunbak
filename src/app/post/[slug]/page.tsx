@@ -42,7 +42,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
             return (
               <li key={id}>
                 <Link
-                  href={`/blog/${encodeURI(name)}`}
+                  href={`/blog/1/${name}`}
                   className="font-semibold text-g700"
                 >
                   {`#${name}`}

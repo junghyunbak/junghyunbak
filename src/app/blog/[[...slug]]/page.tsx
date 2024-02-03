@@ -4,6 +4,10 @@ import { IssueListPaginate } from "../_components/IssueListPaginate";
 import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { getAllLabels, getIssues } from "@/apis";
 
+/**
+ * 라벨만 존재하는 경우를 빼놓음
+ */
+/*
 export async function generateStaticParams() {
   const slugs: { slug: (string | undefined)[] }[] = [{ slug: [] }];
 
@@ -24,18 +28,20 @@ export async function generateStaticParams() {
 
   return slugs;
 }
+*/
 
 export default async function Blog({
   params: { slug = [] },
 }: {
   params: { slug?: string[] };
 }) {
+  const currentPage: number = Number(slug[0]) || 1;
   /**
-   * `all` 이라는 이름의 태그가 있을 경우 문제가 있음
+   * null vs undefined
    */
-  const currentLabel =
-    !slug[0] || slug[0] === "all" ? undefined : decodeURI(slug[0]);
-  const currentPage = Number(slug[1]) || 1;
+  const currentLabel: string | undefined = slug[1]
+    ? decodeURI(slug[1])
+    : undefined;
 
   const [labels, { pageCount, items: issues }] = await Promise.all([
     getAllLabels(),

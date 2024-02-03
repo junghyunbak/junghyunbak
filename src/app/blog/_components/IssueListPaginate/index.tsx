@@ -25,10 +25,14 @@ export function IssueListPaginate({
 
           const isActive = currentPage === page;
 
+          const nextHref = currentLabel
+            ? `/blog/${page}/${currentLabel}`
+            : `/blog/${page}`;
+
           return (
             <li key={i}>
               <Link
-                href={`/blog/${currentLabel || "all"}/${page}`}
+                href={nextHref}
                 className={[
                   "flex items-center justify-center w-6 border text-sm rounded-sm aspect-square border-primary",
                   isActive ? "bg-primary text-white" : "text-primary",
