@@ -5,6 +5,17 @@ import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { apiService } from "@/apis";
 import { type IssuesRequestParameters } from "@/types/githubApi";
 
+const issuesRequestDefaultOptions: IssuesRequestParameters = {
+  /**
+   * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+   */
+  creator: REPO_OWNER,
+  /**
+   * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+   */
+  assignee: "none",
+};
+
 /**
  * /blog                - 태그 없이 조회, 1페이지
  * /blog/{page}         - 태그 없이 조회, {page}페이지
@@ -18,6 +29,7 @@ export async function generateStaticParams() {
    */
   const pageCount = await apiService.getIssuesPageCount({
     per_page: ISSUE_PER_PAGE,
+    ...issuesRequestDefaultOptions,
   });
 
   slugs.push(
@@ -35,6 +47,7 @@ export async function generateStaticParams() {
     const pageCount = await apiService.getIssuesPageCount({
       per_page: ISSUE_PER_PAGE,
       labels: label.name,
+      ...issuesRequestDefaultOptions,
     });
 
     slugs.push(
@@ -61,14 +74,7 @@ export default async function Blog({
     page: currentPage,
     per_page: ISSUE_PER_PAGE,
     labels: currentLabel,
-    /**
-     * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
-     */
-    creator: REPO_OWNER,
-    /**
-     * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
-     */
-    assignee: "none",
+    ...issuesRequestDefaultOptions,
   };
 
   const [labels, issues, issuesPageCount] = await Promise.all([
