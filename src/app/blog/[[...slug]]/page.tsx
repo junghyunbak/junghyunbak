@@ -7,6 +7,8 @@ import {
   issuesRequestDefaultOptions,
 } from "@/apis";
 import { Metadata } from "next";
+import { REPO_NAME, REPO_OWNER } from "@/apis";
+import Link from "next/link";
 
 /**
  * /blog                - 태그 없이 조회, 1페이지
@@ -91,11 +93,20 @@ export default async function Blog({
     <div>
       <LabelList labels={labels} currentLabel={currentLabel} />
       <IssueList issues={issues} />
-      <IssueListPaginate
-        pageCount={issuesPageCount}
-        currentPage={currentPage}
-        currentLabel={currentLabel}
-      />
+      <div className="relative flex justify-center my-6">
+        <IssueListPaginate
+          pageCount={issuesPageCount}
+          currentPage={currentPage}
+          currentLabel={currentLabel}
+        />
+
+        <Link
+          href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new`}
+          className="absolute right-0 flex items-center justify-center h-6 px-1 text-sm text-black border border-black rounded-sm"
+        >
+          글작성
+        </Link>
+      </div>
     </div>
   );
 }

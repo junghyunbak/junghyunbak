@@ -17,7 +17,7 @@ export function IssueListPaginate({
   currentLabel,
 }: PaginateProps) {
   return (
-    <ul className="flex flex-wrap justify-center my-6 gap-x-1">
+    <ul className="flex flex-wrap justify-center gap-x-1">
       {Array(pageCount)
         .fill(null)
         .map((_, i) => {

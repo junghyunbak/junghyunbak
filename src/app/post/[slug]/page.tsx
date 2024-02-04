@@ -1,5 +1,5 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { apiService, REPO_OWNER } from "@/apis";
+import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -40,9 +40,20 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <div className="flex flex-col items-center mt-16 mb-7 [&>*]:pb-3.5 border-b border-dashed border-gray-800">
         <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
-        <p className="text-g600">
-          {new Date(issue.created_at).toLocaleString("ko-KR")}
-        </p>
+        <div className="flex items-center gap-3.5">
+          <p className="text-gray-600">
+            {new Date(issue.created_at).toLocaleString("ko-KR")}
+          </p>
+
+          <div className="h-3.5 border-l border-gray-600" />
+
+          <Link
+            className="text-sm text-gray-600"
+            href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+          >
+            수정하기
+          </Link>
+        </div>
 
         <ul className="flex flex-wrap gap-2.5">
           {issue.labels.map((label, i) => {
