@@ -2,6 +2,7 @@ import { MarkdownContent } from "@/components/MarkdownContent";
 import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
+import { Hits } from "@/components/Hits";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -37,41 +38,45 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <div className="flex flex-col items-center mt-16 mb-7 [&>*]:pb-3.5 border-b border-dashed border-gray-800">
-        <p className="text-2xl font-semibold text-center">{issue.title}</p>
+      <div className="mt-16 border-b border-gray-800 border-dashed mb-7 [&>*]:pb-3.5">
+        <div className="flex flex-col items-center gap-3.5">
+          <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
-        <div className="flex items-center gap-3.5">
-          <p className="text-gray-600">
-            {new Date(issue.created_at).toLocaleString("ko-KR")}
-          </p>
+          <div className="flex items-center gap-3.5">
+            <p className="text-gray-600">
+              {new Date(issue.created_at).toLocaleString("ko-KR")}
+            </p>
 
-          <div className="h-3.5 border-l border-gray-600" />
+            <div className="h-3.5 border-l border-gray-600" />
 
-          <Link
-            className="text-sm text-gray-600"
-            href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
-          >
-            수정하기
-          </Link>
+            <Link
+              className="text-sm text-gray-600"
+              href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+            >
+              수정하기
+            </Link>
+          </div>
+
+          <ul className="flex flex-wrap gap-2.5">
+            {issue.labels.map((label, i) => {
+              const id = typeof label === "string" ? i : label.id || i;
+              const name = typeof label === "string" ? label : label.name || "";
+
+              return (
+                <li key={id}>
+                  <Link
+                    href={`/blog/1/${name}`}
+                    className="font-semibold text-g700"
+                  >
+                    {`#${name}`}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <ul className="flex flex-wrap gap-2.5">
-          {issue.labels.map((label, i) => {
-            const id = typeof label === "string" ? i : label.id || i;
-            const name = typeof label === "string" ? label : label.name || "";
-
-            return (
-              <li key={id}>
-                <Link
-                  href={`/blog/1/${name}`}
-                  className="font-semibold text-g700"
-                >
-                  {`#${name}`}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Hits className="ml-auto" path={`/post/${issue.number}`} />
       </div>
 
       <MarkdownContent content={issue.body || ""} />
