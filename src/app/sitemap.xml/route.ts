@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import { apiService } from "@/apis";
 import { issuesRequestDefaultOptions, REPO_OWNER } from "@/apis";
 
@@ -50,8 +49,11 @@ const createUrlInfomation = ({
   `;
 };
 
-export async function GET(request: NextRequest) {
-  const origin = request.nextUrl.origin;
+export async function GET() {
+  /**
+   * nginx reverse proxy로 인해 origin이 localhost로 찍히는 이슈가 있어 도메인을 하드코딩함.
+   */
+  const origin = "https://lightpavilion.site";
 
   const aboutSitemap = createUrlInfomation({
     location: origin,
