@@ -1,7 +1,8 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { apiService } from "@/apis";
-import { REPO_OWNER } from "@/constants";
 import Link from "next/link";
+import { Metadata } from "next";
+import { REPO_OWNER } from "@/constants";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -16,6 +17,16 @@ export async function generateStaticParams() {
   });
 
   return issues.map((issue) => ({ slug: issue.number.toString() }));
+}
+
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata {
+  return {
+    title: `Post - ${params.slug} | 박정현`,
+  };
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {

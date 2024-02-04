@@ -4,6 +4,7 @@ import { IssueListPaginate } from "../_components/IssueListPaginate";
 import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
 import { apiService } from "@/apis";
 import { type IssuesRequestParameters } from "@/types/githubApi";
+import { Metadata } from "next";
 
 const issuesRequestDefaultOptions: IssuesRequestParameters = {
   per_page: ISSUE_PER_PAGE,
@@ -57,6 +58,21 @@ export async function generateStaticParams() {
   }
 
   return slugs;
+}
+
+export function generateMetadata({
+  params: { slug = [] },
+}: {
+  params: { slug?: string[] };
+}): Metadata {
+  const currentPage: number = Number(slug[0]) || 1;
+  const currentLabel: string | undefined = slug[1]
+    ? decodeURI(slug[1])
+    : undefined;
+
+  return {
+    title: `Blog - ${currentLabel || "전체"} ${currentPage}페이지 | 박정현`,
+  };
 }
 
 export default async function Blog({
