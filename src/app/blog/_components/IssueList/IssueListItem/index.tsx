@@ -1,4 +1,4 @@
-import { type IssuesResponse } from "@/types/githubApi";
+import { type IssuesResponse } from "@/apis";
 import Link from "next/link";
 
 interface IssueListItemProps {

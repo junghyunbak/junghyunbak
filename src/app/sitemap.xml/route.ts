@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { apiService } from "@/apis";
 import { ISSUE_PER_PAGE, REPO_OWNER } from "@/constants";
-import type { IssuesRequestParameters } from "@/types/githubApi";
+import type { IssuesRequestParameters } from "@/apis";
 
 export const dynamic = "force-dynamic";
 

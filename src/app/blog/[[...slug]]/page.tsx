@@ -2,10 +2,12 @@ import { LabelList } from "../_components/LabelList";
 import { IssueList } from "../_components/IssueList";
 import { IssueListPaginate } from "../_components/IssueListPaginate";
 import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
-import { apiService } from "@/apis";
-import { type IssuesRequestParameters } from "@/types/githubApi";
+import { apiService, type IssuesRequestParameters } from "@/apis";
 import { Metadata } from "next";
 
+/**
+ * 기본 옵션 값 분리
+ */
 const issuesRequestDefaultOptions: IssuesRequestParameters = {
   per_page: ISSUE_PER_PAGE,
   /**

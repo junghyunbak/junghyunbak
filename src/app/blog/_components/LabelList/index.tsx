@@ -1,4 +1,4 @@
-import { type LabelsResponse } from "@/types/githubApi";
+import { type LabelsResponse } from "@/apis";
 import Link from "next/link";
 
 interface LabelListProps {

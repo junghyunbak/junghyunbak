@@ -1,5 +1,5 @@
-import { type IssuesResponse } from "@/types/githubApi";
 import { IssueListItem } from "./IssueListItem";
+import { type IssuesResponse } from "@/apis";
 
 interface IssueListProps {
   issues: IssuesResponse["data"];
