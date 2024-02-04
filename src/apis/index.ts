@@ -104,6 +104,9 @@ const getIssues = async (
   const response = await fetch(`${url}?${queryString}`, {
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: {
+      tags: ["issues"],
+    },
   });
 
   const data = await response.json();
@@ -122,6 +125,9 @@ const getIssuesPageCount = async (
   const response = await fetch(`${url}?${queryString}`, {
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: {
+      tags: ["issuesPageCount"],
+    },
   });
 
   const pageCount = getPageCount(parseLink(response.headers.get("link")));
@@ -151,6 +157,9 @@ const getAllIssue = async (
     const response = await fetch(`${url}?${queryString}`, {
       cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+      next: {
+        tags: ["allIssue"],
+      },
     });
 
     issues.push(
@@ -170,7 +179,7 @@ const getAnIssue = async (
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     next: {
-      tags: [issueNumber],
+      tags: ["issue", issueNumber],
     },
   });
 
@@ -196,6 +205,9 @@ const getLabelsPageCount = async (
   const response = await fetch(`${url}?${queryString}`, {
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: {
+      tags: ["labelsPageCount"],
+    },
   });
 
   const pageCount = getPageCount(parseLink(response.headers.get("link")));
@@ -225,6 +237,9 @@ const getAllLabel = async (
     const response = await fetch(`${url}?${queryString}`, {
       cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+      next: {
+        tags: ["allLabel"],
+      },
     });
 
     labels.push(

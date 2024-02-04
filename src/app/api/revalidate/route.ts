@@ -1,20 +1,51 @@
 import { revalidateTag } from "next/cache";
 import { type NextRequest } from "next/server";
-import _ from "lodash";
+import type { IssuesEvent, LabelEvent } from "@octokit/webhooks-types";
 
 export async function POST(request: NextRequest) {
   switch (request.headers.get("x-github-event")) {
-    case "issues":
-    case "issue_comment":
-      const payload = await request.json();
+    case "issues": {
+      const payload = (await request.json()) as IssuesEvent;
 
-      const issueNumber = _.get(payload, "issue.number", null);
+      switch (payload.action) {
+        case "opened":
+        case "deleted":
+        case "labeled":
+        case "unlabeled":
+          revalidateTag("issues");
+          revalidateTag("issuesPageCount");
 
-      if (typeof issueNumber === "number") {
-        revalidateTag(issueNumber.toString());
+        case "edited":
+          revalidateTag(payload.issue.number.toString());
+
+          break;
+
+        default:
+          break;
       }
 
       break;
+    }
+
+    case "label": {
+      const payload = (await request.json()) as LabelEvent;
+
+      switch (payload.action) {
+        case "deleted":
+        case "edited":
+          revalidateTag("issue");
+          revalidateTag("issues");
+
+        case "created":
+          revalidateTag("labelsPageCount");
+          revalidateTag("allLabel");
+
+          break;
+
+        default:
+          break;
+      }
+    }
 
     default:
       break;

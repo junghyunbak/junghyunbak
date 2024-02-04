@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@octokit/types", "npm:12.4.0"],\
+          ["@octokit/webhooks-types", "npm:7.3.2"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/lodash", "npm:4.14.202"],\
           ["@types/node", "npm:20.11.10"],\
@@ -2939,6 +2940,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@octokit/types", "npm:12.4.0"],\
           ["@octokit/openapi-types", "npm:19.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/webhooks-types", [\
+      ["npm:7.3.2", {\
+        "packageLocation": "../../.yarn/berry/cache/@octokit-webhooks-types-npm-7.3.2-15c1ab2ad5-10c0.zip/node_modules/@octokit/webhooks-types/",\
+        "packageDependencies": [\
+          ["@octokit/webhooks-types", "npm:7.3.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6647,6 +6657,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["lightpavilion-blog", "workspace:."],\
           ["@octokit/types", "npm:12.4.0"],\
+          ["@octokit/webhooks-types", "npm:7.3.2"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/lodash", "npm:4.14.202"],\
           ["@types/node", "npm:20.11.10"],\
