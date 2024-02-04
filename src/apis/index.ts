@@ -130,7 +130,7 @@ const getIssuesPageCount = async (
 };
 
 const getAllIssue = async (
-  options: IssuesRequestParameters
+  options?: IssuesRequestParameters
 ): Promise<IssuesResponse["data"]> => {
   const issues: IssuesResponse["data"] = [];
 
