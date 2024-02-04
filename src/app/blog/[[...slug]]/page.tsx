@@ -6,6 +6,7 @@ import { apiService } from "@/apis";
 import { type IssuesRequestParameters } from "@/types/githubApi";
 
 const issuesRequestDefaultOptions: IssuesRequestParameters = {
+  per_page: ISSUE_PER_PAGE,
   /**
    * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
    */
@@ -28,7 +29,6 @@ export async function generateStaticParams() {
    * 라벨 없이 조회
    */
   const pageCount = await apiService.getIssuesPageCount({
-    per_page: ISSUE_PER_PAGE,
     ...issuesRequestDefaultOptions,
   });
 
@@ -45,7 +45,6 @@ export async function generateStaticParams() {
 
   for (const label of labels) {
     const pageCount = await apiService.getIssuesPageCount({
-      per_page: ISSUE_PER_PAGE,
       labels: label.name,
       ...issuesRequestDefaultOptions,
     });
@@ -72,7 +71,6 @@ export default async function Blog({
 
   const issuesRequestOptions: IssuesRequestParameters = {
     page: currentPage,
-    per_page: ISSUE_PER_PAGE,
     labels: currentLabel,
     ...issuesRequestDefaultOptions,
   };
