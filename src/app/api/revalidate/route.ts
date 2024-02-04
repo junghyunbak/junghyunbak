@@ -34,11 +34,13 @@ export async function POST(request: NextRequest) {
         case "deleted":
         case "edited":
           revalidateTag("issue");
+
           revalidateTag("issues");
+          revalidateTag("issuesPageCount");
 
         case "created":
-          revalidateTag("labelsPageCount");
           revalidateTag("allLabel");
+          revalidateTag("labelsPageCount");
 
           break;
 
