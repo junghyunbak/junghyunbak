@@ -2,6 +2,13 @@ import { Header } from "./_components/Header";
 import "./globals.css";
 import "@/assets/fonts/index.css";
 import { Footer } from "./_components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  verification: {
+    google: "cT0MruhYhAIxE2PwRZWlZmOseoYdbQeBXWNULoe0kEI",
+  },
+};
 
 export default function RootLayout({
   children,
