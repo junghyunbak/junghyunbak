@@ -1,4 +1,4 @@
-import { REPO_NAME, REPO_OWNER } from "@/constants";
+import { ISSUE_PER_PAGE, REPO_NAME, REPO_OWNER } from "@/constants";
 import parseLink from "parse-link-header";
 
 import { type Endpoints } from "@octokit/types";
@@ -22,9 +22,6 @@ export type LabelsRequestParameters = Omit<
 export type LabelsResponse =
   Endpoints["GET /repos/{owner}/{repo}/labels"]["response"];
 
-/**
- * 유틸 함수
- */
 declare namespace parseLinkHeader {
   interface Link {
     page: string;
@@ -104,9 +101,18 @@ const objectValueFilterAndToString = (
   return newObj;
 };
 
-/**
- * api 메서드
- */
+export const issuesRequestDefaultOptions: IssuesRequestParameters = {
+  per_page: ISSUE_PER_PAGE,
+  /**
+   * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
+   */
+  creator: REPO_OWNER,
+  /**
+   * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
+   */
+  assignee: "none",
+};
+
 const getIssues = async (
   options?: IssuesRequestParameters
 ): Promise<IssuesResponse["data"]> => {

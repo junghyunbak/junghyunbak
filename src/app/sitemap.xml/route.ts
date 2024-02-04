@@ -1,15 +1,9 @@
 import { NextRequest } from "next/server";
 import { apiService } from "@/apis";
-import { ISSUE_PER_PAGE, REPO_OWNER } from "@/constants";
-import type { IssuesRequestParameters } from "@/apis";
+import { REPO_OWNER } from "@/constants";
+import { issuesRequestDefaultOptions } from "@/apis";
 
 export const dynamic = "force-dynamic";
-
-const issuesRequestDefaultOptions: IssuesRequestParameters = {
-  per_page: ISSUE_PER_PAGE,
-  creator: REPO_OWNER,
-  assignee: "none",
-};
 
 const createUrlInfomation = ({
   location,

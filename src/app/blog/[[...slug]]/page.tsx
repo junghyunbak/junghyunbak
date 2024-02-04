@@ -1,24 +1,12 @@
 import { LabelList } from "../_components/LabelList";
 import { IssueList } from "../_components/IssueList";
 import { IssueListPaginate } from "../_components/IssueListPaginate";
-import { REPO_OWNER, ISSUE_PER_PAGE } from "@/constants";
-import { apiService, type IssuesRequestParameters } from "@/apis";
+import {
+  apiService,
+  type IssuesRequestParameters,
+  issuesRequestDefaultOptions,
+} from "@/apis";
 import { Metadata } from "next";
-
-/**
- * 기본 옵션 값 분리
- */
-const issuesRequestDefaultOptions: IssuesRequestParameters = {
-  per_page: ISSUE_PER_PAGE,
-  /**
-   * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
-   */
-  creator: REPO_OWNER,
-  /**
-   * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
-   */
-  assignee: "none",
-};
 
 /**
  * /blog                - 태그 없이 조회, 1페이지
