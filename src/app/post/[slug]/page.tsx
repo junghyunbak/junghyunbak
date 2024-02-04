@@ -1,8 +1,7 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { apiService } from "@/apis";
+import { apiService, REPO_OWNER } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
-import { REPO_OWNER } from "@/constants";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({

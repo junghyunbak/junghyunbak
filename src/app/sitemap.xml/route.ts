@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { apiService } from "@/apis";
-import { REPO_OWNER } from "@/constants";
-import { issuesRequestDefaultOptions } from "@/apis";
+import { issuesRequestDefaultOptions, REPO_OWNER } from "@/apis";
 
 export const dynamic = "force-dynamic";
 

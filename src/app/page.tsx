@@ -1,6 +1,5 @@
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { ISSUE_ABOUT_NUMBER } from "@/constants";
-import { apiService } from "@/apis";
+import { apiService, ISSUE_ABOUT_NUMBER } from "@/apis";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
