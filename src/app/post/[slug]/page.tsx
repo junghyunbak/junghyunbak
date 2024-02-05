@@ -3,6 +3,7 @@ import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
+import { Utterances } from "@/components/Utterances";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -80,6 +81,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
       </div>
 
       <MarkdownContent content={issue.body || ""} />
+
+      <Utterances issueNumber={issue.number} />
     </div>
   );
 }
