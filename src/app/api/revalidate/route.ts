@@ -10,6 +10,8 @@ export async function POST(request: NextRequest) {
       switch (payload.action) {
         case "opened":
         case "deleted":
+          revalidateTag("allIssue");
+
         case "labeled":
         case "unlabeled":
           revalidateTag("issues");
