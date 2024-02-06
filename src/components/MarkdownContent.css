@@ -1,4 +1,6 @@
 :root {
+  --color-g100: #d5d5d5;
+  --color-g300: #a6a6a6;
   --color-g800: #2f2f2f;
   --color-primaryb: #70f4c0;
 }
@@ -76,13 +78,8 @@
 .markdown ol,
 .markdown ul,
 .markdown dl {
-  padding-left: 40px;
-}
-
-.markdown li {
-  list-style-type: disc;
-  list-style-position: outside;
-  list-style-image: none;
+  padding-left: 2rem;
+  list-style: revert;
 }
 
 .markdown img {
@@ -102,5 +99,10 @@
 
 .markdown table th,
 .markdown table td {
-  padding: 0.25rem;
+  padding: 0.375rem 0.8125rem;
+}
+
+.markdown blockquote {
+  color: var(--color-g300);
+  border-left: 0.25rem solid var(--color-g100);
 }
