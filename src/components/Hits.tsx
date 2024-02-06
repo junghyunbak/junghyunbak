@@ -14,6 +14,7 @@ export function Hits({
   countBgColor = "#5A22E0",
   titleBgColor = "#555555",
   edgeFlat = true,
+  className,
   ...props
 }: HitsProps) {
   const queryString = new URLSearchParams([
@@ -27,6 +28,7 @@ export function Hits({
   return (
     <img
       {...props}
+      className={`${className} min-h-[20px]`}
       src={`https://hits.seeyoufarm.com/api/count/incr/badge.svg?${queryString}`}
       alt="Hits"
     />
