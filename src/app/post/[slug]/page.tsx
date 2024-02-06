@@ -44,7 +44,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
           <div className="flex items-center gap-3.5">
-            <p className="text-gray-600">
+            <p className="text-sm text-gray-600">
               {new Date(issue.created_at).toLocaleString("ko-KR")}
             </p>
 
