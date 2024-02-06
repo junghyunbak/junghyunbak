@@ -53,10 +53,24 @@
 .markdown pre,
 .markdown ul,
 .markdown ol,
-.markdown dl,
 .markdown table,
 .markdown iframe {
   margin-bottom: 1.5rem;
+}
+
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol,
+.markdown ul ul ul,
+.markdown ul ul ol,
+.markdown ul ol ul,
+.markdown ul ol ol,
+.markdown ol ul ul,
+.markdown ol ul ol,
+.markdown ol ol ul,
+.markdown ol ol ol {
+  margin-bottom: 0;
 }
 
 .markdown a {
@@ -75,10 +89,13 @@
 }
 
 .markdown ol,
-.markdown ul,
-.markdown dl {
+.markdown ul {
   padding-left: 2rem;
   list-style: revert;
+}
+
+.markdown li {
+  margin-top: 0.25rem;
 }
 
 .markdown img {
