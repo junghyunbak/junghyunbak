@@ -13,6 +13,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  images: {
+    domains: ["github.com"],
+  },
 };
 
 export default nextConfig;
