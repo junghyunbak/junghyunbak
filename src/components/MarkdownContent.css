@@ -78,6 +78,10 @@
   text-decoration: underline;
 }
 
+.markdown #contents + ul a {
+  text-decoration: none;
+}
+
 .markdown code:not(pre *) {
   font-family: "MaruBuri", "Segoe UI Emoji";
 
