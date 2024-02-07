@@ -68,8 +68,6 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
     }
   }
 
-  const tocMarkdownTemplate = `## Contents\n`;
-
   return (
     <div className="markdown">
       <Markdown
@@ -118,7 +116,7 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
           },
         }}
       >
-        {tocMarkdownTemplate + content}
+        {content}
       </Markdown>
     </div>
   );
