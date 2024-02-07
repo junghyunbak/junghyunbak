@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <main className="mt-6">
-      <Hits className="ml-auto pb-3.5" path="/" />
+      <Hits path="/" />
 
       <MarkdownContent content={issue?.body || ""} />
 

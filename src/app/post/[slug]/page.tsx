@@ -39,8 +39,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <div className="mt-16 border-b border-gray-800 border-dashed mb-7 [&>*]:pb-3.5">
-        <div className="flex flex-col items-center gap-3.5">
+      <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
+        <div className="flex flex-col items-center gap-3.5 pb-3.5">
           <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
           <div className="flex items-center gap-3.5">
@@ -77,7 +77,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </ul>
         </div>
 
-        <Hits className="ml-auto" path={`/post/${issue.number}`} />
+        <Hits path={`/post/${issue.number}`} />
       </div>
 
       <MarkdownContent content={issue.body || ""} />

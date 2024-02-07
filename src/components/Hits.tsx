@@ -1,6 +1,4 @@
-import { HTMLAttributes } from "react";
-
-interface HitsProps extends HTMLAttributes<HTMLImageElement> {
+interface HitsProps {
   path: string;
   title?: string;
   countBgColor?: string;
@@ -14,8 +12,6 @@ export function Hits({
   countBgColor = "#5A22E0",
   titleBgColor = "#555555",
   edgeFlat = true,
-  className,
-  ...props
 }: HitsProps) {
   const queryString = new URLSearchParams([
     ["url", `https://lightpavilion.site${path}`],
@@ -26,11 +22,11 @@ export function Hits({
   ]);
 
   return (
-    <img
-      {...props}
-      className={`${className} min-h-[20px]`}
-      src={`https://hits.seeyoufarm.com/api/count/incr/badge.svg?${queryString}`}
-      alt="Hits"
-    />
+    <div className={"flex justify-end min-h-[20px] w-full mb-3.5"}>
+      <img
+        src={`https://hits.seeyoufarm.com/api/count/incr/badge.svg?${queryString}`}
+        alt="Hits"
+      />
+    </div>
   );
 }

@@ -12,7 +12,7 @@ export default async function Portfolio() {
 
   return (
     <div className="mt-6">
-      <Hits className="ml-auto" path="/portfolio" />
+      <Hits path="/portfolio" />
 
       <MarkdownContent content={issue?.body || ""} />
     </div>
