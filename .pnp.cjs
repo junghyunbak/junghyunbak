@@ -44,7 +44,6 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
-          ["rehype-autolink-headings", "npm:7.1.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
@@ -6061,16 +6060,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["hast-util-is-element", [\
-      ["npm:3.0.0", {\
-        "packageLocation": "../../.yarn/berry/cache/hast-util-is-element-npm-3.0.0-59c73c7f56-10c0.zip/node_modules/hast-util-is-element/",\
-        "packageDependencies": [\
-          ["hast-util-is-element", "npm:3.0.0"],\
-          ["@types/hast", "npm:3.0.4"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["hast-util-parse-selector", [\
       ["npm:2.2.5", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-parse-selector-npm-2.2.5-cd773533ea-10c0.zip/node_modules/hast-util-parse-selector/",\
@@ -6943,7 +6932,6 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
-          ["rehype-autolink-headings", "npm:7.1.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
@@ -8828,21 +8816,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["regjsparser", "npm:0.9.1"],\
           ["jsesc", "npm:0.5.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["rehype-autolink-headings", [\
-      ["npm:7.1.0", {\
-        "packageLocation": "../../.yarn/berry/cache/rehype-autolink-headings-npm-7.1.0-0bbecef914-10c0.zip/node_modules/rehype-autolink-headings/",\
-        "packageDependencies": [\
-          ["rehype-autolink-headings", "npm:7.1.0"],\
-          ["@types/hast", "npm:3.0.4"],\
-          ["@ungap/structured-clone", "npm:1.2.0"],\
-          ["hast-util-heading-rank", "npm:3.0.0"],\
-          ["hast-util-is-element", "npm:3.0.0"],\
-          ["unified", "npm:11.0.4"],\
-          ["unist-util-visit", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
