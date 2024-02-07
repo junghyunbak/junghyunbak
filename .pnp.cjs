@@ -44,8 +44,11 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
+          ["rehype-autolink-headings", "npm:7.1.0"],\
           ["rehype-raw", "npm:7.0.0"],\
+          ["rehype-slug", "npm:6.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
@@ -3622,6 +3625,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/ungap__structured-clone", [\
+      ["npm:0.3.3", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-ungap__structured-clone-npm-0.3.3-71a69df33a-10c0.zip/node_modules/@types/ungap__structured-clone/",\
+        "packageDependencies": [\
+          ["@types/ungap__structured-clone", "npm:0.3.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/unist", [\
       ["npm:2.0.10", {\
         "packageLocation": "../../.yarn/berry/cache/@types-unist-npm-2.0.10-f9b9ac478e-10c0.zip/node_modules/@types/unist/",\
@@ -5825,6 +5837,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["github-slugger", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/github-slugger-npm-2.0.0-3afba76e6c-10c0.zip/node_modules/github-slugger/",\
+        "packageDependencies": [\
+          ["github-slugger", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["glob", [\
       ["npm:10.3.10", {\
         "packageLocation": "../../.yarn/berry/cache/glob-npm-10.3.10-da1ef8b112-10c0.zip/node_modules/glob/",\
@@ -6030,6 +6051,26 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["hast-util-heading-rank", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-heading-rank-npm-3.0.0-13dfda4ac8-10c0.zip/node_modules/hast-util-heading-rank/",\
+        "packageDependencies": [\
+          ["hast-util-heading-rank", "npm:3.0.0"],\
+          ["@types/hast", "npm:3.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-is-element", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-is-element-npm-3.0.0-59c73c7f56-10c0.zip/node_modules/hast-util-is-element/",\
+        "packageDependencies": [\
+          ["hast-util-is-element", "npm:3.0.0"],\
+          ["@types/hast", "npm:3.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["hast-util-parse-selector", [\
       ["npm:2.2.5", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-parse-selector-npm-2.2.5-cd773533ea-10c0.zip/node_modules/hast-util-parse-selector/",\
@@ -6105,6 +6146,16 @@ const RAW_RUNTIME_STATE =
           ["space-separated-tokens", "npm:2.0.2"],\
           ["web-namespaces", "npm:2.0.1"],\
           ["zwitch", "npm:2.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-to-string", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-to-string-npm-3.0.0-a75a0c1e27-10c0.zip/node_modules/hast-util-to-string/",\
+        "packageDependencies": [\
+          ["hast-util-to-string", "npm:3.0.0"],\
+          ["@types/hast", "npm:3.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6892,8 +6943,11 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
+          ["rehype-autolink-headings", "npm:7.1.0"],\
           ["rehype-raw", "npm:7.0.0"],\
+          ["rehype-slug", "npm:6.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
@@ -7269,6 +7323,22 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["mdast-util-to-string", "npm:4.0.0"],\
           ["@types/mdast", "npm:4.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mdast-util-toc", [\
+      ["npm:7.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/mdast-util-toc-npm-7.0.0-7cd72c1ca8-10c0.zip/node_modules/mdast-util-toc/",\
+        "packageDependencies": [\
+          ["mdast-util-toc", "npm:7.0.0"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["@types/ungap__structured-clone", "npm:0.3.3"],\
+          ["@ungap/structured-clone", "npm:1.2.0"],\
+          ["github-slugger", "npm:2.0.0"],\
+          ["mdast-util-to-string", "npm:4.0.0"],\
+          ["unist-util-is", "npm:6.0.0"],\
+          ["unist-util-visit", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8762,6 +8832,21 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["rehype-autolink-headings", [\
+      ["npm:7.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/rehype-autolink-headings-npm-7.1.0-0bbecef914-10c0.zip/node_modules/rehype-autolink-headings/",\
+        "packageDependencies": [\
+          ["rehype-autolink-headings", "npm:7.1.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["@ungap/structured-clone", "npm:1.2.0"],\
+          ["hast-util-heading-rank", "npm:3.0.0"],\
+          ["hast-util-is-element", "npm:3.0.0"],\
+          ["unified", "npm:11.0.4"],\
+          ["unist-util-visit", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["rehype-raw", [\
       ["npm:7.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/rehype-raw-npm-7.0.0-f3b08f8b7a-10c0.zip/node_modules/rehype-raw/",\
@@ -8770,6 +8855,20 @@ const RAW_RUNTIME_STATE =
           ["@types/hast", "npm:3.0.4"],\
           ["hast-util-raw", "npm:9.0.2"],\
           ["vfile", "npm:6.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["rehype-slug", [\
+      ["npm:6.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/rehype-slug-npm-6.0.0-110e571086-10c0.zip/node_modules/rehype-slug/",\
+        "packageDependencies": [\
+          ["rehype-slug", "npm:6.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["github-slugger", "npm:2.0.0"],\
+          ["hast-util-heading-rank", "npm:3.0.0"],\
+          ["hast-util-to-string", "npm:3.0.0"],\
+          ["unist-util-visit", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8824,6 +8923,17 @@ const RAW_RUNTIME_STATE =
           ["@types/mdast", "npm:4.0.3"],\
           ["mdast-util-to-markdown", "npm:2.1.0"],\
           ["unified", "npm:11.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["remark-toc", [\
+      ["npm:9.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/remark-toc-npm-9.0.0-639eec4eb0-10c0.zip/node_modules/remark-toc/",\
+        "packageDependencies": [\
+          ["remark-toc", "npm:9.0.0"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["mdast-util-toc", "npm:7.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

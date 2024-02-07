@@ -1,6 +1,9 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeading from "rehype-autolink-headings";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import sharp from "sharp";
@@ -65,11 +68,13 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
     }
   }
 
+  const tocMarkdownTemplate = `## Contents\n`;
+
   return (
     <div className="markdown">
       <Markdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        remarkPlugins={[remarkGfm, remarkToc]}
+        rehypePlugins={[rehypeRaw, rehypeSlug, rehypeAutolinkHeading]}
         components={{
           // @ts-ignore
           code({ inline, children, className, node, ...props }) {
@@ -113,7 +118,7 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
           },
         }}
       >
-        {content}
+        {tocMarkdownTemplate + content}
       </Markdown>
     </div>
   );
