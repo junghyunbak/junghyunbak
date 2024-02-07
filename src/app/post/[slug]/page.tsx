@@ -80,7 +80,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <Hits path={`/post/${issue.number}`} />
       </div>
 
-      <MarkdownContent content={"## Contents\n" + (issue.body || "")} />
+      <MarkdownContent content={issue.body || ""} />
 
       <Utterances issueNumber={issue.number} />
     </div>
