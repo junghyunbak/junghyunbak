@@ -25,6 +25,8 @@ export function Utterances({ issueNumber }: UtterancesProps) {
         script.setAttribute("theme", "github-light");
         script.setAttribute("crossorigin", "anonymous");
 
+        el.innerHTML = "";
+
         el.appendChild(script);
       }}
     />
