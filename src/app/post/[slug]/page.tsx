@@ -37,6 +37,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>존재하지 않는 페이지입니다.</div>;
   }
 
+  if(issue.user?.login !== REPO_OWNER) {
+    return <div>해당 글은 조회할 수 없습니다.</div>
+  }
+
   return (
     <div>
       <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
