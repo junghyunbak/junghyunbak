@@ -54,6 +54,7 @@
 .markdown ul,
 .markdown ol,
 .markdown table,
+.markdown details,
 .markdown iframe {
   margin-bottom: 1.5rem;
 }
