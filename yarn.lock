@@ -2242,13 +2242,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ungap__structured-clone@npm:^0.3.0":
-  version: 0.3.3
-  resolution: "@types/ungap__structured-clone@npm:0.3.3"
-  checksum: 10c0/93b32d5b2a85216703004fdb84e56abde6dce0ec5792b9fb2f50f0a54cdab0e4f9663d145728663417154eaa6721a4eba29823770bce8326c804ab9cd8b18f92
-  languageName: node
-  linkType: hard
-
 "@types/unist@npm:*, @types/unist@npm:^3.0.0":
   version: 3.0.2
   resolution: "@types/unist@npm:3.0.2"
@@ -5067,7 +5060,6 @@ __metadata:
     remark-gfm: "npm:^4.0.0"
     remark-parse: "npm:^11.0.0"
     remark-rehype: "npm:^11.1.0"
-    remark-toc: "npm:^9.0.0"
     sharp: "npm:^0.33.2"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5"
@@ -5414,21 +5406,6 @@ __metadata:
   dependencies:
     "@types/mdast": "npm:^4.0.0"
   checksum: 10c0/2d3c1af29bf3fe9c20f552ee9685af308002488f3b04b12fa66652c9718f66f41a32f8362aa2d770c3ff464c034860b41715902ada2306bb0a055146cef064d7
-  languageName: node
-  linkType: hard
-
-"mdast-util-toc@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "mdast-util-toc@npm:7.0.0"
-  dependencies:
-    "@types/mdast": "npm:^4.0.0"
-    "@types/ungap__structured-clone": "npm:^0.3.0"
-    "@ungap/structured-clone": "npm:^1.0.0"
-    github-slugger: "npm:^2.0.0"
-    mdast-util-to-string: "npm:^4.0.0"
-    unist-util-is: "npm:^6.0.0"
-    unist-util-visit: "npm:^5.0.0"
-  checksum: 10c0/f405e9e806fee89d96ecb0760832e33d4d32cdcafd39c3f17244aae9c127ed5e9c71188e875491089e4f813f7ce2d52c0a1dc1bb8a3918d02b36d8c916345d39
   languageName: node
   linkType: hard
 
@@ -6799,16 +6776,6 @@ __metadata:
     mdast-util-to-markdown: "npm:^2.0.0"
     unified: "npm:^11.0.0"
   checksum: 10c0/0cdb37ce1217578f6f847c7ec9f50cbab35df5b9e3903d543e74b405404e67c07defcb23cd260a567b41b769400f6de03c2c3d9cd6ae7a6707d5c8d89ead489f
-  languageName: node
-  linkType: hard
-
-"remark-toc@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "remark-toc@npm:9.0.0"
-  dependencies:
-    "@types/mdast": "npm:^4.0.0"
-    mdast-util-toc: "npm:^7.0.0"
-  checksum: 10c0/f579645a642a152d4daf4e4b21a516fd15da9d153251faddf65213bcb0bd41a8d98d4cdbd3bbe364660fb646322d1192f1629f167eb5c14f1720734df119c9c7
   languageName: node
   linkType: hard
 

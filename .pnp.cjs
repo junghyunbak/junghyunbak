@@ -51,7 +51,6 @@ const RAW_RUNTIME_STATE =
           ["remark-gfm", "npm:4.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
-          ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
@@ -3643,15 +3642,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@types/ungap__structured-clone", [\
-      ["npm:0.3.3", {\
-        "packageLocation": "../../.yarn/berry/cache/@types-ungap__structured-clone-npm-0.3.3-71a69df33a-10c0.zip/node_modules/@types/ungap__structured-clone/",\
-        "packageDependencies": [\
-          ["@types/ungap__structured-clone", "npm:0.3.3"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["@types/unist", [\
       ["npm:2.0.10", {\
         "packageLocation": "../../.yarn/berry/cache/@types-unist-npm-2.0.10-f9b9ac478e-10c0.zip/node_modules/@types/unist/",\
@@ -7019,7 +7009,6 @@ const RAW_RUNTIME_STATE =
           ["remark-gfm", "npm:4.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
-          ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
@@ -7396,22 +7385,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["mdast-util-to-string", "npm:4.0.0"],\
           ["@types/mdast", "npm:4.0.3"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["mdast-util-toc", [\
-      ["npm:7.0.0", {\
-        "packageLocation": "../../.yarn/berry/cache/mdast-util-toc-npm-7.0.0-7cd72c1ca8-10c0.zip/node_modules/mdast-util-toc/",\
-        "packageDependencies": [\
-          ["mdast-util-toc", "npm:7.0.0"],\
-          ["@types/mdast", "npm:4.0.3"],\
-          ["@types/ungap__structured-clone", "npm:0.3.3"],\
-          ["@ungap/structured-clone", "npm:1.2.0"],\
-          ["github-slugger", "npm:2.0.0"],\
-          ["mdast-util-to-string", "npm:4.0.0"],\
-          ["unist-util-is", "npm:6.0.0"],\
-          ["unist-util-visit", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8993,17 +8966,6 @@ const RAW_RUNTIME_STATE =
           ["@types/mdast", "npm:4.0.3"],\
           ["mdast-util-to-markdown", "npm:2.1.0"],\
           ["unified", "npm:11.0.4"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["remark-toc", [\
-      ["npm:9.0.0", {\
-        "packageLocation": "../../.yarn/berry/cache/remark-toc-npm-9.0.0-639eec4eb0-10c0.zip/node_modules/remark-toc/",\
-        "packageDependencies": [\
-          ["remark-toc", "npm:9.0.0"],\
-          ["@types/mdast", "npm:4.0.3"],\
-          ["mdast-util-toc", "npm:7.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

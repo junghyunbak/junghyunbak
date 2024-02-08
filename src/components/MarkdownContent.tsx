@@ -1,6 +1,5 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -13,10 +12,6 @@ interface MarkdownContentProps {
   content: string;
 }
 
-/**
- * Markdown 컴포넌트 내 코드 하이라이팅을 위한 예제를 가져왔고,
- * 정상작동하지만 타입 에러가 발생해서 당장은 ignore 처리함.
- */
 export async function MarkdownContent({ content }: MarkdownContentProps) {
   const markdownImageUrlPattern = /(src="|\!\[.*?\]\()(.*?)(\)|")/g;
 
@@ -70,9 +65,14 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <div className="markdown">
       <Markdown
-        remarkPlugins={[remarkGfm, remarkToc]}
+        remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}
         components={{
+          /**
+           * Markdown 컴포넌트 내 코드 하이라이팅을 위한 예제를 가져왔고,
+           * 정상작동하지만 타입 에러가 발생해서 당장은 ignore 처리함.
+           */
+
           // @ts-ignore
           code({ inline, children, className, node, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
