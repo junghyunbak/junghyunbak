@@ -5,6 +5,12 @@ import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
 import { Utterances } from "@/components/Utterances";
 import { Toc } from "@/components/Toc";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkExtractFrontmatter from "remark-extract-frontmatter";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkStringify from "remark-stringify";
+import YAML from "yaml";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -28,9 +34,23 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const issue = await apiService.getAnIssue(params.slug);
 
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkFrontmatter)
+    .use(remarkExtractFrontmatter, { yaml: YAML.parse })
+    .use(remarkStringify)
+    .process(issue?.body || "");
+
+  const {
+    data: { description },
+  } = file;
+
   return {
     title: `Post - ${params.slug} | 박정현`,
-    description: (issue?.body || "").slice(0, 80),
+    description:
+      typeof description === "string"
+        ? description
+        : (issue?.body || "").slice(0, 80),
   };
 }
 

@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -65,7 +66,7 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <div className="markdown">
       <Markdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkFrontmatter]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}
         components={{
           /**

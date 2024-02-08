@@ -48,13 +48,17 @@ const RAW_RUNTIME_STATE =
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["rehype-stringify", "npm:10.0.0"],\
+          ["remark-extract-frontmatter", "npm:3.2.0"],\
+          ["remark-frontmatter", "npm:5.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
+          ["remark-stringify", "npm:11.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"]\
+          ["unified", "npm:11.0.4"],\
+          ["yaml", "npm:2.3.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -5658,6 +5662,14 @@ const RAW_RUNTIME_STATE =
           ["format", "npm:0.2.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../.yarn/berry/cache/fault-npm-2.0.1-c462630f58-10c0.zip/node_modules/fault/",\
+        "packageDependencies": [\
+          ["fault", "npm:2.0.1"],\
+          ["format", "npm:0.2.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["file-entry-cache", [\
@@ -7006,13 +7018,17 @@ const RAW_RUNTIME_STATE =
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["rehype-stringify", "npm:10.0.0"],\
+          ["remark-extract-frontmatter", "npm:3.2.0"],\
+          ["remark-frontmatter", "npm:5.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
+          ["remark-stringify", "npm:11.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"]\
+          ["unified", "npm:11.0.4"],\
+          ["yaml", "npm:2.3.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -7194,6 +7210,21 @@ const RAW_RUNTIME_STATE =
           ["micromark-util-symbol", "npm:2.0.0"],\
           ["micromark-util-types", "npm:2.0.0"],\
           ["unist-util-stringify-position", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mdast-util-frontmatter", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../.yarn/berry/cache/mdast-util-frontmatter-npm-2.0.1-7fb656bf3d-10c0.zip/node_modules/mdast-util-frontmatter/",\
+        "packageDependencies": [\
+          ["mdast-util-frontmatter", "npm:2.0.1"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["devlop", "npm:1.1.0"],\
+          ["escape-string-regexp", "npm:5.0.0"],\
+          ["mdast-util-from-markdown", "npm:2.0.0"],\
+          ["mdast-util-to-markdown", "npm:2.1.0"],\
+          ["micromark-extension-frontmatter", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7459,6 +7490,19 @@ const RAW_RUNTIME_STATE =
           ["micromark-util-normalize-identifier", "npm:2.0.0"],\
           ["micromark-util-resolve-all", "npm:2.0.0"],\
           ["micromark-util-subtokenize", "npm:2.0.0"],\
+          ["micromark-util-symbol", "npm:2.0.0"],\
+          ["micromark-util-types", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["micromark-extension-frontmatter", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/micromark-extension-frontmatter-npm-2.0.0-a54996ce3a-10c0.zip/node_modules/micromark-extension-frontmatter/",\
+        "packageDependencies": [\
+          ["micromark-extension-frontmatter", "npm:2.0.0"],\
+          ["fault", "npm:2.0.1"],\
+          ["micromark-util-character", "npm:2.1.0"],\
           ["micromark-util-symbol", "npm:2.0.0"],\
           ["micromark-util-types", "npm:2.0.0"]\
         ],\
@@ -8911,6 +8955,28 @@ const RAW_RUNTIME_STATE =
           ["rehype-stringify", "npm:10.0.0"],\
           ["@types/hast", "npm:3.0.4"],\
           ["hast-util-to-html", "npm:9.0.0"],\
+          ["unified", "npm:11.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["remark-extract-frontmatter", [\
+      ["npm:3.2.0", {\
+        "packageLocation": "../../.yarn/berry/cache/remark-extract-frontmatter-npm-3.2.0-00f258b6fc-10c0.zip/node_modules/remark-extract-frontmatter/",\
+        "packageDependencies": [\
+          ["remark-extract-frontmatter", "npm:3.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["remark-frontmatter", [\
+      ["npm:5.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/remark-frontmatter-npm-5.0.0-c52fe198da-10c0.zip/node_modules/remark-frontmatter/",\
+        "packageDependencies": [\
+          ["remark-frontmatter", "npm:5.0.0"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["mdast-util-frontmatter", "npm:2.0.1"],\
+          ["micromark-extension-frontmatter", "npm:2.0.0"],\
           ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "HARD"\
