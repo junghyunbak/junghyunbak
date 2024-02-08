@@ -20,13 +20,16 @@ export async function generateStaticParams() {
   return issues.map((issue) => ({ slug: issue.number.toString() }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
+}): Promise<Metadata> {
+  const issue = await apiService.getAnIssue(params.slug);
+
   return {
     title: `Post - ${params.slug} | 박정현`,
+    description: (issue?.body || '').slice(0, 80)
   };
 }
 
