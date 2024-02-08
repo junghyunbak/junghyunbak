@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@octokit/types", "npm:12.4.0"],\
           ["@octokit/webhooks-types", "npm:7.3.2"],\
+          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
@@ -46,11 +47,15 @@ const RAW_RUNTIME_STATE =
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
+          ["rehype-stringify", "npm:10.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-parse", "npm:11.0.0"],\
+          ["remark-rehype", "npm:11.1.0"],\
           ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
-          ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
+          ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+          ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -3162,6 +3167,20 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@stefanprobst/rehype-extract-toc", [\
+      ["npm:2.2.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3-10c0.zip/node_modules/@stefanprobst/rehype-extract-toc/",\
+        "packageDependencies": [\
+          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
+          ["estree-util-is-identifier-name", "npm:2.1.0"],\
+          ["estree-util-value-to-estree", "npm:1.3.0"],\
+          ["hast-util-heading-rank", "npm:2.1.1"],\
+          ["hast-util-to-string", "npm:2.0.0"],\
+          ["unist-util-visit", "npm:4.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@svgr/babel-plugin-add-jsx-attribute", [\
       ["npm:8.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/@svgr-babel-plugin-add-jsx-attribute-npm-8.0.0-026be9c2be-10c0.zip/node_modules/@svgr/babel-plugin-add-jsx-attribute/",\
@@ -5538,10 +5557,27 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["estree-util-is-identifier-name", [\
+      ["npm:2.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/estree-util-is-identifier-name-npm-2.1.0-2b8df71baf-10c0.zip/node_modules/estree-util-is-identifier-name/",\
+        "packageDependencies": [\
+          ["estree-util-is-identifier-name", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/estree-util-is-identifier-name-npm-3.0.0-7815ea9f20-10c0.zip/node_modules/estree-util-is-identifier-name/",\
         "packageDependencies": [\
           ["estree-util-is-identifier-name", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["estree-util-value-to-estree", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "../../.yarn/berry/cache/estree-util-value-to-estree-npm-1.3.0-f3eedabb7c-10c0.zip/node_modules/estree-util-value-to-estree/",\
+        "packageDependencies": [\
+          ["estree-util-value-to-estree", "npm:1.3.0"],\
+          ["is-plain-obj", "npm:3.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6051,6 +6087,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["hast-util-heading-rank", [\
+      ["npm:2.1.1", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-heading-rank-npm-2.1.1-0d71da5801-10c0.zip/node_modules/hast-util-heading-rank/",\
+        "packageDependencies": [\
+          ["hast-util-heading-rank", "npm:2.1.1"],\
+          ["@types/hast", "npm:2.3.10"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-heading-rank-npm-3.0.0-13dfda4ac8-10c0.zip/node_modules/hast-util-heading-rank/",\
         "packageDependencies": [\
@@ -6099,6 +6143,27 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["hast-util-to-html", [\
+      ["npm:9.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-to-html-npm-9.0.0-8b14b37db4-10c0.zip/node_modules/hast-util-to-html/",\
+        "packageDependencies": [\
+          ["hast-util-to-html", "npm:9.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["@types/unist", "npm:3.0.2"],\
+          ["ccount", "npm:2.0.1"],\
+          ["comma-separated-tokens", "npm:2.0.3"],\
+          ["hast-util-raw", "npm:9.0.2"],\
+          ["hast-util-whitespace", "npm:3.0.0"],\
+          ["html-void-elements", "npm:3.0.0"],\
+          ["mdast-util-to-hast", "npm:13.1.0"],\
+          ["property-information", "npm:6.4.1"],\
+          ["space-separated-tokens", "npm:2.0.2"],\
+          ["stringify-entities", "npm:4.0.3"],\
+          ["zwitch", "npm:2.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["hast-util-to-jsx-runtime", [\
       ["npm:2.3.0", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-to-jsx-runtime-npm-2.3.0-c0e033a67f-10c0.zip/node_modules/hast-util-to-jsx-runtime/",\
@@ -6140,6 +6205,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["hast-util-to-string", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-to-string-npm-2.0.0-c6108aa2b8-10c0.zip/node_modules/hast-util-to-string/",\
+        "packageDependencies": [\
+          ["hast-util-to-string", "npm:2.0.0"],\
+          ["@types/hast", "npm:2.3.10"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-to-string-npm-3.0.0-a75a0c1e27-10c0.zip/node_modules/hast-util-to-string/",\
         "packageDependencies": [\
@@ -6611,6 +6684,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["is-plain-obj", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/is-plain-obj-npm-3.0.0-a5ae411d5a-10c0.zip/node_modules/is-plain-obj/",\
+        "packageDependencies": [\
+          ["is-plain-obj", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:4.1.0", {\
         "packageLocation": "../../.yarn/berry/cache/is-plain-obj-npm-4.1.0-a4f2a92b44-10c0.zip/node_modules/is-plain-obj/",\
         "packageDependencies": [\
@@ -6916,6 +6996,7 @@ const RAW_RUNTIME_STATE =
           ["lightpavilion-blog", "workspace:."],\
           ["@octokit/types", "npm:12.4.0"],\
           ["@octokit/webhooks-types", "npm:7.3.2"],\
+          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
@@ -6934,11 +7015,15 @@ const RAW_RUNTIME_STATE =
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
+          ["rehype-stringify", "npm:10.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-parse", "npm:11.0.0"],\
+          ["remark-rehype", "npm:11.1.0"],\
           ["remark-toc", "npm:9.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
-          ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
+          ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+          ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -8846,6 +8931,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["rehype-stringify", [\
+      ["npm:10.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/rehype-stringify-npm-10.0.0-caaa3e672e-10c0.zip/node_modules/rehype-stringify/",\
+        "packageDependencies": [\
+          ["rehype-stringify", "npm:10.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["hast-util-to-html", "npm:9.0.0"],\
+          ["unified", "npm:11.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["remark-gfm", [\
       ["npm:4.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/remark-gfm-npm-4.0.0-8bb699e315-10c0.zip/node_modules/remark-gfm/",\
@@ -9835,6 +9932,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["unist-util-is", [\
+      ["npm:5.2.1", {\
+        "packageLocation": "../../.yarn/berry/cache/unist-util-is-npm-5.2.1-cacf6f78d5-10c0.zip/node_modules/unist-util-is/",\
+        "packageDependencies": [\
+          ["unist-util-is", "npm:5.2.1"],\
+          ["@types/unist", "npm:2.0.10"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:6.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/unist-util-is-npm-6.0.0-2bffa09a51-10c0.zip/node_modules/unist-util-is/",\
         "packageDependencies": [\
@@ -9876,6 +9981,16 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["unist-util-visit", [\
+      ["npm:4.1.2", {\
+        "packageLocation": "../../.yarn/berry/cache/unist-util-visit-npm-4.1.2-6b950e655a-10c0.zip/node_modules/unist-util-visit/",\
+        "packageDependencies": [\
+          ["unist-util-visit", "npm:4.1.2"],\
+          ["@types/unist", "npm:2.0.10"],\
+          ["unist-util-is", "npm:5.2.1"],\
+          ["unist-util-visit-parents", "npm:5.1.3"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:5.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/unist-util-visit-npm-5.0.0-df56c75117-10c0.zip/node_modules/unist-util-visit/",\
         "packageDependencies": [\
@@ -9888,6 +10003,15 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["unist-util-visit-parents", [\
+      ["npm:5.1.3", {\
+        "packageLocation": "../../.yarn/berry/cache/unist-util-visit-parents-npm-5.1.3-3b6b34d916-10c0.zip/node_modules/unist-util-visit-parents/",\
+        "packageDependencies": [\
+          ["unist-util-visit-parents", "npm:5.1.3"],\
+          ["@types/unist", "npm:2.0.10"],\
+          ["unist-util-is", "npm:5.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:6.0.1", {\
         "packageLocation": "../../.yarn/berry/cache/unist-util-visit-parents-npm-6.0.1-29ba152125-10c0.zip/node_modules/unist-util-visit-parents/",\
         "packageDependencies": [\

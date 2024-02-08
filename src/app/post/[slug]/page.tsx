@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
 import { Utterances } from "@/components/Utterances";
+import { Toc } from "@/components/Toc";
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -29,7 +30,7 @@ export async function generateMetadata({
 
   return {
     title: `Post - ${params.slug} | 박정현`,
-    description: (issue?.body || '').slice(0, 80)
+    description: (issue?.body || "").slice(0, 80),
   };
 }
 
@@ -40,8 +41,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>존재하지 않는 페이지입니다.</div>;
   }
 
-  if(issue.user?.login !== REPO_OWNER) {
-    return <div>해당 글은 조회할 수 없습니다.</div>
+  if (issue.user?.login !== REPO_OWNER) {
+    return <div>해당 글은 조회할 수 없습니다.</div>;
   }
 
   return (
@@ -86,6 +87,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
         <Hits path={`/post/${issue.number}`} />
       </div>
+
+      <Toc markdown={issue.body || ""} />
 
       <MarkdownContent content={issue.body || ""} />
 

@@ -1,0 +1,58 @@
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeExtractToc, {
+  type TocEntry,
+} from "@stefanprobst/rehype-extract-toc";
+import rehypeStringify from "rehype-stringify";
+
+interface TocProps {
+  markdown: string;
+}
+
+export async function Toc({ markdown }: TocProps) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeExtractToc)
+    .use(rehypeStringify)
+    .process(markdown);
+
+  const {
+    data: { toc },
+  } = file;
+
+  if (!(toc instanceof Array) || !toc.length) {
+    return null;
+  }
+
+  return (
+    <div className="p-3.5 mb-6 bg-secondaryB border border-gray-800 rounded">
+      {createTocList(toc as TocEntry[])}
+    </div>
+  );
+}
+
+function createTocList(nodes: TocEntry[]) {
+  return (
+    <ul className="pl-8 list-[revert]">
+      {nodes.map((node, i) => {
+        if (node.depth > 3) {
+          return null;
+        }
+
+        return (
+          <li key={`toc-list-${node.depth}-${i}`}>
+            <a href={`#${node.id}`} className="text-[#0000ff]">
+              {node.value}
+            </a>
+
+            {node.children && createTocList(node.children)}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
