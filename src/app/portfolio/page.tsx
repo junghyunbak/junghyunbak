@@ -1,4 +1,4 @@
-import { MarkdownContent } from "@/components/MarkdownContent";
+import { Markdown } from "@/components/Markdown";
 import { apiService, ISSUE_PORTFOLIO_NUMBER } from "@/apis";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
@@ -17,7 +17,7 @@ export default async function Portfolio() {
 
       <Toc markdown={issue?.body || ""} />
 
-      <MarkdownContent content={issue?.body || ""} />
+      <Markdown markdown={issue?.body || ""} />
     </div>
   );
 }

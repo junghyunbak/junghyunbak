@@ -1,4 +1,4 @@
-import { MarkdownContent } from "@/components/MarkdownContent";
+import { Markdown } from "@/components/Markdown";
 import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -112,7 +112,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
       <Toc markdown={issue.body || ""} />
 
-      <MarkdownContent content={issue.body || ""} />
+      <Markdown markdown={issue.body || ""} />
 
       <Utterances issueNumber={issue.number} />
     </div>

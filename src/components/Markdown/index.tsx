@@ -1,4 +1,4 @@
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
@@ -7,20 +7,20 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import sharp from "sharp";
 import Image from "next/image";
-import "./MarkdownContent.css";
+import "./index.css";
 
-interface MarkdownContentProps {
-  content: string;
+interface MarkdownProps {
+  markdown: string;
 }
 
-export async function MarkdownContent({ content }: MarkdownContentProps) {
+export async function Markdown({ markdown }: MarkdownProps) {
   const markdownImageUrlPattern = /(src="|\!\[.*?\]\()(.*?)(\)|")/g;
 
   const imageUrls = [];
 
   let match: ReturnType<RegExp["exec"]> = null;
 
-  while ((match = markdownImageUrlPattern.exec(content)) !== null) {
+  while ((match = markdownImageUrlPattern.exec(markdown)) !== null) {
     imageUrls.push(match[2]);
   }
 
@@ -65,7 +65,7 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
 
   return (
     <div className="markdown">
-      <Markdown
+      <ReactMarkdown
         remarkPlugins={[remarkGfm, [remarkFrontmatter, ["toml"]]]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}
         components={{
@@ -116,8 +116,8 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
           },
         }}
       >
-        {content}
-      </Markdown>
+        {markdown}
+      </ReactMarkdown>
     </div>
   );
 }
