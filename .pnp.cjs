@@ -56,9 +56,9 @@ const RAW_RUNTIME_STATE =
           ["remark-stringify", "npm:11.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
+          ["toml", "npm:3.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"],\
-          ["yaml", "npm:2.3.4"]\
+          ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -7026,9 +7026,9 @@ const RAW_RUNTIME_STATE =
           ["remark-stringify", "npm:11.0.0"],\
           ["sharp", "npm:0.33.2"],\
           ["tailwindcss", "npm:3.4.1"],\
+          ["toml", "npm:3.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"],\
-          ["yaml", "npm:2.3.4"]\
+          ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -9709,6 +9709,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["to-regex-range", "npm:5.0.1"],\
           ["is-number", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["toml", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/toml-npm-3.0.0-f993270804-10c0.zip/node_modules/toml/",\
+        "packageDependencies": [\
+          ["toml", "npm:3.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

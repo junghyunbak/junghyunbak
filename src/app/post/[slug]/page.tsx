@@ -10,7 +10,7 @@ import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
-import YAML from "yaml";
+const toml = require("toml").parse;
 
 export async function generateStaticParams() {
   const issues = await apiService.getAllIssue({
@@ -36,14 +36,16 @@ export async function generateMetadata({
 
   const file = await unified()
     .use(remarkParse)
-    .use(remarkFrontmatter)
-    .use(remarkExtractFrontmatter, { yaml: YAML.parse })
+    .use(remarkFrontmatter, ["toml"])
+    .use(remarkExtractFrontmatter, { toml })
     .use(remarkStringify)
     .process(issue?.body || "");
 
   const {
     data: { description },
   } = file;
+
+  console.log(file);
 
   return {
     title: `Post - ${params.slug} | 박정현`,

@@ -66,7 +66,7 @@ export async function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <div className="markdown">
       <Markdown
-        remarkPlugins={[remarkGfm, remarkFrontmatter]}
+        remarkPlugins={[remarkGfm, [remarkFrontmatter, ["toml"]]]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}
         components={{
           /**
