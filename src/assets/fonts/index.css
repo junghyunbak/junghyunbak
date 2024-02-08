@@ -15,6 +15,14 @@
 }
 
 @font-face {
+  font-family: "MaruBuri";
+  src: url("./MaruBuri-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Segoe UI Emoji";
   src: url("./segoeuiemj.ttf") format("truetype");
   font-display: swap;
