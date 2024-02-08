@@ -45,10 +45,8 @@ export async function generateMetadata({
     data: { description },
   } = file;
 
-  console.log(file);
-
   return {
-    title: `Post - ${params.slug} | 박정현`,
+    title: `Post - ${issue?.title} | 박정현`,
     description:
       typeof description === "string"
         ? description
