@@ -1,0 +1,21 @@
+diff --git a/package.json b/package.json
+index ddfcf7b3975c4e909dccba8bf42861ab107b75d3..8875b50e85a916cedf49fe9146b0418357de8d29 100644
+--- a/package.json
++++ b/package.json
+@@ -7,16 +7,6 @@
+   "repository": "https://github.com/stefanprobst/rehype-extract-toc.git",
+   "author": "Stefan Probst <stefanprobst@posteo.de>",
+   "license": "MIT",
+-  "exports": {
+-    ".": {
+-      "types": "./src/index.d.ts",
+-      "import": "./src/index.js"
+-    },
+-    "./mdx": {
+-      "types": "./src/mdx.d.ts",
+-      "import": "./src/mdx.js"
+-    }
+-  },
+   "files": [
+     "src",
+     "mdx"

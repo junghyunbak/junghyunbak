@@ -6,9 +6,13 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
-  collectCoverage: true,
   coverageProvider: "v8",
   testEnvironment: "jsdom",
 };
 
-export default createJestConfig(config);
+const customJestConfig = async () => ({
+  ...(await createJestConfig(config)()),
+  transformIgnorePatterns: ["/node_modules/(?!.*)"],
+});
+
+export default customJestConfig;

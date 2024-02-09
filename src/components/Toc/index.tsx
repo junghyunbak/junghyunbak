@@ -14,14 +14,14 @@ interface TocProps {
   markdown: string;
 }
 
-export async function Toc({ markdown }: TocProps) {
-  const file = await unified()
+export function Toc({ markdown }: TocProps) {
+  const file = unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeExtractToc)
     .use(rehypeStringify)
-    .process(markdown);
+    .processSync(markdown);
 
   const {
     data: { toc },

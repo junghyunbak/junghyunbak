@@ -28,7 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@octokit/types", "npm:12.4.0"],\
           ["@octokit/webhooks-types", "npm:7.3.2"],\
-          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
+          ["@stefanprobst/rehype-extract-toc", "patch:@stefanprobst/rehype-extract-toc@npm%3A2.2.0#~/.yarn/patches/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3.patch::version=2.2.0&hash=dd9993"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@testing-library/jest-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:6.4.2"],\
           ["@testing-library/react", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.2.1"],\
@@ -3717,10 +3717,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@stefanprobst/rehype-extract-toc", [\
-      ["npm:2.2.0", {\
-        "packageLocation": "../../.yarn/berry/cache/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3-10c0.zip/node_modules/@stefanprobst/rehype-extract-toc/",\
+      ["patch:@stefanprobst/rehype-extract-toc@npm%3A2.2.0#~/.yarn/patches/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3.patch::version=2.2.0&hash=dd9993", {\
+        "packageLocation": "../../.yarn/berry/cache/@stefanprobst-rehype-extract-toc-patch-248c0611cf-10c0.zip/node_modules/@stefanprobst/rehype-extract-toc/",\
         "packageDependencies": [\
-          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
+          ["@stefanprobst/rehype-extract-toc", "patch:@stefanprobst/rehype-extract-toc@npm%3A2.2.0#~/.yarn/patches/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3.patch::version=2.2.0&hash=dd9993"],\
           ["estree-util-is-identifier-name", "npm:2.1.0"],\
           ["estree-util-value-to-estree", "npm:1.3.0"],\
           ["hast-util-heading-rank", "npm:2.1.1"],\
@@ -9326,7 +9326,7 @@ const RAW_RUNTIME_STATE =
           ["lightpavilion-blog", "workspace:."],\
           ["@octokit/types", "npm:12.4.0"],\
           ["@octokit/webhooks-types", "npm:7.3.2"],\
-          ["@stefanprobst/rehype-extract-toc", "npm:2.2.0"],\
+          ["@stefanprobst/rehype-extract-toc", "patch:@stefanprobst/rehype-extract-toc@npm%3A2.2.0#~/.yarn/patches/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3.patch::version=2.2.0&hash=dd9993"],\
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@testing-library/jest-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:6.4.2"],\
           ["@testing-library/react", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.2.1"],\

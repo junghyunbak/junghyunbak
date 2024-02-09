@@ -8,13 +8,13 @@
     "start": "next start",
     "serve": "next build && next start",
     "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage"
   },
   "dependencies": {
     "@octokit/types": "^12.4.0",
     "@octokit/webhooks-types": "^7.3.2",
-    "@stefanprobst/rehype-extract-toc": "^2.2.0",
+    "@stefanprobst/rehype-extract-toc": "patch:@stefanprobst/rehype-extract-toc@npm%3A2.2.0#~/.yarn/patches/@stefanprobst-rehype-extract-toc-npm-2.2.0-77fd9004a3.patch",
     "autoprefixer": "^10.4.17",
     "next": "14.1.0",
     "parse-link-header": "^2.0.0",
