@@ -6,6 +6,7 @@ import rehypeExtractToc, {
   type TocEntry,
 } from "@stefanprobst/rehype-extract-toc";
 import rehypeStringify from "rehype-stringify";
+import { isTocNode } from "./index.types";
 
 const MAX_TOC_DEPTH = 3;
 
@@ -42,19 +43,6 @@ export async function Toc({ markdown }: TocProps) {
       {createTocList(toc)}
     </div>
   );
-}
-
-export function isTocNode(nodes: any[]): nodes is TocEntry[] {
-  return nodes.every((node) => {
-    const childrenValid =
-      node.children instanceof Array ? isTocNode(node.children) : true;
-
-    const valueValid = typeof node.value === "string";
-
-    const depthValid = typeof node.depth === "number";
-
-    return childrenValid && valueValid && depthValid;
-  });
 }
 
 function createTocList(nodes: TocEntry[]) {
