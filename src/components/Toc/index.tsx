@@ -7,6 +7,8 @@ import rehypeExtractToc, {
 } from "@stefanprobst/rehype-extract-toc";
 import rehypeStringify from "rehype-stringify";
 
+const MAX_TOC_DEPTH = 3;
+
 interface TocProps {
   markdown: string;
 }
@@ -24,22 +26,42 @@ export async function Toc({ markdown }: TocProps) {
     data: { toc },
   } = file;
 
-  if (!(toc instanceof Array) || !toc.length) {
+  if (!(toc instanceof Array)) {
     return null;
+  }
+
+  if (
+    !isTocNode(toc) ||
+    !toc.reduce((a, c) => (a + c.depth <= MAX_TOC_DEPTH ? 1 : 0), 0)
+  ) {
+    return;
   }
 
   return (
     <div className="p-3.5 mb-6 bg-secondaryB border border-gray-800 rounded">
-      {createTocList(toc as TocEntry[])}
+      {createTocList(toc)}
     </div>
   );
+}
+
+export function isTocNode(nodes: any[]): nodes is TocEntry[] {
+  return nodes.every((node) => {
+    const childrenValid =
+      node.children instanceof Array ? isTocNode(node.children) : true;
+
+    const valueValid = typeof node.value === "string";
+
+    const depthValid = typeof node.depth === "number";
+
+    return childrenValid && valueValid && depthValid;
+  });
 }
 
 function createTocList(nodes: TocEntry[]) {
   return (
     <ul className="pl-8 list-[revert]">
       {nodes.map((node, i) => {
-        if (node.depth > 3) {
+        if (node.depth > MAX_TOC_DEPTH) {
           return null;
         }
 
