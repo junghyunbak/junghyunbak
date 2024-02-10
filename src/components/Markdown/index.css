@@ -81,6 +81,18 @@
   text-decoration: underline;
 }
 
+.markdown a[href^="#user-content-fn-"]::before {
+  content: "[";
+}
+
+.markdown a[href^="#user-content-fn-"]::after {
+  content: "]";
+}
+
+.markdown a[href^="#user-content-fnref"] {
+  text-decoration: none;
+}
+
 .markdown #contents + ul a {
   text-decoration: none;
 }
