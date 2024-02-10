@@ -132,3 +132,7 @@
   height: 0.25rem;
   background: var(--color-g300);
 }
+
+.markdown details details {
+  padding-left: 2rem;
+}
