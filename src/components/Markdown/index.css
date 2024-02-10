@@ -1,6 +1,8 @@
 :root {
   --color-g100: #d5d5d5;
   --color-g300: #a6a6a6;
+  --color-g400: #8e8e8e;
+  --color-g500: #777777;
   --color-g800: #2f2f2f;
   --color-primaryb: #70f4c0;
 }
@@ -124,8 +126,9 @@
 }
 
 .markdown blockquote {
-  color: var(--color-g300);
+  color: var(--color-g500);
   border-left: 0.25rem solid var(--color-g100);
+  padding: 0 1rem;
 }
 
 .markdown hr {
