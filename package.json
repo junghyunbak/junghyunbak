@@ -35,7 +35,8 @@
     "sharp": "^0.33.2",
     "tailwindcss": "^3.4.1",
     "toml": "^3.0.0",
-    "unified": "^11.0.4"
+    "unified": "^11.0.4",
+    "vfile": "^6.0.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

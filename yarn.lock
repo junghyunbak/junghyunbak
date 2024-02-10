@@ -6912,6 +6912,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5"
     unified: "npm:^11.0.4"
+    vfile: "npm:^6.0.1"
   languageName: unknown
   linkType: soft
 
@@ -10238,7 +10239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile@npm:^6.0.0":
+"vfile@npm:^6.0.0, vfile@npm:^6.0.1":
   version: 6.0.1
   resolution: "vfile@npm:6.0.1"
   dependencies:

@@ -64,7 +64,8 @@ const RAW_RUNTIME_STATE =
           ["toml", "npm:3.0.0"],\
           ["ts-node", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"]\
+          ["unified", "npm:11.0.4"],\
+          ["vfile", "npm:6.0.1"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -9362,7 +9363,8 @@ const RAW_RUNTIME_STATE =
           ["toml", "npm:3.0.0"],\
           ["ts-node", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["unified", "npm:11.0.4"]\
+          ["unified", "npm:11.0.4"],\
+          ["vfile", "npm:6.0.1"]\
         ],\
         "linkType": "SOFT"\
       }]\
