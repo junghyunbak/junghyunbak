@@ -40,7 +40,8 @@ export function Toc({ markdown }: TocProps) {
   }
 
   return (
-    <div className="p-3.5 mb-6 bg-secondaryB border border-gray-800 rounded">
+    <div className="max-w-full p-5 pr-8 mb-6 border border-gray-300 rounded-sm w-fit bg-g20">
+      <p className="mb-4 ml-3 font-semibold">목차</p>
       {createTocList(toc)}
     </div>
   );
@@ -48,7 +49,7 @@ export function Toc({ markdown }: TocProps) {
 
 function createTocList(nodes: TocEntry[]) {
   return (
-    <ul className="pl-8 list-[revert]">
+    <ol className="pl-8 list-[revert]">
       {nodes.map((node, i) => {
         if (node.depth > MAX_TOC_DEPTH) {
           return null;
@@ -64,6 +65,6 @@ function createTocList(nodes: TocEntry[]) {
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 }
