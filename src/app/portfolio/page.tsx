@@ -15,7 +15,7 @@ export default async function Portfolio() {
     <div className="mt-6">
       <Hits path="/portfolio" />
 
-      <Toc markdown={issue?.body || ""} />
+      <Toc markdown={issue?.body || ""} maxDepth={2} />
 
       <Markdown markdown={issue?.body || ""} />
     </div>
