@@ -7,13 +7,12 @@ import rehypeExtractToc, {
 } from "@stefanprobst/rehype-extract-toc";
 import rehypeStringify from "rehype-stringify";
 
-const MAX_TOC_DEPTH = 3;
-
 interface TocProps {
   markdown: string;
+  maxDepth?: number;
 }
 
-export function Toc({ markdown }: TocProps) {
+export function Toc({ markdown, maxDepth = 3 }: TocProps) {
   const file = unified()
     .use(remarkParse)
     .use(remarkRehype)
@@ -31,7 +30,7 @@ export function Toc({ markdown }: TocProps) {
   }
 
   const validTocCount = toc.reduce(
-    (a, c) => (a + c.depth <= MAX_TOC_DEPTH ? 1 : 0),
+    (a, c) => a + (c.depth <= maxDepth ? 1 : 0),
     0
   );
 
@@ -42,16 +41,16 @@ export function Toc({ markdown }: TocProps) {
   return (
     <div className="max-w-full p-5 pr-8 mb-6 border border-gray-300 rounded-sm w-fit bg-g20">
       <p className="mb-4 ml-3 font-semibold">목차</p>
-      {createTocList(toc)}
+      {createTocList(toc, maxDepth)}
     </div>
   );
 }
 
-function createTocList(nodes: TocEntry[]) {
+function createTocList(nodes: TocEntry[], maxDepth: number) {
   return (
     <ol className="pl-8 list-[revert]">
       {nodes.map((node, i) => {
-        if (node.depth > MAX_TOC_DEPTH) {
+        if (node.depth > maxDepth) {
           return null;
         }
 
@@ -61,7 +60,7 @@ function createTocList(nodes: TocEntry[]) {
               {node.value}
             </a>
 
-            {node.children && createTocList(node.children)}
+            {node.children && createTocList(node.children, maxDepth)}
           </li>
         );
       })}
