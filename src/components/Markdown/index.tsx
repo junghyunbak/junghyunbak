@@ -77,16 +77,32 @@ export function CustomReactMarkdown({
             const { width, height, base64 } = previewImageData;
 
             return (
-              <Link href={`/photo/${encodeURIComponent(src)}`} scroll={false}>
-                <Image
-                  src={src}
-                  width={width}
-                  height={height}
-                  alt={alt}
-                  placeholder="blur"
-                  blurDataURL={base64}
-                  className="cursor-zoom-in"
-                />
+              <Image
+                src={src}
+                width={width}
+                height={height}
+                alt={alt}
+                placeholder="blur"
+                blurDataURL={base64}
+              />
+            );
+          },
+          a({ href, children, node, ref, ...props }) {
+            if (!href) {
+              return null;
+            }
+
+            if (href.startsWith("http")) {
+              return (
+                <a href={href} {...props}>
+                  {children}
+                </a>
+              );
+            }
+
+            return (
+              <Link href={href} {...props} scroll={false}>
+                {children}
               </Link>
             );
           },
