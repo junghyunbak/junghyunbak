@@ -12,16 +12,13 @@ fetchMock.enableMocks();
 
 const fileBuffer = fs.readFileSync(join(__dirname, "profile.png"));
 
-/**
- * `jest-fetch-mock`의 body는 string 타입이지만,
- * 테스트를 해 보았을 때 Buffer 타입의 데이터도 body에 담아 응답이 가능했기 때문에
- * 임시로 ignore 처리 한 후 사용함.
- */
-// @ts-ignore
 fetchMock.mockResponse(async (request) => {
   if (request.url.startsWith("https://mockapi/image")) {
     return {
-      body: fileBuffer,
+      /**
+       * https://github.com/jefflau/jest-fetch-mock/issues/218
+       */
+      body: fileBuffer as unknown as string,
       headers: { "Content-Type": "image/png" },
     };
   }
