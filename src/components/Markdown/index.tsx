@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import sharp from "sharp";
 import Image from "next/image";
+import Link from "next/link";
 import "./index.css";
 
 type PreviewImageData = {
@@ -76,14 +77,17 @@ export function CustomReactMarkdown({
             const { width, height, base64 } = previewImageData;
 
             return (
-              <Image
-                src={src}
-                width={width}
-                height={height}
-                alt={alt}
-                placeholder="blur"
-                blurDataURL={base64}
-              />
+              <Link href={`/photo/${encodeURIComponent(src)}`}>
+                <Image
+                  src={src}
+                  width={width}
+                  height={height}
+                  alt={alt}
+                  placeholder="blur"
+                  blurDataURL={base64}
+                  className="cursor-zoom-in"
+                />
+              </Link>
             );
           },
         }}
