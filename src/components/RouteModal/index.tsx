@@ -35,8 +35,10 @@ export function RouteModal({ children }: ModalProps) {
         className="absolute inset-0 bg-[#0000008f] backdrop-blur-sm"
         onClick={handleModalClose}
       />
-      <div className="relative z-10 max-w-[90%]">
+
+      <div className="relative z-10 max-w-[90%] max-h-[90%]">
         {children}
+
         <div
           className="absolute w-[24px] top-[-12px] right-[-12px]  aspect-square cursor-pointer"
           onClick={handleModalClose}
