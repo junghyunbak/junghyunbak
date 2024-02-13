@@ -77,7 +77,7 @@ export function CustomReactMarkdown({
             const { width, height, base64 } = previewImageData;
 
             return (
-              <Link href={`/photo/${encodeURIComponent(src)}`}>
+              <Link href={`/photo/${encodeURIComponent(src)}`} scroll={false}>
                 <Image
                   src={src}
                   width={width}
