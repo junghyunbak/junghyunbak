@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="flex w-full bg-primary">
+    <header className="flex w-full h-11 bg-primary">
       <HalfPavilion className="h-full [&_path]:fill-secondaryA" />
 
-      <div className="flex items-center justify-between w-full p-2.5 text-white">
+      <div className="flex items-center justify-between w-full pl-2.5 pr-2.5 text-white">
         <Link href={"/"}>개발자 박정현</Link>
 
         <div className="flex gap-2.5 items-center">
