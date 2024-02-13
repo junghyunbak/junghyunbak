@@ -29,6 +29,9 @@ export type LabelsRequestParameters = Omit<
 export type LabelsResponse =
   Endpoints["GET /repos/{owner}/{repo}/labels"]["response"];
 
+export type ReadmeResponse =
+  Endpoints["GET /repos/{owner}/{repo}/readme"]["response"];
+
 export const issuesRequestDefaultOptions: IssuesRequestParameters = {
   per_page: ISSUE_PER_PAGE,
   /**
@@ -277,6 +280,20 @@ const getAllLabel = async (
   return labels;
 };
 
+const getRepositoryReadme = async (
+  owner: string,
+  repo: string
+): Promise<ReadmeResponse["data"]> => {
+  const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
+
+  const response = await fetch(url, {
+    cache: "no-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
+
+  return (await response.json()) as ReadmeResponse["data"];
+};
+
 export const apiService = {
   getIssues,
   getIssuesPageCount,
@@ -285,4 +302,6 @@ export const apiService = {
 
   getLabelsPageCount,
   getAllLabel,
+
+  getRepositoryReadme,
 };
