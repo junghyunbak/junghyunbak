@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import CircleX from "@/assets/svgs/circle-x.svg";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -14,6 +14,20 @@ export function RouteModal({ children }: ModalProps) {
   const handleModalClose = () => {
     router.back();
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        router.back();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
