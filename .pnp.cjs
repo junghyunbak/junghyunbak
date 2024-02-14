@@ -32,13 +32,16 @@ const RAW_RUNTIME_STATE =
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@testing-library/jest-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:6.4.2"],\
           ["@testing-library/react", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.2.1"],\
+          ["@types/base-64", "npm:1.0.2"],\
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
+          ["@types/utf8", "npm:3.0.3"],\
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
+          ["base-64", "npm:1.0.0"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["jest", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:29.7.0"],\
@@ -66,6 +69,7 @@ const RAW_RUNTIME_STATE =
           ["ts-node", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["unified", "npm:11.0.4"],\
+          ["utf8", "npm:3.0.0"],\
           ["vfile", "npm:6.0.1"]\
         ],\
         "linkType": "SOFT"\
@@ -4234,6 +4238,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/base-64", [\
+      ["npm:1.0.2", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-base-64-npm-1.0.2-2ab395606e-10c0.zip/node_modules/@types/base-64/",\
+        "packageDependencies": [\
+          ["@types/base-64", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/debug", [\
       ["npm:4.1.12", {\
         "packageLocation": "../../.yarn/berry/cache/@types-debug-npm-4.1.12-82a3fc4905-10c0.zip/node_modules/@types/debug/",\
@@ -4478,6 +4491,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/@types-unist-npm-3.0.2-3bce72a913-10c0.zip/node_modules/@types/unist/",\
         "packageDependencies": [\
           ["@types/unist", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/utf8", [\
+      ["npm:3.0.3", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-utf8-npm-3.0.3-d95c9c9829-10c0.zip/node_modules/@types/utf8/",\
+        "packageDependencies": [\
+          ["@types/utf8", "npm:3.0.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5253,6 +5275,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/balanced-match-npm-1.0.2-a53c126459-10c0.zip/node_modules/balanced-match/",\
         "packageDependencies": [\
           ["balanced-match", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["base-64", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/base-64-npm-1.0.0-0683a6b836-10c0.zip/node_modules/base-64/",\
+        "packageDependencies": [\
+          ["base-64", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9353,13 +9384,16 @@ const RAW_RUNTIME_STATE =
           ["@svgr/webpack", "npm:8.1.0"],\
           ["@testing-library/jest-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:6.4.2"],\
           ["@testing-library/react", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.2.1"],\
+          ["@types/base-64", "npm:1.0.2"],\
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
+          ["@types/utf8", "npm:3.0.3"],\
           ["autoprefixer", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.4.17"],\
+          ["base-64", "npm:1.0.0"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-next", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:14.1.0"],\
           ["jest", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:29.7.0"],\
@@ -9387,6 +9421,7 @@ const RAW_RUNTIME_STATE =
           ["ts-node", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["unified", "npm:11.0.4"],\
+          ["utf8", "npm:3.0.0"],\
           ["vfile", "npm:6.0.1"]\
         ],\
         "linkType": "SOFT"\
@@ -13063,6 +13098,15 @@ const RAW_RUNTIME_STATE =
           ["url-parse", "npm:1.5.10"],\
           ["querystringify", "npm:2.2.0"],\
           ["requires-port", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["utf8", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/utf8-npm-3.0.0-7c39b5994a-10c0.zip/node_modules/utf8/",\
+        "packageDependencies": [\
+          ["utf8", "npm:3.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

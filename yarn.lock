@@ -2595,6 +2595,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/base-64@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@types/base-64@npm:1.0.2"
+  checksum: 10c0/3ad69002bd9ca4e79c010f6d9a4c9d09967687153fa6bb98e9459c731219609a4ac76920451565784e9d98cbe3567429eb60bd1561918c3a6ea2436d894346af
+  languageName: node
+  linkType: hard
+
 "@types/debug@npm:^4.0.0":
   version: 4.1.12
   resolution: "@types/debug@npm:4.1.12"
@@ -2818,6 +2825,13 @@ __metadata:
   version: 2.0.10
   resolution: "@types/unist@npm:2.0.10"
   checksum: 10c0/5f247dc2229944355209ad5c8e83cfe29419fa7f0a6d557421b1985a1500444719cc9efcc42c652b55aab63c931813c88033e0202c1ac684bcd4829d66e44731
+  languageName: node
+  linkType: hard
+
+"@types/utf8@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@types/utf8@npm:3.0.3"
+  checksum: 10c0/2caa2665ec1387600597460e0bd27184f452564b80f1926470d373b7d28fbd42f20d60dcd57c593f80603bfc580d280b29382a22c40d28132abbc50af2fe93f0
   languageName: node
   linkType: hard
 
@@ -3399,6 +3413,13 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 10c0/9308baf0a7e4838a82bbfd11e01b1cb0f0cf2893bc1676c27c2a8c0e70cbae1c59120c3268517a8ae7fb6376b4639ef81ca22582611dbee4ed28df945134aaee
+  languageName: node
+  linkType: hard
+
+"base-64@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "base-64@npm:1.0.0"
+  checksum: 10c0/d886cb3236cee0bed9f7075675748b59b32fad623ddb8ce1793c790306aa0f76a03238cad4b3fb398abda6527ce08a5588388533a4ccade0b97e82b9da660e28
   languageName: node
   linkType: hard
 
@@ -6898,13 +6919,16 @@ __metadata:
     "@svgr/webpack": "npm:^8.1.0"
     "@testing-library/jest-dom": "npm:^6.4.2"
     "@testing-library/react": "npm:^14.2.1"
+    "@types/base-64": "npm:^1.0.2"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20"
     "@types/parse-link-header": "npm:^2.0.3"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     "@types/react-syntax-highlighter": "npm:^15.5.11"
+    "@types/utf8": "npm:^3.0.3"
     autoprefixer: "npm:^10.4.17"
+    base-64: "npm:^1.0.0"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.1.0"
     jest: "npm:^29.7.0"
@@ -6932,6 +6956,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5"
     unified: "npm:^11.0.4"
+    utf8: "npm:^3.0.0"
     vfile: "npm:^6.0.1"
   languageName: unknown
   linkType: soft
@@ -10239,6 +10264,13 @@ __metadata:
     querystringify: "npm:^2.1.1"
     requires-port: "npm:^1.0.0"
   checksum: 10c0/bd5aa9389f896974beb851c112f63b466505a04b4807cea2e5a3b7092f6fbb75316f0491ea84e44f66fed55f1b440df5195d7e3a8203f64fcefa19d182f5be87
+  languageName: node
+  linkType: hard
+
+"utf8@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "utf8@npm:3.0.0"
+  checksum: 10c0/675d008bab65fc463ce718d5cae8fd4c063540f269e4f25afebce643098439d53e7164bb1f193e0c3852825c7e3e32fbd8641163d19a618dbb53f1f09acb0d5a
   languageName: node
   linkType: hard
 
