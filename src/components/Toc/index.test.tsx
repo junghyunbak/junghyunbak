@@ -34,9 +34,7 @@ it("마크다운 요소 중 heading 4 요소는 렌더링되지 않아야 한다
 });
 
 it("렌더링 할 최대 heading 요소가 깊이가 2일 때, heading 2 요소까지만 렌더링 되어야 한다.", () => {
-  const { container } = render(<Toc markdown={markdownText} maxDepth={2} />);
-
-  console.log(container.innerHTML);
+  render(<Toc markdown={markdownText} maxDepth={2} />);
 
   expect(screen.queryByRole("link", { name: "h2" })).not.toEqual(null);
   expect(screen.queryByRole("link", { name: "h3" })).toEqual(null);
