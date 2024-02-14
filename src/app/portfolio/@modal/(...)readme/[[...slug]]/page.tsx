@@ -10,7 +10,7 @@ export default async function ReadmeModal({
   const [owner, repo] = slug;
 
   /**
-   * null 말고 적절한 화면을 반환해야 할 듯
+   * TODO: null 대신 적절한 UI를 반환한다.
    */
   if (!owner || !repo) {
     return null;
@@ -35,7 +35,10 @@ export default async function ReadmeModal({
         </div>
 
         <div className="flex-1 p-8 overflow-y-scroll">
-          <Markdown markdown={decodeUnicode(readme.content)} />
+          <Markdown
+            markdown={decodeUnicode(readme.content)}
+            imageOptimize={false}
+          />
         </div>
       </div>
     </RouteModal>
