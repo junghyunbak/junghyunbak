@@ -35,7 +35,7 @@ export function Toc({ markdown, maxDepth = 3 }: TocProps) {
   );
 
   if (!validTocCount) {
-    return;
+    return null;
   }
 
   return (

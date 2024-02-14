@@ -39,3 +39,9 @@ it("렌더링 할 최대 heading 요소가 깊이가 2일 때, heading 2 요소�
   expect(screen.queryByRole("link", { name: "h2" })).not.toEqual(null);
   expect(screen.queryByRole("link", { name: "h3" })).toEqual(null);
 });
+
+it("렌더링 할 마크다운 요소가 없을 경우 컴포넌트 렌더링 결과가 존재하지 않아야 한다.", () => {
+  const { container } = render(<Toc markdown={"#### h4\n\n##### h5"} />);
+
+  expect(container.innerHTML).toEqual("");
+});
