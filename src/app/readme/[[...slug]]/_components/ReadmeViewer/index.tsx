@@ -16,22 +16,6 @@ export async function ReadmeViewer({ owner, repo }: ReadmeViewerProps) {
   const markdown = await getReadmeMarkdown(owner, repo);
 
   return (
-    <ReadmeViewerPresenter owner={owner} repo={repo} markdown={markdown} />
-  );
-}
-
-interface ReadmeViewerPresenterProps {
-  owner: string;
-  repo: string;
-  markdown: string;
-}
-
-export function ReadmeViewerPresenter({
-  owner,
-  repo,
-  markdown,
-}: ReadmeViewerPresenterProps) {
-  return (
     <div className="bg-white w-[90dvw] h-[80dvh] flex flex-col lg:w-[60rem]">
       <div className="p-4 border-b border-gray-300">
         <p className="[&_a]:text-[#00f]">
@@ -60,7 +44,11 @@ export function ReadmeViewerPresenter({
 }
 
 export async function getReadmeMarkdown(owner: string, repo: string) {
-  const readme = await apiService.getRepositoryReadme(owner, repo);
+  try {
+    const readme = await apiService.getRepositoryReadme(owner, repo);
 
-  return utf8.decode(base64.decode(readme.content));
+    return utf8.decode(base64.decode(readme.content));
+  } catch (e) {
+    return `${owner} / ${repo} 레포지토리가 존재하지 않습니다.`;
+  }
 }
