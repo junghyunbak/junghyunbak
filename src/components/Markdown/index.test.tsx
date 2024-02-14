@@ -55,7 +55,7 @@ it("이미지 관련 url이 아닐경우 미리보기 이미지 Map 객체에 �
   expect(imageUrlToPreviewImageData.size).toBe(2);
 });
 
-it("올바른 url 이미지일 경우에만 화면에 렌더링 되도록 한다.", async () => {
+it("모든 이미지가 올바르게 렌더링되는지 확인한다.", async () => {
   const urls = extractUrlsFromMarkdown(markdown);
 
   const imageUrlToPreviewImageData = await getImageUrlToPreviewImageData(urls);
@@ -67,13 +67,11 @@ it("올바른 url 이미지일 경우에만 화면에 렌더링 되도록 한다
     />
   );
 
-  const image1 = screen.queryByAltText("image1");
-  const image2 = screen.queryByAltText("image2");
-  const image3 = screen.queryByAltText("image3");
-  const image4 = screen.queryByAltText("image4");
+  const alts = ["image1", "image2", "image3", "image4"];
 
-  expect(image1).toBeInTheDocument();
-  expect(image2).not.toBeInTheDocument();
-  expect(image3).not.toBeInTheDocument();
-  expect(image4).toBeInTheDocument();
+  for (const alt of alts) {
+    const image = screen.getByAltText(alt);
+
+    expect(image).toBeInTheDocument();
+  }
 });

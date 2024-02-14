@@ -18,12 +18,18 @@ type PreviewImageData = {
 
 interface MarkdownProps {
   markdown: string;
+  imageOptimize?: boolean;
 }
 
-export async function Markdown({ markdown }: MarkdownProps) {
+export async function Markdown({
+  markdown,
+  imageOptimize = true,
+}: MarkdownProps) {
   const urls = extractUrlsFromMarkdown(markdown);
 
-  const imageUrlToPreviewImage = await getImageUrlToPreviewImageData(urls);
+  const imageUrlToPreviewImage = imageOptimize
+    ? await getImageUrlToPreviewImageData(urls)
+    : new Map();
 
   return (
     <CustomReactMarkdown
@@ -71,7 +77,7 @@ export function CustomReactMarkdown({
             let previewImageData: PreviewImageData | undefined;
 
             if (!src || !(previewImageData = imageUrlToPreviewImage.get(src))) {
-              return null;
+              return <img src={src} alt={alt} />;
             }
 
             const { width, height, base64 } = previewImageData;
