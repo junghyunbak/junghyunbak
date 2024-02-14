@@ -35,6 +35,12 @@ export default async function ReadmeModal({
         </div>
 
         <div className="flex-1 p-8 overflow-y-scroll">
+          {/**
+           * https://github.com/vercel/next.js/issues/52842
+           *
+           * `intercepting route`를 위한 parallel 경로에서 정적 페이지 생성이 되지 않는 이슈가 있어,
+           * 빠른 로딩을 위해 이미지 최적화 옵션을 끔
+           */}
           <Markdown
             markdown={decodeUnicode(readme.content)}
             imageOptimize={false}
