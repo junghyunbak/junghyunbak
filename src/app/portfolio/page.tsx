@@ -5,7 +5,7 @@ import { Hits } from "@/components/Hits";
 import { Toc } from "@/components/Toc";
 
 export const metadata: Metadata = {
-  title: "Portfolio | 박정현",
+  title: "Portfolio | 개발자 박정현",
 };
 
 export default async function Portfolio() {

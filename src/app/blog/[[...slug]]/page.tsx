@@ -63,7 +63,9 @@ export function generateMetadata({
     : undefined;
 
   return {
-    title: `Blog - ${currentLabel || "전체"} ${currentPage}페이지 | 박정현`,
+    title: `Blog - ${
+      currentLabel || "전체"
+    } ${currentPage}페이지 | 개발자 박정현`,
   };
 }
 

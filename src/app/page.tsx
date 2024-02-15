@@ -5,7 +5,7 @@ import { Utterances } from "@/components/Utterances";
 import { Markdown } from "@/components/Markdown";
 
 export const metadata: Metadata = {
-  title: "About | 박정현",
+  title: "About | 개발자 박정현",
 };
 
 export default async function Home() {

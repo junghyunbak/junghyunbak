@@ -46,7 +46,7 @@ export async function generateMetadata({
   } = file;
 
   return {
-    title: `Post - ${issue?.title} | 박정현`,
+    title: `Post - "${issue?.title}" | 개발자 박정현`,
     description:
       typeof description === "string"
         ? description
