@@ -78,12 +78,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
             <div className="h-3.5 border-l border-gray-600" />
 
-            <Link
+            <a
               className="text-sm text-gray-600"
               href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+              target="_blank"
             >
               수정하기
-            </Link>
+            </a>
           </div>
 
           <ul className="flex flex-wrap gap-2.5">
