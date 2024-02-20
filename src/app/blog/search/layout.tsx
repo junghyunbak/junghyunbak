@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 export default function Layout({
   labels,
@@ -14,8 +14,12 @@ export default function Layout({
   return (
     <>
       {labels}
-      {form}
-      {issues}
+
+      <Suspense>
+        {form}
+        {issues}
+      </Suspense>
+
       {children}
     </>
   );
