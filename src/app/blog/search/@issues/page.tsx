@@ -7,7 +7,7 @@ import {
   IsOrderOptionValue,
   IsSortOptionValue,
 } from "../@form/page";
-import { IssueList } from "../../_components/IssueList";
+import { IssueList } from "@/components/IssueList";
 import { REPO_NAME, REPO_OWNER } from "@/apis";
 import { useQuery } from "react-query";
 
