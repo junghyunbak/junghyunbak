@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   verification: {
     google: "cT0MruhYhAIxE2PwRZWlZmOseoYdbQeBXWNULoe0kEI",
   },
-  viewport: {},
 };
 
 export default function RootLayout({
