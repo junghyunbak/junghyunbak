@@ -49,6 +49,10 @@ export default function SearchIssues() {
 
   return (
     <div className="mb-12">
+      <div className="mt-11">
+        <p className="text-xl font-semibold">총 {issues.length}개의 검색결과</p>
+      </div>
+
       <IssueList issues={issues} />
     </div>
   );
