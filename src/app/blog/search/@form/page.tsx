@@ -196,6 +196,11 @@ export default function SearchForm() {
           placeholder="검색어 입력"
           className="flex-1 border border-gray-300 px-3.5 rounded h-[38px]"
           onChange={(e) => setSearchKeyword(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchButtonClick();
+            }
+          }}
           value={searchKeyword}
         />
 
