@@ -11,8 +11,11 @@ export default function Layout({
   return (
     <>
       <Header currentPage="포트폴리오" />
-      {children}
-      {modal}
+
+      <div className="max-md:p-3">
+        {children}
+        {modal}
+      </div>
     </>
   );
 }

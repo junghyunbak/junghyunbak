@@ -16,13 +16,15 @@ export default async function Home() {
     <>
       <Header currentPage="소개" />
 
-      <main className="mt-6">
-        <Hits path="/" />
+      <div className="max-md:p-3">
+        <main className="mt-6">
+          <Hits path="/" />
 
-        <Markdown markdown={issue?.body || ""} />
+          <Markdown markdown={issue?.body || ""} />
 
-        <Utterances issueNumber={ISSUE_ABOUT_NUMBER} />
-      </main>
+          <Utterances issueNumber={ISSUE_ABOUT_NUMBER} />
+        </main>
+      </div>
     </>
   );
 }

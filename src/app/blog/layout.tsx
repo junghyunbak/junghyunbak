@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Header currentPage="블로그" />
 
-      {children}
+      <div className="max-md:p-3">{children}</div>
     </>
   );
 }

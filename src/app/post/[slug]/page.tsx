@@ -70,53 +70,56 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <div>
       <Header currentPage="블로그" />
 
-      <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
-        <div className="flex flex-col items-center gap-3.5 pb-3.5">
-          <p className="text-2xl font-semibold text-center">{issue.title}</p>
+      <div className="max-md:p-3">
+        <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
+          <div className="flex flex-col items-center gap-3.5 pb-3.5">
+            <p className="text-2xl font-semibold text-center">{issue.title}</p>
 
-          <div className="flex items-center gap-3.5">
-            <p className="text-sm text-gray-600">
-              {new Date(issue.created_at).toLocaleString("ko-KR")}
-            </p>
+            <div className="flex items-center gap-3.5">
+              <p className="text-sm text-gray-600">
+                {new Date(issue.created_at).toLocaleString("ko-KR")}
+              </p>
 
-            <div className="h-3.5 border-l border-gray-600" />
+              <div className="h-3.5 border-l border-gray-600" />
 
-            <a
-              className="text-sm text-gray-600"
-              href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
-              target="_blank"
-            >
-              수정하기
-            </a>
+              <a
+                className="text-sm text-gray-600"
+                href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+                target="_blank"
+              >
+                수정하기
+              </a>
+            </div>
+
+            <ul className="flex flex-wrap gap-2.5">
+              {issue.labels.map((label, i) => {
+                const id = typeof label === "string" ? i : label.id || i;
+                const name =
+                  typeof label === "string" ? label : label.name || "";
+
+                return (
+                  <li key={id}>
+                    <Link
+                      href={`/blog/1/${name}`}
+                      className="font-semibold text-g700"
+                    >
+                      {`#${name}`}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
-          <ul className="flex flex-wrap gap-2.5">
-            {issue.labels.map((label, i) => {
-              const id = typeof label === "string" ? i : label.id || i;
-              const name = typeof label === "string" ? label : label.name || "";
-
-              return (
-                <li key={id}>
-                  <Link
-                    href={`/blog/1/${name}`}
-                    className="font-semibold text-g700"
-                  >
-                    {`#${name}`}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <Hits path={`/post/${issue.number}`} />
         </div>
 
-        <Hits path={`/post/${issue.number}`} />
+        <Toc markdown={issue.body || ""} />
+
+        <Markdown markdown={issue.body || ""} />
+
+        <Utterances issueNumber={issue.number} />
       </div>
-
-      <Toc markdown={issue.body || ""} />
-
-      <Markdown markdown={issue.body || ""} />
-
-      <Utterances issueNumber={issue.number} />
     </div>
   );
 }
