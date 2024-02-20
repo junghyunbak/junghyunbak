@@ -36,11 +36,11 @@ export default function SearchIssues() {
       const {
         data: { items },
       } = await octokit.rest.search.issuesAndPullRequests({
-        q: `type:issue ${
-          IsSeacrhOptionValue(searchParam) ? searchParam : ""
-        } ${keywordParam} user:${REPO_OWNER} repo:${REPO_OWNER}/${REPO_NAME} no:assignee`,
-        sort: IsSortOptionValue(sortParam) ? sortParam : undefined,
-        order: IsOrderOptionValue(orderParam) ? orderParam : undefined,
+        q: `type:issue ${IsSeacrhOptionValue(searchParam) ? searchParam : ""} ${
+          keywordParam || ""
+        } user:${REPO_OWNER} repo:${REPO_OWNER}/${REPO_NAME} no:assignee author:${REPO_OWNER}`,
+        sort: IsSortOptionValue(sortParam) ? sortParam : "updated",
+        order: IsOrderOptionValue(orderParam) ? orderParam : "desc",
       });
 
       setIssues(items);
