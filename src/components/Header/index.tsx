@@ -19,22 +19,24 @@ export function Header({ currentPage }: HeaderProps) {
       <div className="flex items-center justify-between w-full pl-2.5 pr-2.5 text-white">
         <Link href={"/"}>개발자 박정현</Link>
 
-        <ul className="flex gap-2.5 items-center">
+        <ul className="flex items-center">
           {pages.map((page, i) => {
             return (
-              <>
-                {i !== 0 && <div className="h-4 border-l border-white" />}
-
+              <li
+                key={i}
+                className="flex items-center mr-2.5 last:mr-0 before:border-l before:border-white before:h-4 first:before:content-none before:block "
+              >
                 <Link
                   href={pageHrefs[i]}
                   key={i}
-                  className={
-                    page === currentPage ? "text-secondaryB" : "text-white"
-                  }
+                  className={[
+                    "ml-2.5",
+                    page === currentPage ? "text-secondaryB" : "text-white",
+                  ].join(" ")}
                 >
                   {page}
                 </Link>
-              </>
+              </li>
             );
           })}
         </ul>
