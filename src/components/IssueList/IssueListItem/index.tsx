@@ -1,11 +1,7 @@
-import { type IssuesResponse } from "@/apis";
-import { Endpoints } from "@octokit/types";
 import Link from "next/link";
 
 interface IssueListItemProps {
-  issue:
-    | IssuesResponse["data"][number]
-    | Endpoints["GET /search/issues"]["response"]["data"]["items"][number];
+  issue: Issue;
 }
 
 export function IssueListItem({ issue }: IssueListItemProps) {

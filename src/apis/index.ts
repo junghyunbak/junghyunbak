@@ -1,7 +1,5 @@
 import parseLink from "parse-link-header";
 
-import { type Endpoints } from "@octokit/types";
-
 export const REPO_OWNER = "junghyunbak";
 export const REPO_NAME = "junghyunbak";
 
@@ -10,29 +8,7 @@ export const ISSUE_PER_PAGE = 10;
 export const ISSUE_ABOUT_NUMBER = 18;
 export const ISSUE_PORTFOLIO_NUMBER = 19;
 
-export type IssuesRequestParameters = Omit<
-  Endpoints["GET /repos/{owner}/{repo}/issues"]["parameters"],
-  "repo" | "owner"
->;
-
-export type IssuesResponse =
-  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
-
-export type AnIssueResponse =
-  Endpoints["GET /repos/{owner}/{repo}/issues/{issue_number}"]["response"];
-
-export type LabelsRequestParameters = Omit<
-  Endpoints["GET /repos/{owner}/{repo}/labels"]["parameters"],
-  "repo" | "owner"
->;
-
-export type LabelsResponse =
-  Endpoints["GET /repos/{owner}/{repo}/labels"]["response"];
-
-export type ReadmeResponse =
-  Endpoints["GET /repos/{owner}/{repo}/readme"]["response"];
-
-export const issuesRequestDefaultOptions: IssuesRequestParameters = {
+export const issuesRequestDefaultOptions: IssuesCoreRequestParameters = {
   per_page: ISSUE_PER_PAGE,
   /**
    * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
@@ -124,8 +100,8 @@ const objectValueFilterAndToString = (
 };
 
 const getIssues = async (
-  options?: IssuesRequestParameters
-): Promise<IssuesResponse["data"]> => {
+  options?: IssuesCoreRequestParameters
+): Promise<IssuesCoreResponseData> => {
   const _options = objectValueFilterAndToString(options);
 
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`;
@@ -141,11 +117,11 @@ const getIssues = async (
 
   const data = await response.json();
 
-  return data as IssuesResponse["data"];
+  return data as IssuesCoreResponseData;
 };
 
 const getIssuesPageCount = async (
-  options?: IssuesRequestParameters
+  options?: IssuesCoreRequestParameters
 ): Promise<number> => {
   const _options = objectValueFilterAndToString(options);
 
@@ -166,9 +142,9 @@ const getIssuesPageCount = async (
 };
 
 const getAllIssue = async (
-  options?: IssuesRequestParameters
-): Promise<IssuesResponse["data"]> => {
-  const issues: IssuesResponse["data"] = [];
+  options?: IssuesCoreRequestParameters
+): Promise<IssuesCoreResponseData> => {
+  const issues: IssuesCoreResponseData = [];
 
   const pageCount = await getIssuesPageCount(options);
 
@@ -193,7 +169,7 @@ const getAllIssue = async (
     });
 
     issues.push(
-      ...Array.from((await response.json()) as IssuesResponse["data"])
+      ...Array.from((await response.json()) as IssuesCoreResponseData)
     );
   }
 
@@ -202,7 +178,7 @@ const getAllIssue = async (
 
 const getAnIssue = async (
   issueNumber: string
-): Promise<AnIssueResponse["data"] | null> => {
+): Promise<AnIssueResponseData | null> => {
   const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}`;
 
   const response = await fetch(url, {
@@ -219,7 +195,7 @@ const getAnIssue = async (
 
   const data = await response.json();
 
-  return data as AnIssueResponse["data"];
+  return data as AnIssueResponseData;
 };
 
 const getLabelsPageCount = async (
@@ -247,8 +223,8 @@ const getLabelsPageCount = async (
 
 const getAllLabel = async (
   options?: LabelsRequestParameters
-): Promise<LabelsResponse["data"]> => {
-  const labels: LabelsResponse["data"] = [];
+): Promise<LabelsResponseData> => {
+  const labels: LabelsResponseData = [];
 
   const pageCount = await getLabelsPageCount(options);
 
@@ -272,9 +248,7 @@ const getAllLabel = async (
       },
     });
 
-    labels.push(
-      ...Array.from((await response.json()) as LabelsResponse["data"])
-    );
+    labels.push(...Array.from((await response.json()) as LabelsResponseData));
   }
 
   return labels;
@@ -283,7 +257,7 @@ const getAllLabel = async (
 const getRepositoryReadme = async (
   owner: string,
   repo: string
-): Promise<ReadmeResponse["data"]> => {
+): Promise<ReadmeResponseData> => {
   const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
 
   const response = await fetch(url, {
@@ -291,7 +265,7 @@ const getRepositoryReadme = async (
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
   });
 
-  return (await response.json()) as ReadmeResponse["data"];
+  return (await response.json()) as ReadmeResponseData;
 };
 
 export const apiService = {
