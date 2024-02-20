@@ -1,10 +1,9 @@
-import { type LabelsResponse } from "@/apis";
 import Link, { type LinkProps } from "next/link";
 import Magnifier from "@/assets/svgs/magnifier.svg";
 import React from "react";
 
 interface LabelListProps {
-  labels: LabelsResponse["data"];
+  labels: LabelsResponseData;
   currentLabel?: string;
   isSearch?: boolean;
 }

@@ -1,11 +1,7 @@
 import { LabelList } from "../_components/LabelList";
 import { IssueList } from "../_components/IssueList";
 import { IssueListPaginate } from "../_components/IssueListPaginate";
-import {
-  apiService,
-  type IssuesRequestParameters,
-  issuesRequestDefaultOptions,
-} from "@/apis";
+import { apiService, issuesRequestDefaultOptions } from "@/apis";
 import { Metadata } from "next";
 import { REPO_NAME, REPO_OWNER } from "@/apis";
 import Link from "next/link";
@@ -79,7 +75,7 @@ export default async function Blog({
     ? decodeURI(slug[1])
     : undefined;
 
-  const issuesRequestOptions: IssuesRequestParameters = {
+  const issuesRequestOptions: IssuesCoreRequestParameters = {
     page: currentPage,
     labels: currentLabel,
     ...issuesRequestDefaultOptions,

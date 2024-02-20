@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { type Endpoints } from "@octokit/types";
 import { Octokit } from "octokit";
 import {
   IsSeacrhOptionValue,
@@ -29,9 +28,7 @@ export default function SearchIssues() {
   const orderParam = searchParams.get("order");
   const keywordParam = searchParams.get("keyword");
 
-  const { data: issues } = useQuery<
-    Endpoints["GET /search/issues"]["response"]["data"]["items"]
-  >(
+  const { data: issues } = useQuery<IssuesSearchResponseData>(
     [keywordParam, searchParam, sortParam, orderParam],
     async () => {
       const {
