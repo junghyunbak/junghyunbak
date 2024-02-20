@@ -30,7 +30,6 @@ export default function SearchIssues() {
 
   const query = [
     "type:issue",
-    `user:${REPO_OWNER}`,
     `repo:${REPO_OWNER}/${REPO_NAME}`,
     "no:assignee",
     `author:${REPO_OWNER}`,
