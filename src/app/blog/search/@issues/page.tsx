@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { type Endpoints } from "@octokit/types";
 import { Octokit } from "octokit";
 import {
@@ -13,7 +12,9 @@ import { IssueList } from "../../_components/IssueList";
 import { REPO_NAME, REPO_OWNER } from "@/apis";
 import { useQuery } from "react-query";
 
-const octokit = new Octokit();
+const octokit = new Octokit({
+  throttle: { enabled: false },
+});
 
 /**
  * TODO: pagination 혹은 무한스크롤 구현
@@ -47,6 +48,7 @@ export default function SearchIssues() {
     },
     {
       suspense: true,
+      useErrorBoundary: true,
     }
   );
 
