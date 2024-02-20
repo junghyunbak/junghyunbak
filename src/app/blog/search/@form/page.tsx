@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Select, { SingleValue } from "react-select";
 import { type Endpoints } from "@octokit/types";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 type SelectOption<Value extends string | undefined> = {
   value: Value;
@@ -70,7 +70,7 @@ const orderOptions: SelectOption<OrderOptionValue>[] = [
   },
 ];
 
-function IsSeacrhOptionValue(value: any): value is SearchOptionValue {
+export function IsSeacrhOptionValue(value: any): value is SearchOptionValue {
   const searchOptionValues: SearchOptionValue[] = [
     undefined,
     "in:body",
@@ -82,7 +82,7 @@ function IsSeacrhOptionValue(value: any): value is SearchOptionValue {
   return searchOptionValues.includes(value);
 }
 
-function IsSortOptionValue(value: any): value is SortOptionValue {
+export function IsSortOptionValue(value: any): value is SortOptionValue {
   const sortOptionValues: SortOptionValue[] = [
     "comments",
     "created",
@@ -92,7 +92,7 @@ function IsSortOptionValue(value: any): value is SortOptionValue {
   return sortOptionValues.includes(value);
 }
 
-function IsOrderOptionValue(value: any): value is OrderOptionValue {
+export function IsOrderOptionValue(value: any): value is OrderOptionValue {
   const orderOptionValues: OrderOptionValue[] = [undefined, "asc", "desc"];
 
   return orderOptionValues.includes(value);
@@ -100,6 +100,7 @@ function IsOrderOptionValue(value: any): value is OrderOptionValue {
 
 export default function SearchForm() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const searchOptionParam = searchParams.get("search");
   const sortOptionParam = searchParams.get("sort");
@@ -124,7 +125,7 @@ export default function SearchForm() {
       ? {
           value: sortOptionParam,
           label:
-            sortOptions.find((v) => v.value === searchOptionParam)?.label || "",
+            sortOptions.find((v) => v.value === sortOptionParam)?.label || "",
         }
       : null
   );
@@ -143,13 +144,21 @@ export default function SearchForm() {
   const [searchKeyword, setSearchKeyword] = useState("");
 
   const handleSearchButtonClick = () => {
-    alert(
-      JSON.stringify(
-        { searchOption, orderOption, sortOption, searchKeyword },
-        null,
-        2
-      )
-    );
+    const queryString = [`keyword=${searchKeyword}`];
+
+    if (searchOption) {
+      queryString.push(`search=${searchOption.value}`);
+    }
+
+    if (sortOption) {
+      queryString.push(`sort=${sortOption.value}`);
+    }
+
+    if (orderOption) {
+      queryString.push(`order=${orderOption.value}`);
+    }
+
+    router.replace(`/blog/search?${queryString.join("&")}`);
   };
 
   return (
