@@ -205,7 +205,7 @@ export default function SearchForm() {
         />
 
         <div
-          className="rounded bg-secondaryA px-3.5 flex justify-center items-center cursor-pointer"
+          className="rounded bg-secondaryA px-3.5 h-[38px] flex justify-center items-center cursor-pointer"
           onClick={handleSearchButtonClick}
         >
           <p className="text-white">검색</p>
