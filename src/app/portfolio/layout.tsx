@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from "@/components/Header";
 
 export default function Layout({
   children,
@@ -9,6 +10,7 @@ export default function Layout({
 }) {
   return (
     <>
+      <Header currentPage="포트폴리오" />
       {children}
       {modal}
     </>

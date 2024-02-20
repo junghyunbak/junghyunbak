@@ -10,6 +10,7 @@ import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
+import { Header } from "@/components/Header";
 const toml = require("toml").parse;
 
 export async function generateStaticParams() {
@@ -67,6 +68,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   return (
     <div>
+      <Header currentPage="블로그" />
+
       <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
         <div className="flex flex-col items-center gap-3.5 pb-3.5">
           <p className="text-2xl font-semibold text-center">{issue.title}</p>
