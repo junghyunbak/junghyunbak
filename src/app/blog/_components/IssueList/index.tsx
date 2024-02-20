@@ -1,8 +1,11 @@
+import { Endpoints } from "@octokit/types";
 import { IssueListItem } from "./IssueListItem";
 import { type IssuesResponse } from "@/apis";
 
 interface IssueListProps {
-  issues: IssuesResponse["data"];
+  issues:
+    | IssuesResponse["data"]
+    | Endpoints["GET /search/issues"]["response"]["data"]["items"];
 }
 
 export function IssueList({ issues }: IssueListProps) {
