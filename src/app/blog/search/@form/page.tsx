@@ -2,17 +2,12 @@
 
 import { useState } from "react";
 import Select, { SingleValue } from "react-select";
-import { type Endpoints } from "@octokit/types";
 import { useSearchParams, useRouter } from "next/navigation";
-
-type SelectOption<Value extends string | undefined> = {
-  value: Value;
-  label: string;
-};
-
-type SearchOptionValue =
-  | undefined
-  | `in:${"title" | "body" | "comments" | "title,body"}`;
+import {
+  isSeacrhOptionValue,
+  isOrderOptionValue,
+  isSortOptionValue,
+} from "../_utils/typeGuard";
 
 const searchOptions: SelectOption<SearchOptionValue>[] = [
   {
@@ -37,11 +32,6 @@ const searchOptions: SelectOption<SearchOptionValue>[] = [
   },
 ];
 
-type SortOptionValue = Extract<
-  Endpoints["GET /search/issues"]["parameters"]["sort"],
-  "created" | "updated" | "comments"
->;
-
 const sortOptions: SelectOption<SortOptionValue>[] = [
   {
     value: "created",
@@ -57,8 +47,6 @@ const sortOptions: SelectOption<SortOptionValue>[] = [
   },
 ];
 
-type OrderOptionValue = Endpoints["GET /search/issues"]["parameters"]["order"];
-
 const orderOptions: SelectOption<OrderOptionValue>[] = [
   {
     value: "desc",
@@ -69,34 +57,6 @@ const orderOptions: SelectOption<OrderOptionValue>[] = [
     label: "오름차순",
   },
 ];
-
-export function IsSeacrhOptionValue(value: any): value is SearchOptionValue {
-  const searchOptionValues: SearchOptionValue[] = [
-    undefined,
-    "in:body",
-    "in:comments",
-    "in:title",
-    "in:title,body",
-  ];
-
-  return searchOptionValues.includes(value);
-}
-
-export function IsSortOptionValue(value: any): value is SortOptionValue {
-  const sortOptionValues: SortOptionValue[] = [
-    "comments",
-    "created",
-    "updated",
-  ];
-
-  return sortOptionValues.includes(value);
-}
-
-export function IsOrderOptionValue(value: any): value is OrderOptionValue {
-  const orderOptionValues: OrderOptionValue[] = [undefined, "asc", "desc"];
-
-  return orderOptionValues.includes(value);
-}
 
 export default function SearchForm() {
   const searchParams = useSearchParams();
@@ -110,7 +70,7 @@ export default function SearchForm() {
   const [searchOption, setSearchOption] = useState<
     SingleValue<SelectOption<SearchOptionValue>>
   >(
-    IsSeacrhOptionValue(searchOptionParam)
+    isSeacrhOptionValue(searchOptionParam)
       ? {
           value: searchOptionParam,
           label:
@@ -122,7 +82,7 @@ export default function SearchForm() {
   const [sortOption, setSortOption] = useState<
     SingleValue<SelectOption<SortOptionValue>>
   >(
-    IsSortOptionValue(sortOptionParam)
+    isSortOptionValue(sortOptionParam)
       ? {
           value: sortOptionParam,
           label:
@@ -133,7 +93,7 @@ export default function SearchForm() {
   const [orderOption, setOrderOption] = useState<
     SingleValue<SelectOption<OrderOptionValue>>
   >(
-    IsOrderOptionValue(orderOptionParam)
+    isOrderOptionValue(orderOptionParam)
       ? {
           value: orderOptionParam,
           label:

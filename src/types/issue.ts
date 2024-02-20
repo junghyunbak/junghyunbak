@@ -21,6 +21,15 @@ declare global {
   type IssuesSearchResponseData = IssuesSearchResponse["data"]["items"];
   type IssuesSearchRequestParamters = IssuesSearch["parameters"];
 
+  type SearchOptionValue =
+    | undefined
+    | `in:${"title" | "body" | "comments" | "title,body"}`;
+  type SortOptionValue = Extract<
+    IssuesSearchRequestParamters["sort"],
+    "created" | "updated" | "comments"
+  >;
+  type OrderOptionValue = IssuesSearchRequestParamters["order"];
+
   type Issues = IssuesCoreResponseData | IssuesSearchResponseData;
 
   type Issue =

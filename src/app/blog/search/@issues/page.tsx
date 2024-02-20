@@ -3,10 +3,10 @@
 import { useSearchParams } from "next/navigation";
 import { Octokit } from "octokit";
 import {
-  IsSeacrhOptionValue,
-  IsOrderOptionValue,
-  IsSortOptionValue,
-} from "../@form/page";
+  isSeacrhOptionValue,
+  isOrderOptionValue,
+  isSortOptionValue,
+} from "../_utils/typeGuard";
 import { IssueList } from "@/components/IssueList";
 import { REPO_NAME, REPO_OWNER } from "@/apis";
 import { useQuery } from "react-query";
@@ -28,17 +28,31 @@ export default function SearchIssues() {
   const orderParam = searchParams.get("order");
   const keywordParam = searchParams.get("keyword");
 
+  const query = [
+    "type:issue",
+    `user:${REPO_OWNER}`,
+    `repo:${REPO_OWNER}/${REPO_NAME}`,
+    "no:assignee",
+    `author:${REPO_OWNER}`,
+  ];
+
+  if (isSeacrhOptionValue(searchParam)) {
+    query.push(searchParam);
+  }
+
+  if (keywordParam) {
+    query.push(keywordParam);
+  }
+
   const { data: issues } = useQuery<IssuesSearchResponseData>(
     [keywordParam, searchParam, sortParam, orderParam],
     async () => {
       const {
         data: { items },
       } = await octokit.rest.search.issuesAndPullRequests({
-        q: `type:issue ${IsSeacrhOptionValue(searchParam) ? searchParam : ""} ${
-          keywordParam || ""
-        } user:${REPO_OWNER} repo:${REPO_OWNER}/${REPO_NAME} no:assignee author:${REPO_OWNER}`,
-        sort: IsSortOptionValue(sortParam) ? sortParam : "created",
-        order: IsOrderOptionValue(orderParam) ? orderParam : "desc",
+        q: query.join(" "),
+        sort: isSortOptionValue(sortParam) ? sortParam : "created",
+        order: isOrderOptionValue(orderParam) ? orderParam : "desc",
       });
 
       return items;
