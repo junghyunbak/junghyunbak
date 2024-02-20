@@ -105,6 +105,7 @@ export default function SearchForm() {
   const searchOptionParam = searchParams.get("search");
   const sortOptionParam = searchParams.get("sort");
   const orderOptionParam = searchParams.get("order");
+  const keywordParam = searchParams.get("keyword");
 
   const [searchOption, setSearchOption] = useState<
     SingleValue<SelectOption<SearchOptionValue>>
@@ -141,7 +142,9 @@ export default function SearchForm() {
       : null
   );
 
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState<string>(
+    keywordParam || ""
+  );
 
   const handleSearchButtonClick = () => {
     const queryString = [`keyword=${searchKeyword}`];
@@ -193,6 +196,7 @@ export default function SearchForm() {
           placeholder="검색어 입력"
           className="flex-1 border border-gray-300 px-3.5 rounded h-[38px]"
           onChange={(e) => setSearchKeyword(e.target.value)}
+          value={searchKeyword}
         />
 
         <div
