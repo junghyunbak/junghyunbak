@@ -5,16 +5,16 @@ import Select, { SingleValue } from "react-select";
 import { type Endpoints } from "@octokit/types";
 import { useSearchParams } from "next/navigation";
 
-type SelectOptions<Value extends string | undefined> = {
+type SelectOption<Value extends string | undefined> = {
   value: Value;
   label: string;
-}[];
+};
 
 type SearchOptionValue =
   | undefined
   | `in:${"title" | "body" | "comments" | "title,body"}`;
 
-const searchOptions: SelectOptions<SearchOptionValue> = [
+const searchOptions: SelectOption<SearchOptionValue>[] = [
   {
     value: undefined,
     label: "전체 (기본값)",
@@ -42,7 +42,7 @@ type SortOptionValue = Extract<
   "created" | "updated" | "comments"
 >;
 
-const sortOptions: SelectOptions<SortOptionValue> = [
+const sortOptions: SelectOption<SortOptionValue>[] = [
   {
     value: "created",
     label: "생성일 (기본값)",
@@ -59,7 +59,7 @@ const sortOptions: SelectOptions<SortOptionValue> = [
 
 type OrderOptionValue = Endpoints["GET /search/issues"]["parameters"]["order"];
 
-const orderOptions: SelectOptions<OrderOptionValue> = [
+const orderOptions: SelectOption<OrderOptionValue>[] = [
   {
     value: "desc",
     label: "내림차순 (기본값)",
@@ -106,7 +106,7 @@ export default function SearchForm() {
   const orderOptionParam = searchParams.get("order");
 
   const [searchOption, setSearchOption] = useState<
-    SingleValue<SelectOptions<SearchOptionValue>[number]>
+    SingleValue<SelectOption<SearchOptionValue>>
   >(
     IsSeacrhOptionValue(searchOptionParam)
       ? {
@@ -118,7 +118,7 @@ export default function SearchForm() {
       : null
   );
   const [sortOption, setSortOption] = useState<
-    SingleValue<SelectOptions<SortOptionValue>[number]>
+    SingleValue<SelectOption<SortOptionValue>>
   >(
     IsSortOptionValue(sortOptionParam)
       ? {
@@ -129,7 +129,7 @@ export default function SearchForm() {
       : null
   );
   const [orderOption, setOrderOption] = useState<
-    SingleValue<SelectOptions<OrderOptionValue>>
+    SingleValue<SelectOption<OrderOptionValue>>
   >(
     IsOrderOptionValue(orderOptionParam)
       ? {
