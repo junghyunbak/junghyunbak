@@ -22,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="text-[16px] max-md:text-[14px] w-full h-full" lang="en">
+    <html
+      className="text-[16px] max-md:text-[14px] w-full h-full scroll-smooth"
+      lang="en"
+    >
       <body className="w-full max-w-[50rem] h-full m-auto">
         <div className="min-h-full">{children}</div>
 
