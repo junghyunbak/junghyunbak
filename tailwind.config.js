@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    fontFamily: {
+      maruburi: "Maruburi, Segoe UI Emoji",
+    },
     extend: {
       colors: {
         primary: "#5A22E0",
