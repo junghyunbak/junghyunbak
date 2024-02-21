@@ -7,6 +7,7 @@ module.exports = {
         primary: "#5A22E0",
         secondaryA: "#00D471",
         secondaryB: "#70F4C0",
+        clickable: "#201CF2",
         g10: "#FCFCFC",
         g20: "#FAFAFA",
         g30: "#F7F7F7",
