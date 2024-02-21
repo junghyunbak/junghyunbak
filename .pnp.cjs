@@ -51,6 +51,7 @@ const RAW_RUNTIME_STATE =
           ["octokit", "npm:3.1.2"],\
           ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
+          ["postcss-import", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1"],\
           ["postcss-nesting", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:12.0.3"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
@@ -10211,6 +10212,7 @@ const RAW_RUNTIME_STATE =
           ["octokit", "npm:3.1.2"],\
           ["parse-link-header", "npm:2.0.0"],\
           ["postcss", "npm:8.4.33"],\
+          ["postcss-import", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1"],\
           ["postcss-nesting", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:12.0.3"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
@@ -12039,10 +12041,33 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:16.0.1", {\
+        "packageLocation": "../../.yarn/berry/cache/postcss-import-npm-16.0.1-1d0ac76d33-10c0.zip/node_modules/postcss-import/",\
+        "packageDependencies": [\
+          ["postcss-import", "npm:16.0.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:3903e2abcca6da181c68e3e2b020ce8f100d606c384b27bb480d49951a24008cb45e54ac92bc5acb3f9572c7f339e46fe691a8e40f22e16c18dac03b8a3a63fc#npm:15.1.0", {\
         "packageLocation": "./.yarn/__virtual__/postcss-import-virtual-1f4f253a7b/3/.yarn/berry/cache/postcss-import-npm-15.1.0-8b9e86f900-10c0.zip/node_modules/postcss-import/",\
         "packageDependencies": [\
           ["postcss-import", "virtual:3903e2abcca6da181c68e3e2b020ce8f100d606c384b27bb480d49951a24008cb45e54ac92bc5acb3f9572c7f339e46fe691a8e40f22e16c18dac03b8a3a63fc#npm:15.1.0"],\
+          ["@types/postcss", null],\
+          ["postcss", "npm:8.4.33"],\
+          ["postcss-value-parser", "npm:4.2.0"],\
+          ["read-cache", "npm:1.0.0"],\
+          ["resolve", "patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"]\
+        ],\
+        "packagePeers": [\
+          "@types/postcss",\
+          "postcss"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/postcss-import-virtual-7a53a7be5f/3/.yarn/berry/cache/postcss-import-npm-16.0.1-1d0ac76d33-10c0.zip/node_modules/postcss-import/",\
+        "packageDependencies": [\
+          ["postcss-import", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1"],\
           ["@types/postcss", null],\
           ["postcss", "npm:8.4.33"],\
           ["postcss-value-parser", "npm:4.2.0"],\
