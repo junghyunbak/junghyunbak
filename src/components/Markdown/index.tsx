@@ -97,6 +97,14 @@ export function CustomReactMarkdown({
               return null;
             }
 
+            if (href.startsWith("#")) {
+              return (
+                <a href={href} {...props}>
+                  {children}
+                </a>
+              );
+            }
+
             if (href.startsWith("http")) {
               return (
                 <a href={href} target="_blank" {...props}>
