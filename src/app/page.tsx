@@ -1,8 +1,4 @@
-import {
-  apiService,
-  ISSUE_ABOUT_NUMBER,
-  issuesRequestDefaultOptions,
-} from "@/apis";
+import { ISSUE_ABOUT_NUMBER, REPO_OWNER, REPO_NAME } from "@/apis";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
 import { Utterances } from "@/components/Utterances";
@@ -17,13 +13,23 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const issue = await apiService.getAnIssue(ISSUE_ABOUT_NUMBER.toString());
+  const issue = (await fetch(
+    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${ISSUE_ABOUT_NUMBER}`,
+    {
+      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    }
+  )
+    .then((res) => res.json())
+    .catch(() => null)) as AnIssueResponseData | null;
 
-  const recentIssues = await apiService.getIssues({
-    ...issuesRequestDefaultOptions,
-    per_page: 3,
-    sort: "updated",
-  });
+  const recentIssues = (await fetch(
+    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?creator=${REPO_OWNER}&assignee=none&per_page=3&sort=updated`,
+    {
+      headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    }
+  )
+    .then((res) => res.json())
+    .catch(() => [])) as Issues;
 
   return (
     <>
