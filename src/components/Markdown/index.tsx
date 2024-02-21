@@ -8,7 +8,6 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import sharp from "sharp";
 import Image from "next/image";
 import Link from "next/link";
-import "./index.css";
 
 type PreviewImageData = {
   width: number;
