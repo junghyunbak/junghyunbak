@@ -40,36 +40,30 @@ export default async function Home() {
 
         <Markdown markdown={issue?.body || ""} />
 
-        <h2 className="mb-6 text-2xl font-semibold border-b border-black">
-          최근 업데이트 한 게시물
-        </h2>
+        <div className="markdown">
+          <h2>최근 업데이트 한 게시물</h2>
 
-        <ul className="pl-8 mb-6">
-          {recentIssues.map((issue) => {
-            return (
-              <li key={issue.id} className="list-disc">
-                <Link
-                  href={`/post/${issue.number}`}
-                  className="hover:underline underline-offset-2"
-                >
-                  {issue.title}
-                  <span className="text-gray-600">{` (${MillisecondsToElapsedTimeString(
-                    Date.now() - new Date(issue.updated_at).getTime()
-                  )} 전)`}</span>
-                </Link>
-              </li>
-            );
-          })}
+          <ul>
+            {recentIssues.map((issue) => {
+              return (
+                <li key={issue.id}>
+                  <Link href={`/post/${issue.number}`}>
+                    {issue.title}
+                    <span className="text-gray-600">{` (${MillisecondsToElapsedTimeString(
+                      Date.now() - new Date(issue.updated_at).getTime()
+                    )} 전)`}</span>
+                  </Link>
+                </li>
+              );
+            })}
 
-          <li className="list-disc">
-            <Link
-              href={`/blog/search?sort=updated&order=desc`}
-              className="hover:underline underline-offset-2"
-            >
-              ...더보기
-            </Link>
-          </li>
-        </ul>
+            <li>
+              <Link href={`/blog/search?sort=updated&order=desc`}>
+                ...더보기
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         <Utterances issueNumber={ISSUE_ABOUT_NUMBER} />
       </main>
