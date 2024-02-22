@@ -53,6 +53,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.33"],\
           ["postcss-import", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1"],\
           ["postcss-nesting", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:12.0.3"],\
+          ["prettier", "npm:2.8.8"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
@@ -10214,6 +10215,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.33"],\
           ["postcss-import", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:16.0.1"],\
           ["postcss-nesting", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:12.0.3"],\
+          ["prettier", "npm:2.8.8"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
@@ -12204,6 +12206,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/prelude-ls-npm-1.2.1-3e4d272a55-10c0.zip/node_modules/prelude-ls/",\
         "packageDependencies": [\
           ["prelude-ls", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["prettier", [\
+      ["npm:2.8.8", {\
+        "packageLocation": "../../.yarn/berry/cache/prettier-npm-2.8.8-430828a36c-10c0.zip/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:2.8.8"]\
         ],\
         "linkType": "HARD"\
       }]\
