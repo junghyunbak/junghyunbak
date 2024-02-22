@@ -91,7 +91,7 @@ export default async function Blog({
     <div>
       <LabelList labels={labels} currentLabel={currentLabel} />
       <IssueList issues={issues} />
-      <div className="relative flex justify-center my-6">
+      <div className="relative my-6 flex justify-center">
         <IssueListPaginate
           pageCount={issuesPageCount}
           currentPage={currentPage}
@@ -100,7 +100,7 @@ export default async function Blog({
 
         <Link
           href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new`}
-          className="absolute right-0 flex items-center justify-center h-6 px-1 text-sm text-black border border-black rounded-sm"
+          className="absolute right-0 flex h-6 items-center justify-center rounded-sm border border-black px-1 text-sm text-black"
         >
           글작성
         </Link>

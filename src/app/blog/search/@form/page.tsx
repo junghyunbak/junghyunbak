@@ -125,7 +125,7 @@ export default function SearchForm() {
   };
 
   return (
-    <div className="flex flex-col gap-2.5 w-full p-5 border border-gray-300 rounded-sm mt-11 bg-g20">
+    <div className="mt-11 flex w-full flex-col gap-2.5 rounded-sm border border-gray-300 bg-g20 p-5">
       <div className="flex flex-wrap gap-2.5">
         <Select
           placeholder="-- 검색 기준 --"
@@ -150,11 +150,11 @@ export default function SearchForm() {
         />
       </div>
 
-      <div className="flex gap-2.5 flex-wrap">
+      <div className="flex flex-wrap gap-2.5">
         <input
           type="text"
           placeholder="검색어 입력"
-          className="flex-1 border border-gray-300 px-3.5 rounded h-[38px]"
+          className="h-[38px] flex-1 rounded border border-gray-300 px-3.5"
           onChange={(e) => setSearchKeyword(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -165,7 +165,7 @@ export default function SearchForm() {
         />
 
         <div
-          className="rounded bg-secondaryA px-3.5 h-[38px] flex justify-center items-center cursor-pointer"
+          className="flex h-[38px] cursor-pointer items-center justify-center rounded bg-secondaryA px-3.5"
           onClick={handleSearchButtonClick}
         >
           <p className="text-white">검색</p>

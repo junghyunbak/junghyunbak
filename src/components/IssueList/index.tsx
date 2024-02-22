@@ -6,7 +6,7 @@ interface IssueListProps {
 
 export function IssueList({ issues }: IssueListProps) {
   return (
-    <ul className="flex flex-col gap-4 mt-11">
+    <ul className="mt-11 flex flex-col gap-4">
       {issues.map((issue) => {
         return <IssueListItem key={issue.id} issue={issue} />;
       })}

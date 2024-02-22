@@ -71,9 +71,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <Header currentPage="블로그" />
 
       <div className="max-md:p-3">
-        <div className="mt-16 border-b border-gray-800 border-dashed mb-7">
+        <div className="mb-7 mt-16 border-b border-dashed border-gray-800">
           <div className="flex flex-col items-center gap-3.5 pb-3.5">
-            <p className="text-2xl font-semibold text-center">{issue.title}</p>
+            <p className="text-center text-2xl font-semibold">{issue.title}</p>
 
             <div className="flex items-center gap-3.5">
               <p className="text-sm text-gray-600">
@@ -101,7 +101,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                   <li key={id}>
                     <Link
                       href={`/blog/1/${name}`}
-                      className="font-semibold text-g700"
+                      className="text-g700 font-semibold"
                     >
                       {`#${name}`}
                     </Link>

@@ -22,7 +22,7 @@ export function Hits({
   ]);
 
   return (
-    <div className={"flex justify-end min-h-[20px] w-full mb-3.5"}>
+    <div className={"mb-3.5 flex min-h-[20px] w-full justify-end"}>
       <img
         src={`https://hits.seeyoufarm.com/api/count/incr/badge.svg?${queryString}`}
         alt="Hits"

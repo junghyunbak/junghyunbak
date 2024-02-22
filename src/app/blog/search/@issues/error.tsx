@@ -71,7 +71,7 @@ function Forbidden({ error, reset }: { error: any; reset: () => void }) {
 
       {remainSecond < 0 && (
         <p
-          className="text-[#00f] cursor-pointer"
+          className="cursor-pointer text-clickable"
           onClick={() => {
             queryClient.removeQueries();
             reset();

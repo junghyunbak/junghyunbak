@@ -34,7 +34,7 @@ export function IssueListPaginate({
               <Link
                 href={nextHref}
                 className={[
-                  "flex items-center justify-center w-6 border text-sm rounded-sm aspect-square border-primary",
+                  "flex aspect-square w-6 items-center justify-center rounded-sm border border-primary text-sm",
                   isActive ? "bg-primary text-white" : "text-primary",
                 ].join(" ")}
               >

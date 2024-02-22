@@ -68,13 +68,13 @@
 
     code {
       &:not(pre *) {
-        @apply font-maruburi bg-gradient-to-b from-40% from-transparent to-40% to-secondaryB;
+        @apply bg-gradient-to-b from-transparent from-40% to-secondaryB to-40% font-maruburi;
       }
     }
 
     ol,
     ul {
-      @apply pl-8 list-[revert];
+      @apply list-[revert] pl-8;
     }
 
     li {
@@ -113,12 +113,12 @@
 
       th,
       td {
-        @apply py-1.5 px-3;
+        @apply px-3 py-1.5;
       }
     }
 
     blockquote {
-      @apply text-gray-500 border-l-4 border-gray-300 px-4;
+      @apply border-l-4 border-gray-300 px-4 text-gray-500;
     }
 
     hr {

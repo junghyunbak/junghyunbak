@@ -16,9 +16,9 @@ export async function ReadmeViewer({ owner, repo }: ReadmeViewerProps) {
   const markdown = await getReadmeMarkdown(owner, repo);
 
   return (
-    <div className="bg-white w-[90dvw] h-[80dvh] flex flex-col lg:w-[60rem]">
-      <div className="p-4 border-b border-gray-300">
-        <p className="[&_a]:text-[#00f]">
+    <div className="flex h-[80dvh] w-[90dvw] flex-col bg-white lg:w-[60rem]">
+      <div className="border-b border-gray-300 p-4">
+        <p className="[&_a]:text-clickable">
           <a href={`https://github.com/${owner}`} target="_blank">
             {owner}
           </a>
@@ -30,7 +30,7 @@ export async function ReadmeViewer({ owner, repo }: ReadmeViewerProps) {
         </p>
       </div>
 
-      <div className="flex-1 p-8 overflow-y-scroll">
+      <div className="flex-1 overflow-y-scroll p-8">
         {/**
          * https://github.com/vercel/next.js/issues/52842
          *

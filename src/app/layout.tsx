@@ -23,10 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className="text-[16px] max-md:text-[14px] w-full h-full scroll-smooth"
+      className="h-full w-full scroll-smooth text-[16px] max-md:text-[14px]"
       lang="en"
     >
-      <body className="w-full max-w-[50rem] h-full m-auto">
+      <body className="m-auto h-full w-full max-w-[50rem]">
         <div className="min-h-full">{children}</div>
 
         <Footer />

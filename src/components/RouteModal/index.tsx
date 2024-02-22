@@ -40,10 +40,10 @@ export function RouteModal({ children }: ModalProps) {
         {children}
 
         <div
-          className="absolute w-[1.5rem] top-[-0.75rem] right-[-0.75rem] aspect-square cursor-pointer"
+          className="absolute right-[-0.75rem] top-[-0.75rem] aspect-square w-[1.5rem] cursor-pointer"
           onClick={handleModalClose}
         >
-          <CircleX className="w-full h-full" />
+          <CircleX className="h-full w-full" />
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export function LabelList({
   isSearch = false,
 }: LabelListProps) {
   return (
-    <ul className="flex flex-wrap gap-1.5 mt-11">
+    <ul className="mt-11 flex flex-wrap gap-1.5">
       <LabelListItem isSquare={true}>
         <LabelListItemLink
           isActive={isSearch}
@@ -68,7 +68,7 @@ function LabelListItemLink({
   return (
     <Link
       className={[
-        "flex items-center justify-center size-full border border-primary rounded-sm",
+        "flex size-full items-center justify-center rounded-sm border border-primary",
         isActive ? "bg-primary" : "",
       ].join(" ")}
       {...props}

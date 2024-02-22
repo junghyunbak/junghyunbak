@@ -6,7 +6,7 @@ interface IssueListItemProps {
 
 export function IssueListItem({ issue }: IssueListItemProps) {
   return (
-    <li className="[&>*]:mb-3.5 border-b border-gray-800">
+    <li className="border-b border-gray-800 [&>*]:mb-3.5">
       <p className="text-sm text-gray-600">
         {new Date(issue.created_at).toLocaleString("ko-KR")}
       </p>

@@ -13,10 +13,10 @@ export function Header({ currentPage }: HeaderProps) {
   const pageHrefs: PageHref[] = ["/", "/blog", "/portfolio"];
 
   return (
-    <header className="flex w-full h-11 bg-primary">
+    <header className="flex h-11 w-full bg-primary">
       <HalfPavilion className="h-full [&_path]:fill-secondaryA" />
 
-      <div className="flex items-center justify-between w-full pl-2.5 pr-2.5 text-white">
+      <div className="flex w-full items-center justify-between pl-2.5 pr-2.5 text-white">
         <Link href={"/"}>개발자 박정현</Link>
 
         <ul className="flex items-center">
@@ -24,7 +24,7 @@ export function Header({ currentPage }: HeaderProps) {
             return (
               <li
                 key={i}
-                className="flex items-center mr-2.5 last:mr-0 before:border-l before:border-white before:h-4 first:before:content-none before:block "
+                className="mr-2.5 flex items-center before:block before:h-4 before:border-l before:border-white first:before:content-none last:mr-0 "
               >
                 <Link
                   href={pageHrefs[i]}
