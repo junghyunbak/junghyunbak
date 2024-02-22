@@ -9,7 +9,9 @@
     "serve": "next build && next start",
     "lint": "next lint",
     "test": "jest --coverage",
-    "test:watch": "jest --watch --coverage"
+    "test:watch": "jest --watch --coverage",
+    "format": "prettier --check ./src",
+    "format:fix": "prettier --write ./src"
   },
   "dependencies": {
     "@octokit/types": "^12.4.0",
