@@ -1,6 +1,10 @@
 import { revalidateTag } from "next/cache";
 import { type NextRequest } from "next/server";
-import type { IssuesEvent, LabelEvent } from "@octokit/webhooks-types";
+import type {
+  IssuesEditedEvent,
+  IssuesEvent,
+  LabelEvent,
+} from "@octokit/webhooks-types";
 
 export async function POST(request: NextRequest) {
   switch (request.headers.get("x-github-event")) {
@@ -19,6 +23,11 @@ export async function POST(request: NextRequest) {
 
         case "edited":
           revalidateTag(payload.issue.number.toString());
+
+          if ((payload as IssuesEditedEvent).changes.title) {
+            revalidateTag("issues");
+            revalidateTag("issuesPageCount");
+          }
 
           break;
 
