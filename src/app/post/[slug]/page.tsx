@@ -1,10 +1,7 @@
-import { Markdown } from "@/components/Markdown";
 import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
-import { Utterances } from "@/components/Utterances";
-import { Toc } from "@/components/Toc";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
@@ -15,6 +12,7 @@ import {
   getImageUrlToPreviewImageData,
   extractImageUrlsFromMarkdown,
 } from "@/utils/image";
+import { Issue } from "@/components/widgets/Issue";
 const toml = require("toml").parse;
 
 export async function generateStaticParams() {
@@ -125,14 +123,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Hits path={`/post/${issue.number}`} />
         </div>
 
-        <Toc markdown={issue.body} />
-
-        <Markdown
+        <Issue
           markdown={issue.body}
+          number={issue.number}
           imageUrlToPreviewImage={imageUrlToPreviewImage}
         />
-
-        <Utterances issueNumber={issue.number} />
       </div>
     </div>
   );

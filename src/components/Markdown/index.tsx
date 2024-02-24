@@ -7,16 +7,22 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 interface MarkdownProps {
   markdown: string;
+
   imageOptimize?: boolean;
+
+  imageInline?: boolean;
+
   imageUrlToPreviewImage?: Map<string, PreviewImage>;
 }
 
 export function Markdown({
   markdown,
   imageOptimize = true,
+  imageInline = false,
   imageUrlToPreviewImage = new Map(),
 }: MarkdownProps) {
   return (
@@ -52,7 +58,17 @@ export function Markdown({
               !imageOptimize ||
               !(previewImage = imageUrlToPreviewImage.get(src))
             ) {
-              return <img src={src} alt={alt} />;
+              return (
+                /**
+                 * 로컬 리소스가 아닌 이미지이기 때문에 next/image 사용불가
+                 */
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={src}
+                  alt={alt}
+                  style={imageInline ? { display: "inline" } : undefined}
+                />
+              );
             }
 
             const { width, height, base64 } = previewImage;
