@@ -6,6 +6,7 @@ import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkStringify from "remark-stringify";
+import React from "react";
 const toml = require("toml").parse;
 
 export type Frontmatter = {
@@ -45,12 +46,14 @@ interface IssueProps {
   number: number;
   markdown: string;
   imageUrlToPreviewImage?: Map<string, PreviewImage>;
+  moreContent?: React.ReactNode;
 }
 
 export function Issue({
   number,
   markdown,
   imageUrlToPreviewImage,
+  moreContent,
 }: IssueProps) {
   const file = unified()
     .use(remarkParse)
@@ -89,6 +92,8 @@ export function Issue({
         imageInline={frontmatter.imageInline}
         imageUrlToPreviewImage={imageUrlToPreviewImage}
       />
+
+      {moreContent}
 
       {!frontmatter.inactivateComments && <Utterances issueNumber={number} />}
     </>
