@@ -57,3 +57,43 @@ export async function getImageUrlToPreviewImageData(
 
   return previewImages;
 }
+
+export function MillisecondsToElapsedTimeString(ms: number) {
+  const minute = Math.floor(ms / 1000 / 60);
+
+  if (!minute) {
+    return "방금";
+  }
+
+  const hour = Math.floor(minute / 60);
+
+  if (!hour) {
+    return `${minute}분`;
+  }
+
+  const date = Math.floor(hour / 24);
+
+  if (!date) {
+    return `${hour}시간`;
+  }
+
+  const week = Math.floor(date / 7);
+
+  if (!week) {
+    return `${date}일`;
+  }
+
+  const month = Math.floor(week / 4);
+
+  if (!month) {
+    return `${week}주일`;
+  }
+
+  const year = Math.floor(month / 12);
+
+  if (!year) {
+    return `${month}월`;
+  }
+
+  return `${year}년`;
+}
