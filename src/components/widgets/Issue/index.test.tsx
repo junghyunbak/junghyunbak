@@ -1,4 +1,4 @@
-import { Issue } from ".";
+import { Issue, type Frontmatter } from ".";
 import { render, screen } from "@testing-library/react";
 
 it("이미지 최적화 frontmatter값이 false인 경우 width, height값이 설정된 이미지 태그가 없어야 한다.", () => {
@@ -48,43 +48,6 @@ it("이미지 최적화 frontmatter값이 true(기본값)인 경우 width, heigh
   const fakeImageUrl = "/test";
 
   const markdown = `+++\nimageOptimize = true\n+++
-    
-  ![${fakeImageAlt}](${fakeImageUrl});
-  `;
-
-  const imageUrlToPreviewImage: Map<string, PreviewImage> = new Map([
-    [
-      fakeImageUrl,
-      {
-        width: fakeImageWidth,
-        height: fakeImageHeight,
-        base64: `data:image/jpeg;base64,`,
-      },
-    ],
-  ]);
-
-  render(
-    <Issue
-      number={fakeIssueNumber}
-      markdown={markdown}
-      imageUrlToPreviewImage={imageUrlToPreviewImage}
-    />
-  );
-
-  const image = screen.getByAltText(fakeImageAlt);
-
-  expect(image.getAttribute("width")).toBe(fakeImageWidth.toString());
-  expect(image.getAttribute("height")).toBe(fakeImageHeight.toString());
-});
-
-it("이미지 최적화 frontmatter값을 올바르게 입력하지 않았을 경우, 값이 설정되지 않아 기본값으로 처리된다. (= width, height값이 설정된 이미지 태그가 있어야 한다.)", () => {
-  const fakeIssueNumber = 1;
-  const fakeImageWidth = 20;
-  const fakeImageHeight = 20;
-  const fakeImageAlt = "image";
-  const fakeImageUrl = "/test";
-
-  const markdown = `+++\nimageOptimize = tue\n+++
     
   ![${fakeImageAlt}](${fakeImageUrl});
   `;
@@ -181,4 +144,86 @@ it("목차 컴포넌트의 최대 depth를 1로 설정할 경우 heading 2, 3은
   expect(screen.queryByRole("link", { name: "h1" })).toBeInTheDocument();
   expect(screen.queryByRole("link", { name: "h2" })).not.toBeInTheDocument();
   expect(screen.queryByRole("link", { name: "h3" })).not.toBeInTheDocument();
+});
+
+it("frontmatter값이 전달되지 않았을 경우, 기본값으로 올바르게 렌더링한다.", () => {
+  const fakeIssueNumber = 1;
+  const fakeImageAlt = "image";
+  const fakeImageUrl = "/test";
+  const fakeImageWidth = 20;
+  const fakeImageHeight = 20;
+
+  const markdown = `
+  # h1
+  ## h2
+  ### h3
+  #### h4
+
+  ![${fakeImageAlt}](${fakeImageUrl})
+  `;
+
+  const imageUrlToPreviewImage: Map<string, PreviewImage> = new Map([
+    [
+      fakeImageUrl,
+      {
+        width: fakeImageWidth,
+        height: fakeImageHeight,
+        base64: `data:image/jpeg;base64,`,
+      },
+    ],
+  ]);
+
+  const { container } = render(
+    <Issue
+      markdown={markdown}
+      number={fakeIssueNumber}
+      imageUrlToPreviewImage={imageUrlToPreviewImage}
+    />
+  );
+
+  const image = screen.getByAltText(fakeImageAlt);
+
+  expect(container.innerHTML.includes("목차")).toBe(true);
+  expect(container.innerHTML.includes("utteranc")).toBe(true);
+  expect(screen.queryByRole("link", { name: "h4" })).not.toBeInTheDocument();
+  expect(image.getAttribute("width")).toBe(fakeImageWidth.toString());
+  expect(image.getAttribute("height")).toBe(fakeImageHeight.toString());
+  expect(image.getAttribute("style")?.includes("inline")).toBe(false);
+});
+
+it('frontmatter로 전달된 타입이 올바르지 않은 경우, "올바르지 않은 frontmatter를 입력하였습니다."라는 문자를 렌더링한다.', () => {
+  const fakeIssueNumber = 1;
+
+  const frontmatters: Frontmatter = {
+    // @ts-expect-error
+    imageInline: 1,
+    // @ts-expect-error
+    imageOptimize: '"hi"',
+    // @ts-expect-error
+    inactivateComments: 9999,
+    // @ts-expect-error
+    inactivateToc: '""',
+    // @ts-expect-error
+    maxDepthOfToc: true,
+
+    unknownFrontmatterKey: '"value"',
+  };
+
+  const frontmatterString = Object.entries(frontmatters)
+    .map(([key, value]) => `${key} = ${value}`)
+    .join("\n");
+
+  const markdown = `+++\n${frontmatterString}\n+++
+
+  # h1
+  ## h2
+  ### h3
+  #### h4
+  `;
+
+  const { container } = render(
+    <Issue number={fakeIssueNumber} markdown={markdown} />
+  );
+
+  expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(true);
 });

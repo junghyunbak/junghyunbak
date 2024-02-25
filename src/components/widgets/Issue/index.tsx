@@ -8,7 +8,7 @@ import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkStringify from "remark-stringify";
 const toml = require("toml").parse;
 
-type Frontmatter = {
+export type Frontmatter = {
   /**
    * @default ""
    */
@@ -59,46 +59,62 @@ export function Issue({
     .use(remarkStringify)
     .processSync(markdown);
 
-  const {
+  let {
     data: { frontmatter },
   } = file;
 
+  if (frontmatter && !validateFrontmatterObject(frontmatter)) {
+    return <p>올바르지 않은 frontmatter를 입력하였습니다.</p>;
+  }
+
+  if (!frontmatter) {
+    frontmatter = {
+      inactivateToc: false,
+      inactivateComments: false,
+      imageOptimize: true,
+      imageInline: false,
+      maxDepthOfToc: 3,
+    };
+  }
+
   return (
     <>
-      {!getFrontmatterValue(frontmatter, "inactivateToc") && (
-        <Toc
-          markdown={markdown}
-          maxDepth={getFrontmatterValue(frontmatter, "maxDepthOfToc")}
-        />
+      {!frontmatter.inactivateToc && (
+        <Toc markdown={markdown} maxDepth={frontmatter.maxDepthOfToc} />
       )}
 
       <Markdown
         markdown={markdown}
-        imageOptimize={getFrontmatterValue(frontmatter, "imageOptimize")}
-        imageInline={getFrontmatterValue(frontmatter, "imageInline")}
+        imageOptimize={frontmatter.imageOptimize}
+        imageInline={frontmatter.imageInline}
         imageUrlToPreviewImage={imageUrlToPreviewImage}
       />
 
-      {!getFrontmatterValue(frontmatter, "inactivateComments") && (
-        <Utterances issueNumber={number} />
-      )}
+      {!frontmatter.inactivateComments && <Utterances issueNumber={number} />}
     </>
   );
 }
 
-function getFrontmatterValue<
-  O extends Frontmatter | undefined,
-  K extends keyof Frontmatter
->(object: O, key: K): NonNullable<Frontmatter[K]> | undefined {
-  if (object === undefined) {
-    return;
-  }
+function validateFrontmatterObject(obj: object): boolean {
+  const validObjectKeyCount = Object.entries(obj).reduce((a, c) => {
+    const [key, value] = c;
 
-  const value = object[key];
+    switch (key as keyof Frontmatter) {
+      case "imageInline":
+      case "imageOptimize":
+      case "inactivateComments":
+      case "inactivateToc":
+        return a + (typeof value === "boolean" ? 1 : 0);
 
-  if (value === undefined) {
-    return;
-  }
+      case "maxDepthOfToc":
+        return a + (typeof value === "number" ? 1 : 0);
 
-  return value;
+      default:
+        return a;
+    }
+  }, 0);
+
+  const totalObjectKeyCount = Object.keys(obj).length;
+
+  return validObjectKeyCount === totalObjectKeyCount;
 }
