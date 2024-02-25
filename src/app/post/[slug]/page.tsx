@@ -7,7 +7,6 @@ import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
-import { Header } from "@/components/Header";
 import {
   getImageUrlToPreviewImageData,
   extractImageUrlsFromMarkdown,
@@ -76,59 +75,54 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const imageUrlToPreviewImage = await getImageUrlToPreviewImageData(imageUrls);
 
   return (
-    <div>
-      <Header currentPage="블로그" />
+    <>
+      <div className="mb-7 mt-16 border-b border-dashed border-gray-800">
+        <div className="flex flex-col items-center gap-3.5 pb-3.5">
+          <p className="text-center text-2xl font-semibold">{issue.title}</p>
 
-      <div className="max-md:p-3">
-        <div className="mb-7 mt-16 border-b border-dashed border-gray-800">
-          <div className="flex flex-col items-center gap-3.5 pb-3.5">
-            <p className="text-center text-2xl font-semibold">{issue.title}</p>
+          <div className="flex items-center gap-3.5">
+            <p className="text-sm text-gray-600">
+              {new Date(issue.created_at).toLocaleString("ko-KR")}
+            </p>
 
-            <div className="flex items-center gap-3.5">
-              <p className="text-sm text-gray-600">
-                {new Date(issue.created_at).toLocaleString("ko-KR")}
-              </p>
+            <div className="h-3.5 border-l border-gray-600" />
 
-              <div className="h-3.5 border-l border-gray-600" />
-
-              <a
-                className="text-sm text-gray-600"
-                href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
-                target="_blank"
-              >
-                수정하기
-              </a>
-            </div>
-
-            <ul className="flex flex-wrap gap-2.5">
-              {issue.labels.map((label, i) => {
-                const id = typeof label === "string" ? i : label.id || i;
-                const name =
-                  typeof label === "string" ? label : label.name || "";
-
-                return (
-                  <li key={id}>
-                    <Link
-                      href={`/blog/1/${name}`}
-                      className="text-g700 font-semibold"
-                    >
-                      {`#${name}`}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <a
+              className="text-sm text-gray-600"
+              href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+              target="_blank"
+            >
+              수정하기
+            </a>
           </div>
 
-          <Hits path={`/post/${issue.number}`} />
+          <ul className="flex flex-wrap gap-2.5">
+            {issue.labels.map((label, i) => {
+              const id = typeof label === "string" ? i : label.id || i;
+              const name = typeof label === "string" ? label : label.name || "";
+
+              return (
+                <li key={id}>
+                  <Link
+                    href={`/blog/1/${name}`}
+                    className="text-g700 font-semibold"
+                  >
+                    {`#${name}`}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <Issue
-          markdown={issue.body}
-          number={issue.number}
-          imageUrlToPreviewImage={imageUrlToPreviewImage}
-        />
+        <Hits path={`/post/${issue.number}`} />
       </div>
-    </div>
+
+      <Issue
+        markdown={issue.body}
+        number={issue.number}
+        imageUrlToPreviewImage={imageUrlToPreviewImage}
+      />
+    </>
   );
 }
