@@ -191,39 +191,136 @@ it("frontmatter값이 전달되지 않았을 경우, 기본값으로 올바르�
   expect(image.getAttribute("style")?.includes("inline")).toBe(false);
 });
 
-it('frontmatter로 전달된 타입이 올바르지 않은 경우, "올바르지 않은 frontmatter를 입력하였습니다."라는 문자를 렌더링한다.', () => {
+describe('frontmatter로 전달된 값(타입)이 올바르지 않은 경우, "올바르지 않은 frontmatter를 입력하였습니다."라는 문자를 렌더링한다.', () => {
   const fakeIssueNumber = 1;
 
-  const frontmatters: Frontmatter = {
-    // @ts-expect-error
-    imageInline: 1,
-    // @ts-expect-error
-    imageOptimize: '"hi"',
-    // @ts-expect-error
-    inactivateComments: 9999,
-    // @ts-expect-error
-    inactivateToc: '""',
-    // @ts-expect-error
-    maxDepthOfToc: true,
+  /**
+   * TODO: 다른 테스트케이스에도 재활용할 것
+   */
+  const createTomlFrontmatter = (frontmatter: Frontmatter) => {
+    const tomlFrontmatter = Object.entries(frontmatter)
+      .map(([key, value]) => `${key} = ${value}`)
+      .join("\n");
 
-    unknownFrontmatterKey: '"value"',
+    return `+++\n${tomlFrontmatter}\n+++`;
   };
 
-  const frontmatterString = Object.entries(frontmatters)
-    .map(([key, value]) => `${key} = ${value}`)
-    .join("\n");
+  it("description 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      description: true,
+    };
 
-  const markdown = `+++\n${frontmatterString}\n+++
+    const markdown = createTomlFrontmatter(frontmatter);
 
-  # h1
-  ## h2
-  ### h3
-  #### h4
-  `;
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
 
-  const { container } = render(
-    <Issue number={fakeIssueNumber} markdown={markdown} />
-  );
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
 
-  expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(true);
+  it("imageInline 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      imageInline: 1,
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
+
+  it("imageOptimize 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      imageOptimize: '"hi"',
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
+
+  it("inactivateComments 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      inactivateComments: 9999,
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
+
+  it("inactivateToc 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      inactivateToc: '""',
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
+
+  it("maxDepthOfToc 값이 올바르지 않은 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      maxDepthOfToc: true,
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
+
+  it("존재하지 않는 frontmatter 키 값일 경우", () => {
+    const frontmatter: Frontmatter = {
+      // @ts-expect-error
+      unknownFrontmatterKey: '"value"',
+    };
+
+    const markdown = createTomlFrontmatter(frontmatter);
+
+    const { container } = render(
+      <Issue number={fakeIssueNumber} markdown={markdown} />
+    );
+
+    expect(container.innerHTML.includes("올바르지 않은 frontmatter")).toBe(
+      true
+    );
+  });
 });

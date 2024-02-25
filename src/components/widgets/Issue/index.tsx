@@ -101,25 +101,22 @@ export function Issue({
 }
 
 function validateFrontmatterObject(obj: object): boolean {
-  const validObjectKeyCount = Object.entries(obj).reduce((a, c) => {
-    const [key, value] = c;
-
+  return Object.entries(obj).every(([key, value]) => {
     switch (key as keyof Frontmatter) {
+      case "description":
+        return typeof value === "string";
+
       case "imageInline":
       case "imageOptimize":
       case "inactivateComments":
       case "inactivateToc":
-        return a + (typeof value === "boolean" ? 1 : 0);
+        return typeof value === "boolean";
 
       case "maxDepthOfToc":
-        return a + (typeof value === "number" ? 1 : 0);
+        return typeof value === "number";
 
       default:
-        return a;
+        return false;
     }
-  }, 0);
-
-  const totalObjectKeyCount = Object.keys(obj).length;
-
-  return validObjectKeyCount === totalObjectKeyCount;
+  });
 }
