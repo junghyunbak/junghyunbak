@@ -15,7 +15,7 @@ export function CommentViewer({ issueComment }: CommentViewerProps) {
 
   return (
     <div className="flex h-[80dvh] w-[90dvw] flex-col bg-white lg:w-[60rem]">
-      <div className="overflow-y-scroll p-8">
+      <div className="flex-1 overflow-y-scroll p-8">
         <Markdown markdown={issueComment.body} imageOptimize={false} />
       </div>
     </div>
