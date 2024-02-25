@@ -1,16 +1,18 @@
-import { Markdown } from "@/components/Markdown";
 import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Hits } from "@/components/Hits";
-import { Utterances } from "@/components/Utterances";
-import { Toc } from "@/components/Toc";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
 import { Header } from "@/components/Header";
+import {
+  getImageUrlToPreviewImageData,
+  extractImageUrlsFromMarkdown,
+} from "@/utils/image";
+import { Issue } from "@/components/widgets/Issue";
 const toml = require("toml").parse;
 
 export async function generateStaticParams() {
@@ -62,9 +64,16 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>존재하지 않는 페이지입니다.</div>;
   }
 
+  if (!issue.body) {
+    return <div>올바르지 않은 페이지입니다.</div>;
+  }
+
   if (issue.user?.login !== REPO_OWNER) {
     return <div>해당 글은 조회할 수 없습니다.</div>;
   }
+
+  const imageUrls = extractImageUrlsFromMarkdown(issue.body);
+  const imageUrlToPreviewImage = await getImageUrlToPreviewImageData(imageUrls);
 
   return (
     <div>
@@ -114,11 +123,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Hits path={`/post/${issue.number}`} />
         </div>
 
-        <Toc markdown={issue.body || ""} />
-
-        <Markdown markdown={issue.body || ""} />
-
-        <Utterances issueNumber={issue.number} />
+        <Issue
+          markdown={issue.body}
+          number={issue.number}
+          imageUrlToPreviewImage={imageUrlToPreviewImage}
+        />
       </div>
     </div>
   );

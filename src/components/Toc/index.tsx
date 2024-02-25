@@ -56,7 +56,7 @@ function createTocList(nodes: TocEntry[], maxDepth: number) {
 
         return (
           <li key={`toc-list-${node.depth}-${i}`}>
-            <a href={`#${node.id}`} className="text-[#0000ff]">
+            <a href={`#${node.id}`} className="text-clickable">
               {node.value}
             </a>
 
