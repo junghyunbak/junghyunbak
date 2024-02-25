@@ -1,5 +1,5 @@
 import { RouteModal } from "@/components/RouteModal";
-import { ReadmeViewer } from "@/app/readme/[[...slug]]/_components/ReadmeViewer";
+import { ReadmeViewer } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeViewer";
 
 export default async function ReadmeModal({
   params: { slug = [] },
