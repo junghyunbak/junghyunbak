@@ -4,7 +4,7 @@ SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 IMAGE_NAME=lightpavilion
 
-docker build --file "$SCRIPT_DIR/Dockerfile" --tag ${IMAGE_NAME} "$SCRIPT_DIR/.."
+docker build --file --no-cache "$SCRIPT_DIR/Dockerfile" --tag ${IMAGE_NAME} "$SCRIPT_DIR/.."
 
 docker rm --force ${IMAGE_NAME}
 
