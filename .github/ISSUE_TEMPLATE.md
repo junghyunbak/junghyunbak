@@ -1,3 +1,12 @@
++++
+description = ""
+imageOptimize = true
+imageInline = false
+inactivateComments = false
+inactivateToc = false
+maxDepthOfToc = 3
++++
+
 <!--
 
 개인 블로그 글 작성을 위한 레포지토리 이슈입니다.
