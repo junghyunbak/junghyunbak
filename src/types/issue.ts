@@ -35,4 +35,9 @@ declare global {
   type Issue =
     | IssuesCoreResponseData[number]
     | IssuesSearchResponseData[number];
+
+  type AnIssueComment =
+    Endpoints["GET /repos/{owner}/{repo}/comments/{comment_id}"];
+  type AnIssueCommentResponse = AnIssueComment["response"];
+  type AnIssueCommentResponseData = AnIssueCommentResponse["data"];
 }

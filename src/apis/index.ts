@@ -268,11 +268,29 @@ const getRepositoryReadme = async (
   return (await response.json()) as ReadmeResponseData;
 };
 
+const getAnIssueComment = async (
+  commentId: string
+): Promise<AnIssueCommentResponseData | undefined> => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/comments/${commentId}`;
+
+  const response = await fetch(url, {
+    cache: "no-cache",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+  });
+
+  if (response.status >= 400) {
+    return;
+  }
+
+  return (await response.json()) as AnIssueCommentResponseData;
+};
+
 export const apiService = {
   getIssues,
   getIssuesPageCount,
   getAllIssue,
   getAnIssue,
+  getAnIssueComment,
 
   getLabelsPageCount,
   getAllLabel,
