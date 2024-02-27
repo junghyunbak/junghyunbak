@@ -1,5 +1,5 @@
 import { apiService } from "@/apis";
-import { CommentViewer } from "./_components/CommentViewer";
+import { CommentContent } from "./_components/CommentContent";
 import { Header } from "@/components/core/Header";
 import Link from "next/link";
 import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
@@ -29,7 +29,7 @@ export default async function PostComment({
             ← 게시글 이동
           </Link>
         </div>
-        <CommentViewer issueComment={issueComment} />
+        <CommentContent issueComment={issueComment} />
       </ResponsivePaddingLayout>
     </>
   );
