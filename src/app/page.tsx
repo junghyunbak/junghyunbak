@@ -8,6 +8,7 @@ import {
   extractImageUrlsFromMarkdown,
   getImageUrlToPreviewImageData,
 } from "@/utils/image";
+import { ResponsivePaddingLayout } from "@/components/layouts/ResponsivePaddingLayout";
 
 /**
  * 최근 업데이트 한 게시물을 주기적으로 가져와야 하기 때문에,
@@ -46,8 +47,10 @@ export default async function Home() {
     <>
       <Header currentPage="소개" />
 
-      <main className="mt-6 max-md:p-3">
-        <Hits path="/" />
+      <ResponsivePaddingLayout>
+        <div className="mt-6">
+          <Hits path="/" />
+        </div>
 
         <Issue
           markdown={issue?.body || ""}
@@ -55,7 +58,7 @@ export default async function Home() {
           imageUrlToPreviewImage={imageUrlToPreviewImage}
           moreContent={<RecentIssueList recentIssues={recentIssues} />}
         />
-      </main>
+      </ResponsivePaddingLayout>
     </>
   );
 }

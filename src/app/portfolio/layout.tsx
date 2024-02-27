@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "@/components/Header";
+import { ResponsivePaddingLayout } from "@/components/layouts/ResponsivePaddingLayout";
 
 export default function Layout({
   children,
@@ -12,10 +13,10 @@ export default function Layout({
     <>
       <Header currentPage="포트폴리오" />
 
-      <div className="max-md:p-3">
+      <ResponsivePaddingLayout>
         {children}
         {modal}
-      </div>
+      </ResponsivePaddingLayout>
     </>
   );
 }
