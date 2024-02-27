@@ -5,11 +5,11 @@ import Link from "next/link";
 import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 
 export default async function PostComment({
-  params: { number },
+  params: { id },
 }: {
-  params: { number: string };
+  params: { id: string };
 }) {
-  const issueComment = await apiService.getAnIssueComment(number);
+  const issueComment = await apiService.getAnIssueComment(id);
 
   const issueNumber =
     (/https:\/\/github.com\/junghyunbak\/junghyunbak\/issues\/([0-9]+)/.exec(
