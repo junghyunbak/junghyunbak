@@ -2,6 +2,7 @@ import { apiService } from "@/apis";
 import { CommentViewer } from "./_components/CommentViewer";
 import { Header } from "@/components/core/Header";
 import Link from "next/link";
+import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 
 export default async function PostComment({
   params: { number },
@@ -18,15 +19,18 @@ export default async function PostComment({
   return (
     <>
       <Header currentPage="블로그" />
-      <div className="mx-2 mb-8 mt-2">
-        <Link
-          className="underline-offset-4 hover:underline"
-          href={`/post/${issueNumber}`}
-        >
-          ← 게시글 이동
-        </Link>
-      </div>
-      <CommentViewer issueComment={issueComment} />
+
+      <ResponsivePaddingLayout>
+        <div className="mx-2 mb-8 mt-2">
+          <Link
+            className="underline-offset-4 hover:underline"
+            href={`/post/${issueNumber}`}
+          >
+            ← 게시글 이동
+          </Link>
+        </div>
+        <CommentViewer issueComment={issueComment} />
+      </ResponsivePaddingLayout>
     </>
   );
 }
