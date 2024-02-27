@@ -1,4 +1,4 @@
-import { Markdown } from "@/components/cores/Markdown";
+import { Markdown } from "@/components/core/Markdown";
 
 interface CommentViewerProps {
   issueComment?: AnIssueCommentResponseData;

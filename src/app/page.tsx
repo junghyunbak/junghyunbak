@@ -1,14 +1,14 @@
 import { ISSUE_ABOUT_NUMBER, REPO_OWNER, REPO_NAME } from "@/apis";
 import { Metadata } from "next";
-import { Hits } from "@/components/cores/Hits";
-import { Header } from "@/components/cores/Header";
-import { Issue } from "@/components/widgets/Issue";
-import { RecentIssueList } from "@/components/cores/RecentIssueList";
+import { Hits } from "@/components/core/Hits";
+import { Header } from "@/components/core/Header";
+import { Issue } from "@/components/widget/Issue";
+import { RecentIssueList } from "@/components/core/RecentIssueList";
 import {
   extractImageUrlsFromMarkdown,
   getImageUrlToPreviewImageData,
 } from "@/utils/image";
-import { ResponsivePaddingLayout } from "@/components/layouts/ResponsivePaddingLayout";
+import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 
 /**
  * 최근 업데이트 한 게시물을 주기적으로 가져와야 하기 때문에,

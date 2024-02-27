@@ -1,5 +1,5 @@
-import { Header } from "@/components/cores/Header";
-import { ResponsivePaddingLayout } from "@/components/layouts/ResponsivePaddingLayout";
+import { Header } from "@/components/core/Header";
+import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 import React from "react";
 
 export default function Layout({

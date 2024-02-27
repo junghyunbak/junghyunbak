@@ -1,9 +1,9 @@
-import { RouteModal } from "@/components/cores/RouteModal";
+import { RouteModal } from "@/components/core/RouteModal";
 import { ReadmeHeader } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeHeader";
 import { ReadmeContent } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeContent";
 import { apiService } from "@/apis";
-import { ModalLayout } from "@/components/layouts/ModalLayout";
-import { ScrollYWithPaddingLayout } from "@/components/layouts/ScrollYWithPaddingLayout";
+import { ModalLayout } from "@/components/layout/ModalLayout";
+import { ScrollYWithPaddingLayout } from "@/components/layout/ScrollYWithPaddingLayout";
 
 export default async function ReadmeModal({
   params: { slug = [] },

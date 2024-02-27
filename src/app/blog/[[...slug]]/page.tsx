@@ -1,6 +1,6 @@
-import { LabelList } from "@/components/cores/LabelList";
-import { IssueList } from "@/components/cores/IssueList";
-import { IssueListPaginate } from "@/components/cores/IssueListPaginate";
+import { LabelList } from "@/components/core/LabelList";
+import { IssueList } from "@/components/core/IssueList";
+import { IssueListPaginate } from "@/components/core/IssueListPaginate";
 import { apiService, issuesRequestDefaultOptions } from "@/apis";
 import { Metadata } from "next";
 import { REPO_NAME, REPO_OWNER } from "@/apis";

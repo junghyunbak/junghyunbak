@@ -1,6 +1,6 @@
 import { apiService } from "@/apis";
 import { CommentViewer } from "./_components/CommentViewer";
-import { Header } from "@/components/cores/Header";
+import { Header } from "@/components/core/Header";
 import Link from "next/link";
 
 export default async function PostComment({

@@ -1,4 +1,4 @@
-import { Markdown } from "@/components/cores/Markdown";
+import { Markdown } from "@/components/core/Markdown";
 import base64 from "base-64";
 import utf8 from "utf8";
 

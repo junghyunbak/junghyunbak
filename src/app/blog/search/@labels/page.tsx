@@ -1,5 +1,5 @@
 import { apiService } from "@/apis";
-import { LabelList } from "@/components/cores/LabelList";
+import { LabelList } from "@/components/core/LabelList";
 
 export default async function SearchLabels() {
   const labels = await apiService.getAllLabel();
