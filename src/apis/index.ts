@@ -257,13 +257,17 @@ const getAllLabel = async (
 const getRepositoryReadme = async (
   owner: string,
   repo: string
-): Promise<ReadmeResponseData> => {
+): Promise<ReadmeResponseData | null> => {
   const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
 
   const response = await fetch(url, {
     cache: "no-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
   });
+
+  if (response.status >= 400) {
+    return null;
+  }
 
   return (await response.json()) as ReadmeResponseData;
 };
