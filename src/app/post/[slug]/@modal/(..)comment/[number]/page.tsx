@@ -1,5 +1,6 @@
 import { apiService } from "@/apis";
 import { CommentViewer } from "@/app/post/comment/[number]/_components/CommentViewer";
+import { ModalLayout } from "@/components/ModalLayout";
 import { RouteModal } from "@/components/RouteModal";
 
 export default async function CommentModal({
@@ -11,7 +12,9 @@ export default async function CommentModal({
 
   return (
     <RouteModal>
-      <CommentViewer issueComment={issueComment} />
+      <ModalLayout>
+        <CommentViewer issueComment={issueComment} />
+      </ModalLayout>
     </RouteModal>
   );
 }
