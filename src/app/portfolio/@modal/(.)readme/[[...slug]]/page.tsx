@@ -3,7 +3,7 @@ import { ReadmeHeader } from "@/app/portfolio/readme/[[...slug]]/_components/Rea
 import { ReadmeContent } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeContent";
 import { apiService } from "@/apis";
 import { ModalLayout } from "@/components/ModalLayout";
-import { ScrollYWithPadding } from "@/components/layouts/ScrollYWithPadding";
+import { ScrollYWithPaddingLayout } from "@/components/layouts/ScrollYWithPaddingLayout";
 
 export default async function ReadmeModal({
   params: { slug = [] },
@@ -18,9 +18,9 @@ export default async function ReadmeModal({
     <RouteModal>
       <ModalLayout>
         <ReadmeHeader owner={owner} repo={repo} />
-        <ScrollYWithPadding>
+        <ScrollYWithPaddingLayout>
           <ReadmeContent readme={readme} />
-        </ScrollYWithPadding>
+        </ScrollYWithPaddingLayout>
       </ModalLayout>
     </RouteModal>
   );

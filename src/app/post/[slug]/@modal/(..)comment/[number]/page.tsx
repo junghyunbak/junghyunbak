@@ -2,7 +2,7 @@ import { apiService } from "@/apis";
 import { CommentViewer } from "@/app/post/comment/[number]/_components/CommentViewer";
 import { ModalLayout } from "@/components/ModalLayout";
 import { RouteModal } from "@/components/RouteModal";
-import { ScrollYWithPadding } from "@/components/layouts/ScrollYWithPadding";
+import { ScrollYWithPaddingLayout } from "@/components/layouts/ScrollYWithPaddingLayout";
 
 export default async function CommentModal({
   params: { number },
@@ -14,9 +14,9 @@ export default async function CommentModal({
   return (
     <RouteModal>
       <ModalLayout>
-        <ScrollYWithPadding>
+        <ScrollYWithPaddingLayout>
           <CommentViewer issueComment={issueComment} />
-        </ScrollYWithPadding>
+        </ScrollYWithPaddingLayout>
       </ModalLayout>
     </RouteModal>
   );

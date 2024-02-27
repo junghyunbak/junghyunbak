@@ -1,9 +1,11 @@
 import React from "react";
 
-interface ScrollYWithPaddingProps {
+interface ScrollYWithPaddingLayoutProps {
   children: React.ReactNode;
 }
 
-export function ScrollYWithPadding({ children }: ScrollYWithPaddingProps) {
+export function ScrollYWithPaddingLayout({
+  children,
+}: ScrollYWithPaddingLayoutProps) {
   return <div className="flex-1 overflow-y-scroll p-8">{children}</div>;
 }
