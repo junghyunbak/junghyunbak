@@ -7,7 +7,7 @@ import {
   isOrderOptionValue,
   isSortOptionValue,
 } from "../_utils/typeGuard";
-import { IssueList } from "@/components/IssueList";
+import { IssueList } from "@/components/cores/IssueList";
 import { REPO_NAME, REPO_OWNER } from "@/apis";
 import { useQuery } from "react-query";
 

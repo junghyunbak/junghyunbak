@@ -1,4 +1,4 @@
-import { RouteModal } from "@/components/RouteModal";
+import { RouteModal } from "@/components/cores/RouteModal";
 import { ReadmeHeader } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeHeader";
 import { ReadmeContent } from "@/app/portfolio/readme/[[...slug]]/_components/ReadmeContent";
 import { apiService } from "@/apis";

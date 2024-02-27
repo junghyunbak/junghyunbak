@@ -1,7 +1,7 @@
 import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
 import Link from "next/link";
 import { Metadata } from "next";
-import { Hits } from "@/components/Hits";
+import { Hits } from "@/components/cores/Hits";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";

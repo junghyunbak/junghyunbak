@@ -1,9 +1,9 @@
 import { ISSUE_ABOUT_NUMBER, REPO_OWNER, REPO_NAME } from "@/apis";
 import { Metadata } from "next";
-import { Hits } from "@/components/Hits";
-import { Header } from "@/components/Header";
+import { Hits } from "@/components/cores/Hits";
+import { Header } from "@/components/cores/Header";
 import { Issue } from "@/components/widgets/Issue";
-import { RecentIssueList } from "@/components/RecentIssueList";
+import { RecentIssueList } from "@/components/cores/RecentIssueList";
 import {
   extractImageUrlsFromMarkdown,
   getImageUrlToPreviewImageData,

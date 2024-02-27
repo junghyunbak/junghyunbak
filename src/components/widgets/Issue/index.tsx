@@ -1,6 +1,6 @@
-import { Markdown } from "@/components/Markdown";
-import { Toc } from "@/components/Toc";
-import { Utterances } from "@/components/Utterances";
+import { Markdown } from "@/components/cores/Markdown";
+import { Toc } from "@/components/cores/Toc";
+import { Utterances } from "@/components/cores/Utterances";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
