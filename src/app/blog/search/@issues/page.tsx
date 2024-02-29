@@ -15,11 +15,7 @@ const octokit = new Octokit({
   throttle: { enabled: false },
 });
 
-/**
- * TODO: pagination 혹은 무한스크롤 구현
- *
- * 현재는 한 페이지, 100개만을 가져오는 상태
- */
+// TODO: pagination 혹은 무한스크롤을 구현한다. 현재는 한 페이지(100개)만을 가져오는 상태
 export default function SearchIssues() {
   const searchParams = useSearchParams();
 

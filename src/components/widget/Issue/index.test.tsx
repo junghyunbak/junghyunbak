@@ -194,9 +194,7 @@ it("frontmatter값이 전달되지 않았을 경우, 기본값으로 올바르�
 describe('frontmatter로 전달된 값(타입)이 올바르지 않은 경우, "올바르지 않은 frontmatter를 입력하였습니다."라는 문자를 렌더링한다.', () => {
   const fakeIssueNumber = 1;
 
-  /**
-   * TODO: 다른 테스트케이스에도 재활용할 것
-   */
+  // TODO: 다른 테스트케이스에도 재활용할 것
   const createTomlFrontmatter = (frontmatter: Frontmatter) => {
     const tomlFrontmatter = Object.entries(frontmatter)
       .map(([key, value]) => `${key} = ${value}`)

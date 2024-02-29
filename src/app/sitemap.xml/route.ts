@@ -67,9 +67,7 @@ export async function GET() {
     priority: 0.7,
   });
 
-  /**
-   * TODO: /post/comment/[id] 페이지의 정적 페이지 구현이 완료됨에 따라 sitemap 요소에 추가할 것.
-   */
+  // TODO: /post/comment/[id] 페이지의 정적 페이지 구현이 완료됨에 따라 sitemap 요소에 추가할 것.
 
   /**
    * blog sitemap
