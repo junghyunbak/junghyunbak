@@ -51,7 +51,7 @@
     table,
     details,
     iframe,
-    math {
+    mtable {
       @apply mb-6;
     }
 
