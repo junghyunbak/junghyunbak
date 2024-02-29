@@ -254,6 +254,7 @@ const getAllLabel = async (
   return labels;
 };
 
+// TODO: 해당 api로 인해 rate limit을 초과한 상태에서, 페이지가 재생성(isr)될 경우 403에러로 인해 올바르게 렌더링되지 못하는 이슈 해결책 찾기
 const getRepositoryReadme = async (
   owner: string,
   repo: string
@@ -272,6 +273,7 @@ const getRepositoryReadme = async (
   return (await response.json()) as ReadmeResponseData;
 };
 
+// TODO: 해당 api로 인해 rate limit을 초과한 상태에서, 페이지가 재생성(isr)될 경우 403에러로 인해 올바르게 렌더링되지 못하는 이슈 해결책 찾기
 const getAnIssueComment = async (
   commentId: string
 ): Promise<AnIssueCommentResponseData | undefined> => {
