@@ -50,7 +50,8 @@
     ol,
     table,
     details,
-    iframe {
+    iframe,
+    math {
       @apply mb-6;
     }
 

@@ -1,8 +1,10 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Image from "next/image";
@@ -28,8 +30,12 @@ export function Markdown({
   return (
     <div className="markdown">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm, [remarkFrontmatter, ["toml"]]]}
-        rehypePlugins={[rehypeRaw, rehypeSlug]}
+        remarkPlugins={[remarkGfm, remarkMath, [remarkFrontmatter, ["toml"]]]}
+        rehypePlugins={[
+          rehypeRaw,
+          rehypeSlug,
+          [rehypeKatex, { output: "mathml" }],
+        ]}
         components={{
           code(test) {
             const { children, className } = test;

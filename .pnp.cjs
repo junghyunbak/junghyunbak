@@ -62,12 +62,14 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:3.39.3"],\
           ["react-select", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.8.0"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
+          ["rehype-katex", "npm:7.0.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["rehype-stringify", "npm:10.0.0"],\
           ["remark-extract-frontmatter", "npm:3.2.0"],\
           ["remark-frontmatter", "npm:5.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-math", "npm:6.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
           ["remark-stringify", "npm:11.0.0"],\
@@ -4956,6 +4958,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/katex", [\
+      ["npm:0.16.7", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-katex-npm-0.16.7-c19be7ec5f-10c0.zip/node_modules/@types/katex/",\
+        "packageDependencies": [\
+          ["@types/katex", "npm:0.16.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/mdast", [\
       ["npm:4.0.3", {\
         "packageLocation": "../../.yarn/berry/cache/@types-mdast-npm-4.0.3-f88ce84e2c-10c0.zip/node_modules/@types/mdast/",\
@@ -6428,6 +6439,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/commander-npm-7.2.0-19178180f8-10c0.zip/node_modules/commander/",\
         "packageDependencies": [\
           ["commander", "npm:7.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.3.0", {\
+        "packageLocation": "../../.yarn/berry/cache/commander-npm-8.3.0-c0d18c66d5-10c0.zip/node_modules/commander/",\
+        "packageDependencies": [\
+          ["commander", "npm:8.3.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8405,6 +8423,46 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["hast-util-from-dom", [\
+      ["npm:5.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-from-dom-npm-5.0.0-0973c39ef8-10c0.zip/node_modules/hast-util-from-dom/",\
+        "packageDependencies": [\
+          ["hast-util-from-dom", "npm:5.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["hastscript", "npm:8.0.0"],\
+          ["web-namespaces", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-from-html", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-from-html-npm-2.0.1-4d2564d3e6-10c0.zip/node_modules/hast-util-from-html/",\
+        "packageDependencies": [\
+          ["hast-util-from-html", "npm:2.0.1"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["devlop", "npm:1.1.0"],\
+          ["hast-util-from-parse5", "npm:8.0.1"],\
+          ["parse5", "npm:7.1.2"],\
+          ["vfile", "npm:6.0.1"],\
+          ["vfile-message", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-from-html-isomorphic", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-from-html-isomorphic-npm-2.0.0-572fde4fb0-10c0.zip/node_modules/hast-util-from-html-isomorphic/",\
+        "packageDependencies": [\
+          ["hast-util-from-html-isomorphic", "npm:2.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["hast-util-from-dom", "npm:5.0.0"],\
+          ["hast-util-from-html", "npm:2.0.1"],\
+          ["unist-util-remove-position", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["hast-util-from-parse5", [\
       ["npm:8.0.1", {\
         "packageLocation": "../../.yarn/berry/cache/hast-util-from-parse5-npm-8.0.1-5ed6a912d8-10c0.zip/node_modules/hast-util-from-parse5/",\
@@ -8435,6 +8493,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/hast-util-heading-rank-npm-3.0.0-13dfda4ac8-10c0.zip/node_modules/hast-util-heading-rank/",\
         "packageDependencies": [\
           ["hast-util-heading-rank", "npm:3.0.0"],\
+          ["@types/hast", "npm:3.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-is-element", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-is-element-npm-3.0.0-59c73c7f56-10c0.zip/node_modules/hast-util-is-element/",\
+        "packageDependencies": [\
+          ["hast-util-is-element", "npm:3.0.0"],\
           ["@types/hast", "npm:3.0.4"]\
         ],\
         "linkType": "HARD"\
@@ -8554,6 +8622,19 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["hast-util-to-string", "npm:3.0.0"],\
           ["@types/hast", "npm:3.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hast-util-to-text", [\
+      ["npm:4.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/hast-util-to-text-npm-4.0.0-e37552471b-10c0.zip/node_modules/hast-util-to-text/",\
+        "packageDependencies": [\
+          ["hast-util-to-text", "npm:4.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["@types/unist", "npm:3.0.2"],\
+          ["hast-util-is-element", "npm:3.0.0"],\
+          ["unist-util-find-after", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10149,6 +10230,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["katex", [\
+      ["npm:0.16.9", {\
+        "packageLocation": "../../.yarn/berry/cache/katex-npm-0.16.9-721692b7ff-10c0.zip/node_modules/katex/",\
+        "packageDependencies": [\
+          ["katex", "npm:0.16.9"],\
+          ["commander", "npm:8.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["keyv", [\
       ["npm:4.5.4", {\
         "packageLocation": "../../.yarn/berry/cache/keyv-npm-4.5.4-4c8e2cf7f7-10c0.zip/node_modules/keyv/",\
@@ -10248,12 +10339,14 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:3.39.3"],\
           ["react-select", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.8.0"],\
           ["react-syntax-highlighter", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:15.5.0"],\
+          ["rehype-katex", "npm:7.0.0"],\
           ["rehype-raw", "npm:7.0.0"],\
           ["rehype-slug", "npm:6.0.0"],\
           ["rehype-stringify", "npm:10.0.0"],\
           ["remark-extract-frontmatter", "npm:3.2.0"],\
           ["remark-frontmatter", "npm:5.0.0"],\
           ["remark-gfm", "npm:4.0.0"],\
+          ["remark-math", "npm:6.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-rehype", "npm:11.1.0"],\
           ["remark-stringify", "npm:11.0.0"],\
@@ -10677,6 +10770,22 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["mdast-util-math", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/mdast-util-math-npm-3.0.0-8b1aa5f265-10c0.zip/node_modules/mdast-util-math/",\
+        "packageDependencies": [\
+          ["mdast-util-math", "npm:3.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["devlop", "npm:1.1.0"],\
+          ["longest-streak", "npm:3.1.0"],\
+          ["mdast-util-from-markdown", "npm:2.0.0"],\
+          ["mdast-util-to-markdown", "npm:2.1.0"],\
+          ["unist-util-remove-position", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["mdast-util-mdx-expression", [\
       ["npm:2.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/mdast-util-mdx-expression-npm-2.0.0-442ccac045-10c0.zip/node_modules/mdast-util-mdx-expression/",\
@@ -10984,6 +11093,22 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["micromark-extension-gfm-task-list-item", "npm:2.0.1"],\
           ["devlop", "npm:1.1.0"],\
+          ["micromark-factory-space", "npm:2.0.0"],\
+          ["micromark-util-character", "npm:2.1.0"],\
+          ["micromark-util-symbol", "npm:2.0.0"],\
+          ["micromark-util-types", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["micromark-extension-math", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/micromark-extension-math-npm-3.0.0-6f0855b044-10c0.zip/node_modules/micromark-extension-math/",\
+        "packageDependencies": [\
+          ["micromark-extension-math", "npm:3.0.0"],\
+          ["@types/katex", "npm:0.16.7"],\
+          ["devlop", "npm:1.1.0"],\
+          ["katex", "npm:0.16.9"],\
           ["micromark-factory-space", "npm:2.0.0"],\
           ["micromark-util-character", "npm:2.1.0"],\
           ["micromark-util-symbol", "npm:2.0.0"],\
@@ -12826,6 +12951,22 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["rehype-katex", [\
+      ["npm:7.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/rehype-katex-npm-7.0.0-704b6f2147-10c0.zip/node_modules/rehype-katex/",\
+        "packageDependencies": [\
+          ["rehype-katex", "npm:7.0.0"],\
+          ["@types/hast", "npm:3.0.4"],\
+          ["@types/katex", "npm:0.16.7"],\
+          ["hast-util-from-html-isomorphic", "npm:2.0.0"],\
+          ["hast-util-to-text", "npm:4.0.0"],\
+          ["katex", "npm:0.16.9"],\
+          ["unist-util-visit-parents", "npm:6.0.1"],\
+          ["vfile", "npm:6.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["rehype-raw", [\
       ["npm:7.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/rehype-raw-npm-7.0.0-f3b08f8b7a-10c0.zip/node_modules/rehype-raw/",\
@@ -12896,6 +13037,19 @@ const RAW_RUNTIME_STATE =
           ["micromark-extension-gfm", "npm:3.0.0"],\
           ["remark-parse", "npm:11.0.0"],\
           ["remark-stringify", "npm:11.0.0"],\
+          ["unified", "npm:11.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["remark-math", [\
+      ["npm:6.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/remark-math-npm-6.0.0-747000722b-10c0.zip/node_modules/remark-math/",\
+        "packageDependencies": [\
+          ["remark-math", "npm:6.0.0"],\
+          ["@types/mdast", "npm:4.0.3"],\
+          ["mdast-util-math", "npm:3.0.0"],\
+          ["micromark-extension-math", "npm:3.0.0"],\
           ["unified", "npm:11.0.4"]\
         ],\
         "linkType": "HARD"\
@@ -14195,6 +14349,17 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["unique-slug", "npm:4.0.0"],\
           ["imurmurhash", "npm:0.1.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["unist-util-find-after", [\
+      ["npm:5.0.0", {\
+        "packageLocation": "../../.yarn/berry/cache/unist-util-find-after-npm-5.0.0-04b78835bc-10c0.zip/node_modules/unist-util-find-after/",\
+        "packageDependencies": [\
+          ["unist-util-find-after", "npm:5.0.0"],\
+          ["@types/unist", "npm:3.0.2"],\
+          ["unist-util-is", "npm:6.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
