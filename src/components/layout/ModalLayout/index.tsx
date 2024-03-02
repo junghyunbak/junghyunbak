@@ -6,7 +6,7 @@ interface ModalLayoutProps {
 
 export function ModalLayout({ children }: ModalLayoutProps) {
   return (
-    <div className="flex h-[80dvh] w-[90dvw] flex-col bg-white lg:w-[60rem]">
+    <div className="flex h-[90dvh] w-[90dvw] flex-col bg-white lg:w-[60rem]">
       {children}
     </div>
   );
