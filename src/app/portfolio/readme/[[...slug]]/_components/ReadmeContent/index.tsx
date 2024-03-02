@@ -19,5 +19,5 @@ export function ReadmeContent({ readme }: ReadmeContentProps) {
    * `intercepting route`를 위한 parallel 경로에서 정적 페이지 생성이 되지 않는 이슈가 있어,
    * 빠른 로딩을 위해 이미지 최적화 옵션을 끔
    */
-  return <Markdown markdown={markdown} imageOptimize={false} />;
+  return <Markdown markdown={markdown} imageOptimize={false} imageInline={true} />;
 }
