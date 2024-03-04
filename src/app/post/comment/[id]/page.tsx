@@ -1,8 +1,9 @@
 import { apiService } from "@/apis";
-import { CommentContent } from "./_components/CommentContent";
 import { Header } from "@/components/core/Header";
 import Link from "next/link";
 import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
+import { Markdown } from "@/components/core/Markdown";
+import { imageUtils } from "@/utils";
 
 export async function generateStaticParams() {
   const allIssueComment = await apiService.getAllIssueComment();
@@ -19,10 +20,19 @@ export default async function PostComment({
 }) {
   const issueComment = await apiService.getAnIssueComment(id);
 
+  if (!issueComment) {
+    return <p>해당 이슈의 댓글을 찾을 수 없습니다.</p>;
+  }
+
   const issueNumber =
     (/https:\/\/github.com\/junghyunbak\/junghyunbak\/issues\/([0-9]+)/.exec(
       issueComment?.html_url || ""
     ) || [])[1];
+
+  const imageUrls = imageUtils.extractImageUrlsFromMarkdown(issueComment.body);
+  const imageUrlToPreviewImage = await imageUtils.getImageUrlToPreviewImageData(
+    imageUrls
+  );
 
   return (
     <>
@@ -37,7 +47,11 @@ export default async function PostComment({
             ← 게시글 이동
           </Link>
         </div>
-        <CommentContent issueComment={issueComment} />
+
+        <Markdown
+          markdown={issueComment.body}
+          imageUrlToPreviewImage={imageUrlToPreviewImage}
+        />
       </ResponsivePaddingLayout>
     </>
   );

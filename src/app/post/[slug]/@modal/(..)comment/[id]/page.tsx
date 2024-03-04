@@ -1,8 +1,8 @@
 import { apiService } from "@/apis";
-import { CommentContent } from "@/app/post/comment/[id]/_components/CommentContent";
 import { ModalLayout } from "@/components/layout/ModalLayout";
 import { RouteModal } from "@/components/core/RouteModal";
 import { ScrollYWithPaddingLayout } from "@/components/layout/ScrollYWithPaddingLayout";
+import { Markdown } from "@/components/core/Markdown";
 
 export default async function CommentModal({
   params: { id },
@@ -11,11 +11,15 @@ export default async function CommentModal({
 }) {
   const issueComment = await apiService.getAnIssueComment(id);
 
+  if (!issueComment) {
+    return <p>해당 이슈의 댓글을 찾을 수 없습니다.</p>;
+  }
+
   return (
     <RouteModal>
       <ModalLayout>
         <ScrollYWithPaddingLayout>
-          <CommentContent issueComment={issueComment} />
+          <Markdown markdown={issueComment.body} imageOptimize={false} />
         </ScrollYWithPaddingLayout>
       </ModalLayout>
     </RouteModal>
