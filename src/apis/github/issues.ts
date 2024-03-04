@@ -4,12 +4,11 @@ import { apiUtils } from "@/utils";
 export const getIssues = async (
   options?: IssuesCoreRequestParameters
 ): Promise<IssuesCoreResponseData> => {
-  const _options = apiUtils.objectValueFilterAndToString(options);
-
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues`;
-  const queryString = new URLSearchParams({ ..._options });
 
-  const response = await fetch(`${url}?${queryString}`, {
+  const queryString = apiUtils.objectToQueryString(options);
+
+  const response = await fetch(url + queryString, {
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     next: {
@@ -17,26 +16,31 @@ export const getIssues = async (
     },
   });
 
-  const data = await response.json();
+  if (response.status >= 400) {
+    return [];
+  }
 
-  return data as IssuesCoreResponseData;
+  return (await response.json()) as IssuesCoreResponseData;
 };
 
 export const getIssuesPageCount = async (
   options?: IssuesCoreRequestParameters
 ): Promise<number> => {
-  const _options = apiUtils.objectValueFilterAndToString(options);
-
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues`;
-  const queryString = new URLSearchParams({ ..._options });
 
-  const response = await fetch(`${url}?${queryString}`, {
+  const queryString = apiUtils.objectToQueryString(options);
+
+  const response = await fetch(url + queryString, {
     cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     next: {
       tags: ["issuesPageCount"],
     },
   });
+
+  if (response.status >= 400) {
+    return 0;
+  }
 
   const pageCount = apiUtils.getPageCount(
     apiUtils.parseLink(response.headers.get("link"))
@@ -52,25 +56,27 @@ export const getAllIssue = async (
 
   const pageCount = await getIssuesPageCount(options);
 
-  const _options = apiUtils.objectValueFilterAndToString(options);
-
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues`;
 
   for (let i = 0; i < pageCount; i++) {
     const page = i + 1;
 
-    const queryString = new URLSearchParams({
-      ..._options,
-      page: page.toString(),
+    const queryString = apiUtils.objectToQueryString({
+      ...options,
+      page,
     });
 
-    const response = await fetch(`${url}?${queryString}`, {
+    const response = await fetch(url + queryString, {
       cache: "force-cache",
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
       next: {
         tags: ["allIssue"],
       },
     });
+
+    if (response.status >= 400) {
+      continue;
+    }
 
     issues.push(
       ...Array.from((await response.json()) as IssuesCoreResponseData)
@@ -97,7 +103,5 @@ export const getAnIssue = async (
     return null;
   }
 
-  const data = await response.json();
-
-  return data as AnIssueResponseData;
+  return (await response.json()) as AnIssueResponseData;
 };

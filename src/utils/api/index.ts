@@ -69,22 +69,6 @@ export const parseLink = (linkHeader: string | null) => {
   return _parseLink(linkHeader);
 };
 
-export const objectValueFilterAndToString = (
-  obj: Record<string, unknown> = {}
-): Record<string, string> => {
-  const newObj: Record<string, string> = {};
-
-  Object.entries(obj).map(([key, value]) => {
-    if (!value) {
-      return;
-    }
-
-    newObj[key] = value.toString();
-  });
-
-  return newObj;
-};
-
 export const objectToQueryString = (
   obj: { [key: string]: string | number | undefined } | undefined
 ): `?${string}` => {
