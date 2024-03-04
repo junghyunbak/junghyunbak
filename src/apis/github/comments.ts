@@ -7,8 +7,11 @@ export const getAnIssueComment = async (
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues/comments/${commentId}`;
 
   const response = await fetch(url, {
-    cache: "no-cache",
+    cache: "force-cache",
     headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
+    next: { 
+      tags: ['comments', commentId]
+    }
   });
 
   if (response.status >= 400) {

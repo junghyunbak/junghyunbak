@@ -3,11 +3,20 @@ import { type NextRequest } from "next/server";
 import type {
   IssuesEditedEvent,
   IssuesEvent,
+  IssueCommentEvent,
   LabelEvent,
 } from "@octokit/webhooks-types";
 
 export async function POST(request: NextRequest) {
   switch (request.headers.get("x-github-event")) {
+    case "issue_comment": {
+      const payload = (await request.json()) as IssueCommentEvent;
+
+      revalidateTag(payload.comment.id.toString());
+
+      break;
+    }
+
     case "issues": {
       const payload = (await request.json()) as IssuesEvent;
 
