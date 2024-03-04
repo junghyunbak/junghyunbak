@@ -36,12 +36,16 @@ declare global {
     | IssuesCoreResponseData[number]
     | IssuesSearchResponseData[number];
 
-  type IssueComments = Endpoints["GET /repos/{owner}/{repo}/comments"];
-  type IssueCommentsResponse = IssueComments["response"];
-  type IssueCommentsResponseData = IssueCommentsResponse["data"];
-
   type AnIssueComment =
     Endpoints["GET /repos/{owner}/{repo}/comments/{comment_id}"];
   type AnIssueCommentResponse = AnIssueComment["response"];
   type AnIssueCommentResponseData = AnIssueCommentResponse["data"];
+
+  type IssueComments = Endpoints["GET /repos/{owner}/{repo}/comments"];
+  type IssueCommentsResponse = IssueComments["response"];
+  type IssueCommentsResponseData = IssueCommentsResponse["data"];
+  type IssueCommentsRequestParameters = Omit<
+    IssueComments["parameters"],
+    "repo" | "owner"
+  >;
 }

@@ -67,8 +67,6 @@ export async function GET() {
     priority: 0.7,
   });
 
-  // TODO: /post/comment/[id] 페이지의 정적 페이지 구현이 완료됨에 따라 sitemap 요소에 추가할 것.
-
   /**
    * blog sitemap
    */
@@ -132,6 +130,24 @@ export async function GET() {
     );
   });
 
+  /**
+   * all issue's comments
+   */
+  const commentSitemaps: string[] = [];
+
+  const issueComments = await apiService.getAllIssueComment();
+
+  issueComments.forEach((issueComment) => {
+    commentSitemaps.push(
+      createUrlInfomation({
+        location: `${origin}/post/comment/${issueComment.id}`,
+        changeFrequency: "weekly",
+        lastModify: new Date(issueComment.updated_at),
+        priority: 1.0,
+      })
+    );
+  });
+
   return new Response(
     `
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -139,6 +155,7 @@ export async function GET() {
       ${portfolioSitemap}
       ${blogSitemaps.join("\n")}
       ${postSitemaps.join("\n")}
+      ${commentSitemaps.join("\n")}
     </urlset>
   `,
     {

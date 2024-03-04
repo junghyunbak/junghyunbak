@@ -13,6 +13,8 @@ export async function POST(request: NextRequest) {
       const payload = (await request.json()) as IssueCommentEvent;
 
       revalidateTag(payload.comment.id.toString());
+      revalidateTag("issueCommentsPageCount");
+      revalidateTag("allIssueComment");
 
       break;
     }
