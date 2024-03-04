@@ -13,11 +13,9 @@ export function ReadmeContent({ readme }: ReadmeContentProps) {
 
   const markdown = utf8.decode(base64.decode(readme.content));
 
-  /**
-   * https://github.com/vercel/next.js/issues/52842
-   *
-   * `intercepting route`를 위한 parallel 경로에서 정적 페이지 생성이 되지 않는 이슈가 있어,
-   * 빠른 로딩을 위해 이미지 최적화 옵션을 끔
-   */
-  return <Markdown markdown={markdown} imageOptimize={false} imageInline={true} />;
+  // BUG: https://github.com/vercel/next.js/issues/52842
+  // `intercepting route`를 위한 parallel 경로에서 정적 페이지 생성이 되지 않는 이슈가 있어, 빠른 로딩을 위해 이미지 최적화 옵션을 끔
+  return (
+    <Markdown markdown={markdown} imageOptimize={false} imageInline={true} />
+  );
 }

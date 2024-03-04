@@ -2,7 +2,6 @@ import { LabelList } from "@/components/core/LabelList";
 import { IssueList } from "@/components/core/IssueList";
 import { IssueListPaginate } from "@/components/core/IssueListPaginate";
 import { apiService } from "@/apis";
-import { apiUtils } from "@/utils";
 import { Metadata } from "next";
 import { GITHUB } from "@/constants";
 import Link from "next/link";
