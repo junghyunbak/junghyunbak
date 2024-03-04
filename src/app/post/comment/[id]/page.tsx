@@ -4,7 +4,13 @@ import { Header } from "@/components/core/Header";
 import Link from "next/link";
 import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 
-// TODO: 모든 issue의 comment를 가져와 정적 페이지로 생성하기. (단, 작성자가 블로그 운영자 본인인 것에 대해서만)
+export async function generateStaticParams() {
+  const allIssueComment = await apiService.getAllIssueComment();
+
+  return allIssueComment.map((issueComment) => ({
+    id: issueComment.id.toString(),
+  }));
+}
 
 export default async function PostComment({
   params: { id },
