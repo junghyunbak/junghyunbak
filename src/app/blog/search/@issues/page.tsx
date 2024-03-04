@@ -8,7 +8,7 @@ import {
   isSortOptionValue,
 } from "../_utils/typeGuard";
 import { IssueList } from "@/components/core/IssueList";
-import { REPO_NAME, REPO_OWNER } from "@/apis";
+import { GITHUB } from "@/constants";
 import { useQuery } from "react-query";
 
 const octokit = new Octokit({
@@ -26,9 +26,9 @@ export default function SearchIssues() {
 
   const query = [
     "type:issue",
-    `repo:${REPO_OWNER}/${REPO_NAME}`,
+    `repo:${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}`,
     "no:assignee",
-    `author:${REPO_OWNER}`,
+    `author:${GITHUB.REPO_OWNER}`,
   ];
 
   if (isSeacrhOptionValue(searchParam)) {

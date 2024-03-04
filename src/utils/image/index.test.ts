@@ -1,7 +1,7 @@
 import {
   extractImageUrlsFromMarkdown,
   getImageUrlToPreviewImageData,
-} from "./image";
+} from ".";
 import fs from "fs";
 import { join } from "path";
 import fetchMock from "jest-fetch-mock";
