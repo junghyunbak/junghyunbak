@@ -8,10 +8,7 @@ import remarkParse from "remark-parse";
 import remarkExtractFrontmatter from "remark-extract-frontmatter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
-import {
-  getImageUrlToPreviewImageData,
-  extractImageUrlsFromMarkdown,
-} from "@/utils/image";
+import { imageUtils } from "@/utils";
 import { Issue } from "@/components/widget/Issue";
 const toml = require("toml").parse;
 
@@ -72,8 +69,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>해당 글은 조회할 수 없습니다.</div>;
   }
 
-  const imageUrls = extractImageUrlsFromMarkdown(issue.body);
-  const imageUrlToPreviewImage = await getImageUrlToPreviewImageData(imageUrls);
+  const imageUrls = imageUtils.extractImageUrlsFromMarkdown(issue.body);
+  const imageUrlToPreviewImage = await imageUtils.getImageUrlToPreviewImageData(
+    imageUrls
+  );
 
   return (
     <>

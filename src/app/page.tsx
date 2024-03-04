@@ -4,10 +4,7 @@ import { Hits } from "@/components/core/Hits";
 import { Header } from "@/components/core/Header";
 import { Issue } from "@/components/widget/Issue";
 import { RecentIssueList } from "@/components/core/RecentIssueList";
-import {
-  extractImageUrlsFromMarkdown,
-  getImageUrlToPreviewImageData,
-} from "@/utils/image";
+import { imageUtils } from "@/utils";
 import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLayout";
 
 /**
@@ -40,8 +37,10 @@ export default async function Home() {
     .then((res) => res.json())
     .catch(() => [])) as Issues;
 
-  const imageUrls = extractImageUrlsFromMarkdown(issue?.body || "");
-  const imageUrlToPreviewImage = await getImageUrlToPreviewImageData(imageUrls);
+  const imageUrls = imageUtils.extractImageUrlsFromMarkdown(issue?.body || "");
+  const imageUrlToPreviewImage = await imageUtils.getImageUrlToPreviewImageData(
+    imageUrls
+  );
 
   return (
     <>

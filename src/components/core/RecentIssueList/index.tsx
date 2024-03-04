@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MillisecondsToElapsedTimeString } from "@/utils/image";
+import { imageUtils } from "@/utils";
 
 interface RecentIssueListProps {
   recentIssues: Issues;
@@ -16,7 +16,7 @@ export function RecentIssueList({ recentIssues }: RecentIssueListProps) {
             <li key={issue.id}>
               <Link href={`/post/${issue.number}`}>
                 {issue.title}
-                <span className="text-gray-600">{` (${MillisecondsToElapsedTimeString(
+                <span className="text-gray-600">{` (${imageUtils.MillisecondsToElapsedTimeString(
                   Date.now() - new Date(issue.updated_at).getTime()
                 )} 전)`}</span>
               </Link>
