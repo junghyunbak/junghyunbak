@@ -84,3 +84,16 @@ export const objectValueFilterAndToString = (
 
   return newObj;
 };
+
+export const objectToQueryString = (
+  obj: { [key: string]: string | number | undefined } | undefined
+): `?${string}` => {
+  if (!obj) {
+    return "?";
+  }
+
+  return `?${Object.entries(obj)
+    .filter(([_, value]) => value !== undefined)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&")}`;
+};
