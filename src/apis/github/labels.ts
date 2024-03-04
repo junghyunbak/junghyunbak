@@ -4,12 +4,9 @@ import { apiUtils } from "@/utils";
 export const getLabelsPageCount = async (
   options?: LabelsRequestParameters
 ): Promise<number> => {
-  const _options = apiUtils.objectValueFilterAndToString(options);
-
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/labels`;
-  const queryString = new URLSearchParams({
-    ..._options,
-  });
+
+  const queryString = apiUtils.objectToQueryString(options);
 
   const response = await fetch(`${url}?${queryString}`, {
     cache: "force-cache",
@@ -18,6 +15,10 @@ export const getLabelsPageCount = async (
       tags: ["labelsPageCount"],
     },
   });
+
+  if (response.status >= 400) {
+    return 0;
+  }
 
   const pageCount = apiUtils.getPageCount(
     apiUtils.parseLink(response.headers.get("link"))
@@ -33,16 +34,14 @@ export const getAllLabel = async (
 
   const pageCount = await getLabelsPageCount(options);
 
-  const _options = apiUtils.objectValueFilterAndToString(options);
-
   const url = `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/labels`;
 
   for (let i = 0; i < pageCount; i++) {
     const page = i + 1;
 
-    const queryString = new URLSearchParams({
-      ..._options,
-      page: page.toString(),
+    const queryString = apiUtils.objectToQueryString({
+      ...options,
+      page,
     });
 
     const response = await fetch(`${url}?${queryString}`, {
@@ -52,6 +51,10 @@ export const getAllLabel = async (
         tags: ["allLabel"],
       },
     });
+
+    if (response.status >= 400) {
+      continue;
+    }
 
     labels.push(...Array.from((await response.json()) as LabelsResponseData));
   }
