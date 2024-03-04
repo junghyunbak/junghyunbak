@@ -1,9 +1,10 @@
 import { LabelList } from "@/components/core/LabelList";
 import { IssueList } from "@/components/core/IssueList";
 import { IssueListPaginate } from "@/components/core/IssueListPaginate";
-import { apiService, issuesRequestDefaultOptions } from "@/apis";
+import { apiService } from "@/apis";
+import { apiUtils } from "@/utils";
 import { Metadata } from "next";
-import { REPO_NAME, REPO_OWNER } from "@/apis";
+import { GITHUB } from "@/constants";
 import Link from "next/link";
 
 /**
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
    * 라벨 없이 조회
    */
   const pageCount = await apiService.getIssuesPageCount({
-    ...issuesRequestDefaultOptions,
+    ...GITHUB.ISSUE_REQUEST_DEFAULT_OPTIONS,
   });
 
   slugs.push(
@@ -35,7 +36,7 @@ export async function generateStaticParams() {
   for (const label of labels) {
     const pageCount = await apiService.getIssuesPageCount({
       labels: label.name,
-      ...issuesRequestDefaultOptions,
+      ...GITHUB.ISSUE_REQUEST_DEFAULT_OPTIONS,
     });
 
     slugs.push(
@@ -78,7 +79,7 @@ export default async function Blog({
   const issuesRequestOptions: IssuesCoreRequestParameters = {
     page: currentPage,
     labels: currentLabel,
-    ...issuesRequestDefaultOptions,
+    ...GITHUB.ISSUE_REQUEST_DEFAULT_OPTIONS,
   };
 
   const [labels, issues, issuesPageCount] = await Promise.all([
@@ -99,7 +100,7 @@ export default async function Blog({
         />
 
         <Link
-          href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new`}
+          href={`https://github.com/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues/new`}
           className="absolute right-0 flex h-6 items-center justify-center rounded-sm border border-black px-1 text-sm text-black"
         >
           글작성

@@ -1,4 +1,4 @@
-import { ISSUE_ABOUT_NUMBER, REPO_OWNER, REPO_NAME } from "@/apis";
+import { GITHUB } from "@/constants";
 import { Metadata } from "next";
 import { Hits } from "@/components/core/Hits";
 import { Header } from "@/components/core/Header";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const issue = (await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${ISSUE_ABOUT_NUMBER}`,
+    `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues/${GITHUB.ISSUE_ABOUT_NUMBER}`,
     {
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     }
@@ -32,7 +32,7 @@ export default async function Home() {
     .catch(() => null)) as AnIssueResponseData | null;
 
   const recentIssues = (await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?creator=${REPO_OWNER}&assignee=none&per_page=3&sort=updated`,
+    `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues?creator=${GITHUB.REPO_OWNER}&assignee=none&per_page=3&sort=updated`,
     {
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     }
@@ -54,7 +54,7 @@ export default async function Home() {
 
         <Issue
           markdown={issue?.body || ""}
-          number={ISSUE_ABOUT_NUMBER}
+          number={GITHUB.ISSUE_ABOUT_NUMBER}
           imageUrlToPreviewImage={imageUrlToPreviewImage}
           moreContent={<RecentIssueList recentIssues={recentIssues} />}
         />

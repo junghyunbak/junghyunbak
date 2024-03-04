@@ -1,4 +1,5 @@
-import { apiService, REPO_OWNER, REPO_NAME } from "@/apis";
+import { apiService } from "@/apis";
+import { GITHUB } from "@/constants";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Hits } from "@/components/core/Hits";
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
     /**
      * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
      */
-    creator: REPO_OWNER,
+    creator: GITHUB.REPO_OWNER,
     /**
      * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
      */
@@ -67,7 +68,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>올바르지 않은 페이지입니다.</div>;
   }
 
-  if (issue.user?.login !== REPO_OWNER) {
+  if (issue.user?.login !== GITHUB.REPO_OWNER) {
     return <div>해당 글은 조회할 수 없습니다.</div>;
   }
 
@@ -89,7 +90,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
             <a
               className="text-sm text-gray-600"
-              href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/${issue.number}`}
+              href={`https://github.com/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues/${issue.number}`}
               target="_blank"
             >
               수정하기

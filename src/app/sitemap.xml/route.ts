@@ -1,5 +1,5 @@
 import { apiService } from "@/apis";
-import { issuesRequestDefaultOptions, REPO_OWNER } from "@/apis";
+import { GITHUB } from "@/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -75,7 +75,7 @@ export async function GET() {
   const blogSitemaps: string[] = [];
 
   const pageCount = await apiService.getIssuesPageCount({
-    ...issuesRequestDefaultOptions,
+    ...GITHUB.ISSUE_REQUEST_DEFAULT_OPTIONS,
   });
 
   blogSitemaps.push(
@@ -95,7 +95,7 @@ export async function GET() {
   for (const label of labels) {
     const pageCount = await apiService.getIssuesPageCount({
       labels: label.name,
-      ...issuesRequestDefaultOptions,
+      ...GITHUB.ISSUE_REQUEST_DEFAULT_OPTIONS,
     });
 
     blogSitemaps.push(
@@ -117,7 +117,7 @@ export async function GET() {
   const postSitemaps: string[] = [];
 
   const issues = await apiService.getAllIssue({
-    creator: REPO_OWNER,
+    creator: GITHUB.REPO_OWNER,
     assignee: "none",
   });
 
