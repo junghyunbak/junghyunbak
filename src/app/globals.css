@@ -1,4 +1,4 @@
-@import "./markdown.css";
+@import "../components/core/Markdown/index.css";
 
 @tailwind base;
 @tailwind components;
