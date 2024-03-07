@@ -90,21 +90,6 @@
       @apply mt-1;
     }
 
-    ul ul,
-    ul ol,
-    ol ul,
-    ol ol,
-    ul ul ul,
-    ul ul ol,
-    ul ol ul,
-    ul ol ol,
-    ol ul ul,
-    ol ul ol,
-    ol ol ul,
-    ol ol ol {
-      @apply mb-0;
-    }
-
     img {
       @apply mx-auto;
     }
