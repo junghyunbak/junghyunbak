@@ -67,7 +67,7 @@
       }
 
       &::after {
-        @apply absolute left-0 top-6 block rounded-sm bg-black/85 px-1.5 py-1 text-xs text-white opacity-0 transition-all content-[attr(data-original-title)];
+        @apply absolute left-0 top-6 block text-nowrap rounded-sm bg-black/85 px-1.5 py-1 text-xs text-white opacity-0 transition-all content-[attr(data-original-title)];
       }
 
       &[data-original-title]:hover {
