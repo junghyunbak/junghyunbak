@@ -66,7 +66,7 @@
         @apply no-underline;
       }
 
-      &::after {
+      &[data-original-title]::after {
         @apply pointer-events-none absolute left-0 top-6 block text-nowrap rounded-sm bg-black/85 px-1.5 py-1 text-xs text-white opacity-0 transition-all content-[attr(data-original-title)];
       }
 
