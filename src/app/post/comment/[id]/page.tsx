@@ -5,6 +5,7 @@ import { ResponsivePaddingLayout } from "@/components/layout/ResponsivePaddingLa
 import { Markdown } from "@/components/core/Markdown";
 import { imageUtils } from "@/utils";
 import { type Metadata } from "next";
+import { Hits } from "@/components/core/Hits";
 
 export async function generateStaticParams() {
   const allIssueComment = await apiService.getAllIssueComment();
@@ -58,13 +59,17 @@ export default async function PostComment({
       <Header currentPage="블로그" />
 
       <ResponsivePaddingLayout>
-        <div className="mx-2 mb-8 mt-2">
-          <Link
-            className="underline-offset-4 hover:underline"
-            href={`/post/${issueNumber}`}
-          >
-            ← 게시글 이동
-          </Link>
+        <div className="mb-8 mt-2">
+          <div className="ml-2">
+            <Link
+              className="underline-offset-4 hover:underline"
+              href={`/post/${issueNumber}`}
+            >
+              ← 게시글 이동
+            </Link>
+          </div>
+
+          <Hits path={`/post/comment/${id}`} />
         </div>
 
         <Markdown
