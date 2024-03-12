@@ -3,6 +3,7 @@ import { ModalLayout } from "@/components/layout/ModalLayout";
 import { RouteModal } from "@/components/core/RouteModal";
 import { ScrollYWithPaddingLayout } from "@/components/layout/ScrollYWithPaddingLayout";
 import { Markdown } from "@/components/core/Markdown";
+import { Utterances } from "@/components/core/Utterances";
 
 // BUG: https://github.com/vercel/next.js/issues/52842
 
@@ -28,6 +29,8 @@ export default async function CommentModal({
       <ModalLayout>
         <ScrollYWithPaddingLayout>
           <Markdown markdown={issueComment.body} imageOptimize={false} />
+
+          <Utterances/>
         </ScrollYWithPaddingLayout>
       </ModalLayout>
     </RouteModal>

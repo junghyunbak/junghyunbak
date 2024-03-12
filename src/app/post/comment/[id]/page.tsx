@@ -6,6 +6,7 @@ import { Markdown } from "@/components/core/Markdown";
 import { imageUtils } from "@/utils";
 import { type Metadata } from "next";
 import { Hits } from "@/components/core/Hits";
+import { Utterances } from "@/components/core/Utterances";
 
 export async function generateStaticParams() {
   const allIssueComment = await apiService.getAllIssueComment();
@@ -76,6 +77,8 @@ export default async function PostComment({
           markdown={issueComment.body}
           imageUrlToPreviewImage={imageUrlToPreviewImage}
         />
+
+        <Utterances/>
       </ResponsivePaddingLayout>
     </>
   );
