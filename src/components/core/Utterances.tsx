@@ -1,10 +1,10 @@
 "use client";
 
 interface UtterancesProps {
-  issueNumber: number;
+  issueNumber?: number;
 }
 
-export function Utterances({ issueNumber }: UtterancesProps) {
+export function Utterances({ issueNumber = -1 }: UtterancesProps) {
   return (
     <div
       ref={(el) => {
@@ -21,9 +21,14 @@ export function Utterances({ issueNumber }: UtterancesProps) {
          * HTMLScriptElement에 없는 속성들의 정의
          */
         script.setAttribute("repo", "junghyunbak/junghyunbak");
-        script.setAttribute("issue-number", issueNumber.toString());
         script.setAttribute("theme", "github-light");
         script.setAttribute("crossorigin", "anonymous");
+
+        if (issueNumber === -1) {
+          script.setAttribute("issue-term", "pathname");
+        } else {
+          script.setAttribute("issue-number", issueNumber.toString());
+        }
 
         el.innerHTML = "";
 
