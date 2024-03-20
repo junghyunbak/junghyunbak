@@ -16,9 +16,7 @@ export function IssueListItem({ issue }: IssueListItemProps) {
         href={`/post/${issue.number}`}
         title={issue.title}
       >
-        {[issue.title, issue.comments !== 0 ? ` (${issue.comments})` : ""].join(
-          ""
-        )}
+        {issue.title}
       </Link>
     </li>
   );
