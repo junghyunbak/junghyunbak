@@ -12,8 +12,9 @@ export function IssueListItem({ issue }: IssueListItemProps) {
       </p>
 
       <Link
-        className="block text-xl font-semibold"
+        className="block truncate text-xl font-semibold"
         href={`/post/${issue.number}`}
+        title={issue.title}
       >
         {[issue.title, issue.comments !== 0 ? ` (${issue.comments})` : ""].join(
           ""
