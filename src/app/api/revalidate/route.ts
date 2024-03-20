@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
 
       switch (payload.action) {
         case "opened":
+        case "closed":
         case "deleted":
           revalidateTag("allIssue");
 
