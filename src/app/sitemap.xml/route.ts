@@ -137,6 +137,10 @@ export async function GET() {
   const issueComments = await apiService.getAllIssueComment();
 
   issueComments.forEach((issueComment) => {
+    if (issueComment.user?.login !== GITHUB.REPO_OWNER) {
+      return;
+    }
+
     commentSitemaps.push(
       createUrlInfomation({
         location: `${origin}/post/comment/${issueComment.id}`,
