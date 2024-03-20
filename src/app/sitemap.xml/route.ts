@@ -116,7 +116,6 @@ export async function GET() {
 
   const issues = await apiService.getAllIssue({
     creator: GITHUB.REPO_OWNER,
-    assignee: "none",
   });
 
   issues.forEach((issue) => {

@@ -29,7 +29,7 @@ export default async function Home() {
     .catch(() => null)) as AnIssueResponseData | null;
 
   const recentIssues = (await fetch(
-    `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues?creator=${GITHUB.REPO_OWNER}&assignee=none&per_page=3&sort=updated`,
+    `https://api.github.com/repos/${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}/issues?creator=${GITHUB.REPO_OWNER}&per_page=3&sort=updated`,
     {
       headers: { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` },
     }

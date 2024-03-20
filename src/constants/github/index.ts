@@ -10,8 +10,4 @@ export const ISSUE_REQUEST_DEFAULT_OPTIONS: IssuesCoreRequestParameters = {
    * 레포지토리 이슈에 다른 사람이 글을 쓸 경우의 대비
    */
   creator: REPO_OWNER,
-  /**
-   * about, portfolio에 쓰일 이슈를 assignee로 구분하기 위함
-   */
-  assignee: "none",
 };

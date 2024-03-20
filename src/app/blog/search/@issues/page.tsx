@@ -27,7 +27,7 @@ export default function SearchIssues() {
   const query = [
     "type:issue",
     `repo:${GITHUB.REPO_OWNER}/${GITHUB.REPO_NAME}`,
-    "no:assignee",
+    'state:open',
     `author:${GITHUB.REPO_OWNER}`,
   ];
 
