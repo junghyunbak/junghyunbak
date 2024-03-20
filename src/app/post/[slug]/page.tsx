@@ -61,7 +61,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
     return <div>올바르지 않은 페이지입니다.</div>;
   }
 
-  if (issue.user?.login !== GITHUB.REPO_OWNER) {
+  if (
+    !issue.user ||
+    issue.user.login !== GITHUB.REPO_OWNER ||
+    issue.state === "closed"
+  ) {
     return <div>해당 글은 조회할 수 없습니다.</div>;
   }
 
