@@ -44,7 +44,7 @@ export async function generateMetadata({
     return {
       title: `Comment - "${title}" | 개발자 박정현`,
       description: (issueComment?.body || "").slice(0, 80),
-    }
+    };
   } else {
     const issueNumber =
       (/https:\/\/github.com\/junghyunbak\/junghyunbak\/issues\/([0-9]+)/.exec(
@@ -92,6 +92,14 @@ export default async function PostComment({
             >
               ← 게시글 이동
             </Link>
+            /
+            <a
+              href={issueComment.html_url}
+              target="_blank"
+              className="underline-offset-4 hover:underline"
+            >
+              수정
+            </a>
           </div>
 
           <Hits path={`/post/comment/${id}`} />
