@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
+          ["@types/react-copy-to-clipboard", "npm:5.0.7"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
           ["@types/utf8", "npm:3.0.3"],\
@@ -57,6 +58,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:2.8.8"],\
           ["prettier-plugin-tailwindcss", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:0.4.1"],\
           ["react", "npm:18.2.0"],\
+          ["react-copy-to-clipboard", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.1.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-query", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:3.39.3"],\
@@ -5043,6 +5045,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/react-copy-to-clipboard", [\
+      ["npm:5.0.7", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-react-copy-to-clipboard-npm-5.0.7-cf9459d351-10c0.zip/node_modules/@types/react-copy-to-clipboard/",\
+        "packageDependencies": [\
+          ["@types/react-copy-to-clipboard", "npm:5.0.7"],\
+          ["@types/react", "npm:18.2.48"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/react-dom", [\
       ["npm:18.2.18", {\
         "packageLocation": "../../.yarn/berry/cache/@types-react-dom-npm-18.2.18-b316a8af22-10c0.zip/node_modules/@types/react-dom/",\
@@ -6471,6 +6483,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/convert-source-map-npm-2.0.0-7ab664dc4e-10c0.zip/node_modules/convert-source-map/",\
         "packageDependencies": [\
           ["convert-source-map", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["copy-to-clipboard", [\
+      ["npm:3.3.3", {\
+        "packageLocation": "../../.yarn/berry/cache/copy-to-clipboard-npm-3.3.3-6964e6cfad-10c0.zip/node_modules/copy-to-clipboard/",\
+        "packageDependencies": [\
+          ["copy-to-clipboard", "npm:3.3.3"],\
+          ["toggle-selection", "npm:1.0.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10314,6 +10336,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.11.10"],\
           ["@types/parse-link-header", "npm:2.0.3"],\
           ["@types/react", "npm:18.2.48"],\
+          ["@types/react-copy-to-clipboard", "npm:5.0.7"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
           ["@types/utf8", "npm:3.0.3"],\
@@ -10334,6 +10357,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:2.8.8"],\
           ["prettier-plugin-tailwindcss", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:0.4.1"],\
           ["react", "npm:18.2.0"],\
+          ["react-copy-to-clipboard", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.1.0"],\
           ["react-dom", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:18.2.0"],\
           ["react-markdown", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:9.0.1"],\
           ["react-query", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:3.39.3"],\
@@ -12614,6 +12638,30 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-copy-to-clipboard", [\
+      ["npm:5.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/react-copy-to-clipboard-npm-5.1.0-de9742f2bc-10c0.zip/node_modules/react-copy-to-clipboard/",\
+        "packageDependencies": [\
+          ["react-copy-to-clipboard", "npm:5.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-copy-to-clipboard-virtual-d29a2c91d1/3/.yarn/berry/cache/react-copy-to-clipboard-npm-5.1.0-de9742f2bc-10c0.zip/node_modules/react-copy-to-clipboard/",\
+        "packageDependencies": [\
+          ["react-copy-to-clipboard", "virtual:cd0540d288308c024c4318f5f8eae3ef64cf4dc127548bf052fb82971803e4147b171953b08d557e450c75f938663af7892ea5fb2ac0d5f9688de52ac4b6bbeb#npm:5.1.0"],\
+          ["@types/react", "npm:18.2.48"],\
+          ["copy-to-clipboard", "npm:3.3.3"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["react-dom", [\
       ["npm:18.2.0", {\
         "packageLocation": "../../.yarn/berry/cache/react-dom-npm-18.2.0-dd675bca1c-10c0.zip/node_modules/react-dom/",\
@@ -14003,6 +14051,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["to-regex-range", "npm:5.0.1"],\
           ["is-number", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["toggle-selection", [\
+      ["npm:1.0.6", {\
+        "packageLocation": "../../.yarn/berry/cache/toggle-selection-npm-1.0.6-c506b73005-10c0.zip/node_modules/toggle-selection/",\
+        "packageDependencies": [\
+          ["toggle-selection", "npm:1.0.6"]\
         ],\
         "linkType": "HARD"\
       }]\
