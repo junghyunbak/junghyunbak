@@ -11,6 +11,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+import { ClipboardCopyButton } from "../ClipboardCopyButton";
+
+// TODO: 컴포넌트 폴더 이동 (core 컴포넌트에 있는것은 적절하지 않아 보인다.)
+
 interface MarkdownProps {
   markdown: string;
 
@@ -38,21 +42,28 @@ export function Markdown({
         ]}
         components={{
           code(test) {
-            const { children, className } = test;
+            const { children: text, className } = test;
 
             let match: ReturnType<RegExp["exec"]>;
 
             if (!className || !(match = /language-(\w+)/.exec(className))) {
-              return <code>{children}</code>;
+              return <code>{text}</code>;
             }
 
             return (
               <SyntaxHighlighter
-                PreTag="div"
+                PreTag={({ children, ...props }) => {
+                  return (
+                    <div {...props} className="relative">
+                      <ClipboardCopyButton text={String(text)} />
+                      {children}
+                    </div>
+                  );
+                }}
                 language={match[1]}
                 style={vscDarkPlus}
               >
-                {String(children).replace(/\n$/, "")}
+                {String(text).replace(/\n$/, "")}
               </SyntaxHighlighter>
             );
           },
