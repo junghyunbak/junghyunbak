@@ -54,9 +54,9 @@ export function Markdown({
               <SyntaxHighlighter
                 PreTag={({ children, ...props }) => {
                   return (
-                    <div {...props} className="relative">
+                    <div className="relative">
                       <ClipboardCopyButton text={String(text)} />
-                      {children}
+                      <div {...props}>{children}</div>
                     </div>
                   );
                 }}
