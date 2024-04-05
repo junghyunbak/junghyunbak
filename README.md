@@ -13,13 +13,3 @@
   <img src="https://img.shields.io/badge/tailwindcss-%23f7f7f7?style=flat-square&logo=tailwindcss"/>
   <img src="https://img.shields.io/badge/Next.js-%23000?style=flat-square&logo=nextdotjs"/>
 </p>
-
-<br/>
-
-### 💁‍♂️Contacts & Channels
-<a href="mailto:jeong5728@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=gmail&logoColor=000000"/>
-</a>
-<a href="https://github.com/junghyunbak" target="_blank">
-  <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github"/>
-</a>
