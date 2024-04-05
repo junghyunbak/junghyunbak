@@ -28,6 +28,3 @@ I`m currently studying full-stack web
 <a href="https://junghyunbak.github.io/" target="_blank">
   <img src="https://img.shields.io/badge/Blog-181717?style=flat-square&logo=github"/>
 </a>
-
-</br></br>
-![](http://mazassumnida.wtf/api/generate_badge?boj=jeong5728)
