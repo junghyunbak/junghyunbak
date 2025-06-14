@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-I`m currently studying web frontend
+I`m currently studying web
 
 ### 📖 Education
 
